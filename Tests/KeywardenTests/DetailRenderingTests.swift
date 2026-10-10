@@ -6,6 +6,38 @@ import XCTest
 /// Renders every seeded item's detail and editor offscreen, so view-layer traps surface in CI.
 @MainActor
 final class DetailRenderingTests: XCTestCase {
+    func testSecretValueRowRevealsOnlyWhenNotConcealed() async throws {
+        let label = "Password"
+        let secret = "Example-only-password"
+        let reveal = String(localized: "Reveal \(label)")
+        let hide = String(localized: "Hide \(label)")
+        let copy = String(localized: "Copy \(label)")
+        let window = HostedWindow(Form {
+            ValueRow(label: label, value: secret, secret: true, monospaced: true)
+        }.formStyle(.grouped))
+        defer { window.close() }
+        let hidden = try await window.tree()
+        XCTAssertFalse(hidden.contains(secret))
+        XCTAssertNotNil(hidden.node(role: "AXButton", label: reveal))
+        let pressedReveal = try await window.press(label: reveal, role: "AXButton")
+        XCTAssertTrue(pressedReveal)
+        let revealed = try await window.tree(containing: secret)
+        XCTAssertTrue(revealed.contains(secret))
+        let pressedHide = try await window.press(label: hide, role: "AXButton")
+        XCTAssertTrue(pressedHide)
+        let hiddenAgain = try await window.tree(without: secret)
+        XCTAssertFalse(hiddenAgain.contains(secret))
+
+        let concealedWindow = HostedWindow(Form {
+            ValueRow(label: label, value: secret, secret: true, concealed: true)
+        }.formStyle(.grouped))
+        defer { concealedWindow.close() }
+        let concealed = try await concealedWindow.tree()
+        XCTAssertFalse(concealed.contains(secret))
+        XCTAssertNil(concealed.node(role: "AXButton", label: reveal))
+        XCTAssertNil(concealed.node(role: "AXButton", label: copy))
+    }
+
     func testEverySeededItemRendersInDetailAndEditor() async throws {
         let environment = ProcessInfo.processInfo.environment
         guard let server = environment["BW_TEST_SERVER"], let email = environment["BW_TEST_EMAIL"],

@@ -61,6 +61,8 @@ Anything a hosted test can check does not belong in the UI test.
 
 CI (`.github/workflows/ci.yml`) runs the Rust unit tests, the license check, an unsigned `build-for-testing` and the Rust e2e test against a throwaway server. `KeywardenTests` and the UI test need signing and a seeded account, so they stay local.
 
+`KeywardenTests/DetailRenderingTests/testSecretValueRowRevealsOnlyWhenNotConcealed` exercises secret reveal, hide and concealed-share controls in a hosted window without a server account.
+
 ## Install a local build
 
 ```sh

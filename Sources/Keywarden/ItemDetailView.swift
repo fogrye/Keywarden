@@ -404,6 +404,18 @@ struct ValueRow: View {
     @State private var revealed = false
     @State private var hovering = false
 
+    init(label: String, value: String, secret: Bool = false, monospaced: Bool = false,
+         multiline: Bool = false, concealed: Bool = false, mask: String? = nil, display: String? = nil) {
+        self.label = label
+        self.value = value
+        self.secret = secret
+        self.monospaced = monospaced
+        self.multiline = multiline
+        self.concealed = concealed
+        self.mask = mask
+        self.display = display
+    }
+
     /// This row as one the keyboard reaches (see `View.keyboardRow`), with Space revealing a secret.
     /// The key handler has to sit outside the focusable view, so the row applies both itself.
     func keyboardRow(_ id: String, _ focus: FocusState<String?>.Binding, enabled: Bool = true) -> ValueRow {
