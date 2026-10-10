@@ -1,0 +1,125 @@
+name: Keywarden
+options:
+  minimumXcodeGenVersion: 2.43.0
+  developmentLanguage: en
+settings:
+  base:
+    MACOSX_DEPLOYMENT_TARGET: '26.0'
+    SWIFT_VERSION: '6.0'
+    ARCHS: arm64
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+targets:
+  Keywarden:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/Keywarden
+        excludes:
+          - Keywarden.entitlements
+      - path: Sources/IPCTransport
+    dependencies:
+      - target: keywarden-native-host
+        embed: true
+        link: false
+        codeSign: true
+        copy:
+          destination: wrapper
+          subpath: Contents/Helpers
+    preBuildScripts:
+      - name: Build Bitwarden SDK IPC
+        script: |
+          profile=""
+          if [ "$CONFIGURATION" != "Debug" ]; then profile="--release"; fi
+          exec cargo build --locked $profile --manifest-path "$SRCROOT/RustIpc/Cargo.toml"
+        basedOnDependencyAnalysis: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: xyz.kuvshynov.Keywarden
+        PRODUCT_NAME: Keywarden
+        EXECUTABLE_NAME: keywarden
+        DEVELOPMENT_TEAM: X6MQJZ5R84
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: Apple Development
+        CODE_SIGN_ENTITLEMENTS: Sources/Keywarden/Keywarden.entitlements
+        OTHER_LDFLAGS: "$(inherited) -lbridge_ipc -lbsm"
+        GENERATE_INFOPLIST_FILE: YES
+        MARKETING_VERSION: "0.1"
+        CURRENT_PROJECT_VERSION: "1"
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_CFBundleName: Keywarden
+        INFOPLIST_KEY_CFBundleDisplayName: Keywarden
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      configs:
+        Debug:
+          LIBRARY_SEARCH_PATHS: "$(inherited) $(SRCROOT)/RustIpc/target/debug"
+        Release:
+          CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
+          ENABLE_HARDENED_RUNTIME: YES
+          LIBRARY_SEARCH_PATHS: "$(inherited) $(SRCROOT)/RustIpc/target/release"
+  keywarden-native-host:
+    type: tool
+    platform: macOS
+    sources:
+      - path: Sources/NativeHost
+      - path: Sources/IPCTransport
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: xyz.kuvshynov.Keywarden.NativeHost
+        PRODUCT_NAME: keywarden-native-host
+        DEVELOPMENT_TEAM: X6MQJZ5R84
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: Apple Development
+        OTHER_LDFLAGS: "$(inherited) -lbsm"
+        OTHER_CODE_SIGN_FLAGS: "$(inherited) --identifier xyz.kuvshynov.Keywarden.NativeHost"
+        GENERATE_INFOPLIST_FILE: YES
+        # Embedded in the app only; installing it too makes an archive generic, with no Developer ID export.
+        SKIP_INSTALL: YES
+      configs:
+        Release:
+          CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
+          ENABLE_HARDENED_RUNTIME: YES
+  KeywardenTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests/KeywardenTests
+    dependencies:
+      - target: Keywarden
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: xyz.kuvshynov.KeywardenTests
+        DEVELOPMENT_TEAM: X6MQJZ5R84
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: Apple Development
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Keywarden.app/Contents/MacOS/keywarden"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        GENERATE_INFOPLIST_FILE: YES
+  KeywardenUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - path: Tests/UITests
+    dependencies:
+      - target: Keywarden
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: xyz.kuvshynov.KeywardenUITests
+        DEVELOPMENT_TEAM: X6MQJZ5R84
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: Apple Development
+        TEST_TARGET_NAME: Keywarden
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  Keywarden:
+    build:
+      targets:
+        Keywarden: all
+        KeywardenTests: [test]
+        KeywardenUITests: [test]
+    test:
+      language: en
+      region: US
+      targets:
+        - KeywardenTests
+        - KeywardenUITests

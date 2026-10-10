@@ -1,0 +1,43 @@
+[package]
+name = "bridge_ipc"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-only"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+# SDK version 3.0.0, pinned to https://github.com/bitwarden/sdk-internal/commit/167d44eca79020334618607f53f1db366f70ffe4.
+# bitwarden-ipc's test-support feature exposes the production CommunicationBackend and NoiseCryptoProvider interfaces.
+bitwarden-ipc = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4", features = ["test-support"] }
+bitwarden-crypto = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-core = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4", features = ["internal"] }
+bitwarden-generators = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-exporters = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-vault = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-state = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-api-api = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-api-base = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-encoding = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+bitwarden-crypto-sync-handler = { git = "https://github.com/bitwarden/sdk-internal", rev = "167d44eca79020334618607f53f1db366f70ffe4" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+csv = "1.3"
+tokio = { version = "1", features = ["rt-multi-thread", "sync", "macros", "net", "time"] }
+tokio-util = "0.7"
+uuid = { version = "1", features = ["v4"] }
+zeroize = "1"
+reqwest = { version = "0.13.3", default-features = false, features = ["json", "multipart", "http2", "form", "query"] }
+reqwest-middleware = { version = "0.5.1", features = ["json", "multipart", "form", "query"] }
+http = "1.4"
+async-trait = "0.1"
+url = "2"
+sha2 = "0.10"
+hex = "0.4"
+base64 = "0.22"
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
+
+# KDF and cipher crates are far too slow unoptimized; keep our own crate debuggable.
+[profile.dev.package."*"]
+opt-level = 2

@@ -1,0 +1,137 @@
+import XCTest
+
+/// A short smoke test of what only a separate app process can show. Everything about the vault
+/// itself (lists, details, editing, trash, lock and unlock, settings, generator, export and
+/// import) is tested in-process in `Tests/KeywardenTests`; see CONTRIBUTING.md > Tests.
+///
+/// What stays here, and why:
+/// - launching the real app and signing in through the real window against the server, the one
+///   end-to-end check that app, UI and server work together;
+/// - the menu bar extra, the main menu and keyboard shortcuts, which need a real menu bar and
+///   real key dispatch;
+/// - windows opening, closing and reopening, and what closing does to the session, which needs
+///   the real scene lifecycle;
+/// - a read of the real accessibility tree for the detail, editor, generator and settings, since
+///   XCUITest reads it across processes (the in-process walk could not reproduce the old
+///   `LabeledContent` stack overflow).
+///
+/// Drives the real app against a disposable server seeded by `cargo test seed_demo_vault`.
+/// Pass the account through the runner environment, e.g. `TEST_RUNNER_BW_UI_TEST_SERVER=…`.
+@MainActor
+final class VaultUITests: XCTestCase {
+    private var app: XCUIApplication!
+
+    func testSignInMenusShortcutsAndWindowLifecycle() throws {
+        let environment = ProcessInfo.processInfo.environment
+        guard let server = environment["BW_UI_TEST_SERVER"],
+              let email = environment["BW_UI_TEST_EMAIL"],
+              let password = environment["BW_UI_TEST_PASSWORD"] else {
+            throw XCTSkip("Disposable test server account is not configured")
+        }
+        continueAfterFailure = false
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("keywarden-ui-\(UUID().uuidString)", isDirectory: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+
+        let log = URL(fileURLWithPath: "/tmp/bw-ui-app-\(UUID().uuidString).log")
+        app = XCUIApplication()
+        app.launchEnvironment["BW_UI_TEST_DATA_DIR"] = directory.path
+        app.launchEnvironment["BW_UI_TEST_NAMESPACE"] = UUID().uuidString
+        app.launchEnvironment["BW_UI_TEST_LOG"] = log.path
+        // The flow finds controls by their English titles, whatever language this Mac uses.
+        app.launchArguments += ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        app.launch()
+        defer {
+            app.terminate()
+            let output = XCTAttachment(contentsOfFile: log)
+            output.name = "app-stderr"
+            output.lifetime = .keepAlways
+            add(output)
+        }
+
+        // Sign in through the real window, to the self-hosted server.
+        let emailField = app.textFields["Account email"]
+        XCTAssertTrue(emailField.waitForExistence(timeout: 15), app.debugDescription)
+        emailField.click()
+        emailField.typeText(email)
+        app.popUpButtons["serverRegion"].firstMatch.click()
+        app.menuItems["Self-hosted"].firstMatch.click()
+        let serverField = app.textFields["Account server"]
+        XCTAssertTrue(serverField.waitForExistence(timeout: 5))
+        serverField.click()
+        serverField.typeText(server)
+        let passwordField = app.secureTextFields["Master password"]
+        passwordField.click()
+        passwordField.typeText(password + "\r")
+        let seedLogin = app.staticTexts["Seed Login"].firstMatch
+        XCTAssertTrue(seedLogin.waitForExistence(timeout: 30), app.debugDescription)
+
+        // The real accessibility tree of the detail pane, which once overflowed the stack.
+        seedLogin.click()
+        XCTAssertTrue(app.staticTexts["One-time code"].waitForExistence(timeout: 10), "TOTP row missing")
+        XCTAssertFalse(app.staticTexts["Seed-Password-1"].exists, "Password must start masked")
+
+        // Main menu and shortcuts: ⌘N opens the editor (its tree is read too), the File menu carries
+        // the item types, and ⇧⌘E and ⇧⌘I open their sheets.
+        app.typeKey("n", modifierFlags: .command)
+        XCTAssertTrue(app.textFields["Item name"].waitForExistence(timeout: 5), "⌘N must open the editor")
+        app.buttons["Cancel"].firstMatch.click()
+        app.menuBars.menuBarItems["File"].click()
+        for title in ["New Login", "New Secure Note", "New Card", "New Identity", "New Bank Account",
+                      "New Driver’s License", "New Passport", "Import Data…", "Export Vault…"] {
+            XCTAssertTrue(app.menuBars.menuItems[title].firstMatch.exists, "File > \(title) missing")
+        }
+        app.typeKey(.escape, modifierFlags: [])
+        app.typeKey("e", modifierFlags: [.command, .shift])
+        XCTAssertTrue(app.staticTexts["Export Vault"].firstMatch.waitForExistence(timeout: 5), "⇧⌘E must open Export")
+        app.typeKey(.escape, modifierFlags: [])
+        app.typeKey("i", modifierFlags: [.command, .shift])
+        XCTAssertTrue(app.staticTexts["Import Data"].firstMatch.waitForExistence(timeout: 5), "⇧⌘I must open Import")
+        app.typeKey(.escape, modifierFlags: [])
+
+        // ⌘F focuses the toolbar search field.
+        app.typeKey("f", modifierFlags: .command)
+        let search = app.searchFields.firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 5))
+        XCTAssertEqual(search.value(forKey: "hasKeyboardFocus") as? Bool, true, "⌘F must focus search")
+
+        // ⌘G opens the generator window; its tree is read as well.
+        app.typeKey("g", modifierFlags: .command)
+        XCTAssertTrue(app.windows["generator"].firstMatch.waitForExistence(timeout: 5)
+                      || app.staticTexts["Regenerate"].firstMatch.waitForExistence(timeout: 5),
+                      "⌘G must open the generator")
+        app.typeKey("w", modifierFlags: .command)
+
+        // The menu bar extra locks the vault; the master password unlocks it.
+        statusMenu("Lock Vault")
+        XCTAssertTrue(app.staticTexts["Vault Locked"].waitForExistence(timeout: 10))
+        let unlockField = app.secureTextFields["Master password"]
+        unlockField.click()
+        unlockField.typeText(password + "\r")
+        XCTAssertTrue(app.staticTexts["Seed Login"].firstMatch.waitForExistence(timeout: 30))
+
+        // Closing the window keeps the resident session; the menu bar reopens it unlocked.
+        app.windows["vault"].firstMatch.buttons[XCUIIdentifierCloseWindow].click()
+        XCTAssertTrue(app.staticTexts["Seed Login"].firstMatch.waitForNonExistence(timeout: 5))
+        statusMenu("Open Vault")
+        XCTAssertTrue(app.staticTexts["Seed Login"].firstMatch.waitForExistence(timeout: 10),
+                      "Reopening must keep the vault unlocked")
+
+        // With "lock when the window closes" on (settings tree read here), closing locks.
+        statusMenu("Settings…")
+        let closeToggle = app.switches["lockOnWindowClose"].firstMatch
+        XCTAssertTrue(closeToggle.waitForExistence(timeout: 10), app.debugDescription)
+        closeToggle.click()
+        app.typeKey("w", modifierFlags: .command)
+        app.windows["vault"].firstMatch.buttons[XCUIIdentifierCloseWindow].click()
+        statusMenu("Open Vault")
+        XCTAssertTrue(app.staticTexts["Vault Locked"].waitForExistence(timeout: 10), "Close must lock")
+    }
+
+    /// Chooses an item from the menu bar extra (the app menu bar has some of the same titles).
+    private func statusMenu(_ title: String) {
+        let item = app.statusItems["Keywarden"].firstMatch
+        item.click()
+        item.descendants(matching: .menuItem)[title].firstMatch.click()
+    }
+}

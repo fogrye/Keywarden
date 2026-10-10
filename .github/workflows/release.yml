@@ -1,0 +1,74 @@
+# Pushing a semantic version tag builds the Developer ID-signed, notarized zip with scripts/release.sh
+# and attaches it to a GitHub release: v1.2.0 makes a release, v1.2.0-beta.1 a prerelease. Once the
+# repository is public the zip also gets a build provenance attestation, so `gh attestation verify`
+# ties it to this workflow and the tagged commit.
+#
+# Secrets:
+#   SIGNING_P12, SIGNING_DEV_P12       base64 .p12s with their private keys: the Developer ID
+#                                      Application certificate and the Apple Development one
+#   SIGNING_P12_PASSWORD               the password both .p12s were exported with
+#   ASC_KEY_P8, ASC_KEY_ID, ASC_ISSUER_ID  App Store Connect API key (base64 .p8) for provisioning
+#                                          and notarization
+name: Release
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+
+permissions:
+  contents: write
+  id-token: write # the attestation is signed with the workflow's OIDC identity
+  attestations: write
+  artifact-metadata: write
+
+jobs:
+  release:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0 # the build number is the commit count
+      - run: brew install xcodegen
+      - name: Import signing certificates
+        env:
+          P12: ${{ secrets.SIGNING_P12 }}
+          DEV_P12: ${{ secrets.SIGNING_DEV_P12 }}
+          P12_PASSWORD: ${{ secrets.SIGNING_P12_PASSWORD }}
+        run: |
+          keychain=$RUNNER_TEMP/signing.keychain-db
+          password=$(uuidgen)
+          security create-keychain -p "$password" "$keychain"
+          security set-keychain-settings -lut 21600 "$keychain"
+          security unlock-keychain -p "$password" "$keychain"
+          for p12 in "$P12" "$DEV_P12"; do
+            base64 --decode <<<"$p12" > "$RUNNER_TEMP/signing.p12"
+            security import "$RUNNER_TEMP/signing.p12" -P "$P12_PASSWORD" -f pkcs12 -k "$keychain" \
+              -T /usr/bin/codesign -T /usr/bin/security
+          done
+          security set-key-partition-list -S apple-tool:,apple: -k "$password" "$keychain" >/dev/null
+          security list-keychains -d user -s "$keychain" $(security list-keychains -d user | tr -d '"')
+          rm "$RUNNER_TEMP/signing.p12"
+      - name: Build, sign and notarize
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          BW_ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          BW_ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          export BW_ASC_KEY_PATH=$RUNNER_TEMP/AuthKey_$BW_ASC_KEY_ID.p8
+          base64 --decode <<<"$ASC_KEY_P8" > "$BW_ASC_KEY_PATH"
+          BW_VERSION=${GITHUB_REF_NAME#v} scripts/release.sh
+      - uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        if: ${{ !github.event.repository.private }} # private repos can't attest without Enterprise Cloud
+        with:
+          subject-path: .build/release/Keywarden-*.zip
+      - if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: build-log
+          path: .build/release/build.log
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [[ $GITHUB_REF_NAME == *-* ]] && prerelease=--prerelease
+          gh release create "$GITHUB_REF_NAME" .build/release/Keywarden-*.zip --verify-tag --generate-notes ${prerelease:-}

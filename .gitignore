@@ -1,0 +1,10 @@
+.build/
+RustIpc/target/
+.testdata/
+.DS_Store
+xcuserdata/
+*.xcuserstate
+# Generated from project.yml by `xcodegen generate`.
+*.xcodeproj/
+# Editor build settings with absolute paths (CONTRIBUTING.md › Build).
+buildServer.json
