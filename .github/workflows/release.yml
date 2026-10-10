@@ -7,6 +7,7 @@
 #   SIGNING_P12, SIGNING_DEV_P12       base64 .p12s with their private keys: the Developer ID
 #                                      Application certificate and the Apple Development one
 #   SIGNING_P12_PASSWORD               the password both .p12s were exported with
+#   SIGNING_PROFILE                    base64 Developer ID provisioning profile for the app
 #   ASC_KEY_P8, ASC_KEY_ID, ASC_ISSUER_ID  App Store Connect API key (base64 .p8) for provisioning
 #                                          and notarization
 name: Release
@@ -78,6 +79,19 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -k "$password" "$keychain" >/dev/null
           security list-keychains -d user -s "$keychain" $(security list-keychains -d user | tr -d '"')
           rm "$RUNNER_TEMP/signing.p12"
+      - name: Install Developer ID provisioning profile
+        env:
+          PROFILE: ${{ secrets.SIGNING_PROFILE }}
+        run: |
+          base64 --decode <<<"$PROFILE" > "$RUNNER_TEMP/DeveloperID.provisionprofile"
+          openssl cms -verify -inform DER -in "$RUNNER_TEMP/DeveloperID.provisionprofile" \
+            -noverify -out "$RUNNER_TEMP/DeveloperID.plist"
+          uuid=$(/usr/libexec/PlistBuddy -c 'Print :UUID' "$RUNNER_TEMP/DeveloperID.plist")
+          name=$(/usr/libexec/PlistBuddy -c 'Print :Name' "$RUNNER_TEMP/DeveloperID.plist")
+          profiles="$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles"
+          mkdir -p "$profiles"
+          cp "$RUNNER_TEMP/DeveloperID.provisionprofile" "$profiles/$uuid.provisionprofile"
+          echo "BW_DEVELOPER_ID_PROFILE=$name" >> "$GITHUB_ENV"
       - name: Build, sign and notarize
         env:
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
