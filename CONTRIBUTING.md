@@ -6,6 +6,8 @@ GPL-3.0-only. See `AGENTS.md` for the development workflow and known pitfalls.
 
 Requires macOS 26+, Apple Silicon, Xcode, [XcodeGen](https://github.com/yonaskolb/XcodeGen), Rust/Cargo, and a signing team. `project.yml` uses team `X6MQJZ5R84`; change it for another machine.
 
+CI and releases pin Xcode 26.5; the runner's Xcode 26.6 Swift compiler crashes during Release IR generation for an async actor reabstraction.
+
 ```sh
 xcodegen generate
 xcodebuild -project Keywarden.xcodeproj -scheme Keywarden \

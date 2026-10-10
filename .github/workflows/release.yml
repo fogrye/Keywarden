@@ -25,6 +25,9 @@ permissions:
 jobs:
   release:
     runs-on: macos-26
+    env:
+      # Xcode 26.6 crashes in Swift IR generation for an async actor reabstraction.
+      DEVELOPER_DIR: /Applications/Xcode_26.5.app/Contents/Developer
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
