@@ -8,6 +8,8 @@ Requires macOS 26+, Apple Silicon, Xcode, [XcodeGen](https://github.com/yonaskol
 
 CI and releases use Xcode 27.0 on the `xcode-27` runner, pinned to its stable compiler rather than the installed betas. Xcode 26.5 and 26.6 crash during Release IR generation for an async actor reabstraction. The app's deployment target remains macOS 26.
 
+Release CI installs the base64 Developer ID profile from `SIGNING_PROFILE` and selects it through `BW_DEVELOPER_ID_PROFILE` during export. Local exports retain automatic profile selection unless that variable is set.
+
 ```sh
 xcodegen generate
 xcodebuild -project Keywarden.xcodeproj -scheme Keywarden \

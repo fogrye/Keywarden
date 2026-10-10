@@ -58,6 +58,13 @@ cat >"$OUT/ExportOptions.plist" <<EOF
   <key>teamID</key><string>$TEAM</string>
 </dict></plist>
 EOF
+if [[ -n ${BW_DEVELOPER_ID_PROFILE:-} ]]; then
+  /usr/libexec/PlistBuddy -c 'Set :signingStyle manual' "$OUT/ExportOptions.plist"
+  /usr/libexec/PlistBuddy -c 'Add :signingCertificate string Developer ID Application' "$OUT/ExportOptions.plist"
+  /usr/libexec/PlistBuddy -c 'Add :provisioningProfiles dict' "$OUT/ExportOptions.plist"
+  /usr/libexec/PlistBuddy -c "Add :provisioningProfiles:xyz.kuvshynov.Keywarden string $BW_DEVELOPER_ID_PROFILE" \
+    "$OUT/ExportOptions.plist"
+fi
 print "Signing with Developer ID…"
 xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
   -exportOptionsPlist "$OUT/ExportOptions.plist" -allowProvisioningUpdates "${xcauth[@]}" >>"$LOG" 2>&1 \
