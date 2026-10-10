@@ -66,6 +66,10 @@ xcodebuild -project Keywarden.xcodeproj -scheme Keywarden \
   test -only-testing:KeywardenUITests
 ```
 
+CI runs Rust unit/e2e tests, the license check and an unsigned `build-for-testing`; it does not build Release artifacts on `main`. Successful Cargo builds are cached before Xcode or signing can fail, with compiler/platform/profile keys and dependency fallback restores. Superseded CI runs are cancelled; release publishing is not.
+
+Release caches speed up reruns of the same version tag, not later tags: GitHub isolates caches between tags. Xcode DerivedData is not cached.
+
 ## Install a local build
 
 ```sh
