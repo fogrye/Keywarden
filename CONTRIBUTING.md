@@ -61,6 +61,10 @@ Anything a hosted test can check does not belong in the UI test.
 
 CI (`.github/workflows/ci.yml`) runs the Rust unit tests, the license check, an unsigned `build-for-testing` and the Rust e2e test against a throwaway server. `KeywardenTests` and the UI test need signing and a seeded account, so they stay local.
 
+CI cancels older runs for the same pull request or branch; release publishing is never cancelled this way. Cargo caches are scoped by runner OS/architecture, Debug or Release profile, compiler fingerprint, lockfile and Rust source. Fallback restores reuse dependencies after source or lockfile changes, and successful Rust builds are saved before Xcode or signing can fail.
+
+Pushes to `main` also warm a Release-profile Cargo cache in a parallel job. Version-tag builds restore that default-branch cache, because caches saved under one tag are not available to later tags. The first warm-up still compiles cold; subsequent runs reuse artifacts. Xcode DerivedData is not cached.
+
 `KeywardenTests/DetailRenderingTests/testSecretValueRowRevealsOnlyWhenNotConcealed` exercises secret reveal, hide and concealed-share controls in a hosted window without a server account.
 
 ## Install a local build

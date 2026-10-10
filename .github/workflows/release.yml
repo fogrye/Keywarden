@@ -29,6 +29,32 @@ jobs:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 0 # the build number is the commit count
+      - name: Identify Rust compiler
+        id: rust
+        run: echo "fingerprint=$(rustc -vV | shasum -a 256 | cut -d ' ' -f 1)" >> "$GITHUB_OUTPUT"
+      - name: Restore Rust cache
+        id: cargo-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            RustIpc/target/release
+          key: cargo-v2-${{ runner.os }}-${{ runner.arch }}-release-${{ steps.rust.outputs.fingerprint }}-${{ hashFiles('RustIpc/Cargo.lock') }}-${{ hashFiles('RustIpc/Cargo.toml', 'RustIpc/src/**') }}
+          restore-keys: |
+            cargo-v2-${{ runner.os }}-${{ runner.arch }}-release-${{ steps.rust.outputs.fingerprint }}-${{ hashFiles('RustIpc/Cargo.lock') }}-
+            cargo-v2-${{ runner.os }}-${{ runner.arch }}-release-${{ steps.rust.outputs.fingerprint }}-
+      - run: cargo build --locked --release --manifest-path RustIpc/Cargo.toml
+      # Keep compilation cached even if signing or Apple's notarization fails.
+      - name: Save Rust cache
+        if: steps.cargo-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            RustIpc/target/release
+          key: ${{ steps.cargo-cache.outputs.cache-primary-key }}
       - run: brew install xcodegen
       - name: Import signing certificates
         env:
