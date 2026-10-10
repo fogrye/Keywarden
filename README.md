@@ -37,11 +37,15 @@ SwiftUI on the surface, Bitwarden's Rust SDK underneath. Credentials and Touch I
 
 ## Install
 
-[Download the latest release](../../releases/latest). macOS 26+, Apple Silicon. Install in `/Applications` for a stable browser-host path.
+```sh
+brew install --cask fogrye/tap/keywarden
+```
+
+Requires macOS 26+ and Apple Silicon. Or [download the latest release](../../releases/latest) and install in `/Applications` for a stable browser-host path.
 
 Releases are Developer ID-signed and notarized. [Build from source](CONTRIBUTING.md).
 
-Replace the app to update. Disconnect browsers in Settings › Browsers before uninstalling.
+Update with `brew upgrade --cask keywarden`, or replace the app if installed manually. Disconnect browsers in Settings › Browsers before uninstalling.
 
 <details>
 <summary>Verify release provenance</summary>
