@@ -1,0 +1,4 @@
+[env]
+# Must match MACOSX_DEPLOYMENT_TARGET in project.yml. Forced so cargo test and Xcode's build script
+# compile C dependencies identically instead of rebuilding them for each other.
+MACOSX_DEPLOYMENT_TARGET = { value = "26.0", force = true }
