@@ -26,13 +26,9 @@ targets:
         copy:
           destination: wrapper
           subpath: Contents/Helpers
-    preBuildScripts:
-      - name: Build Bitwarden SDK IPC
-        script: |
-          profile=""
-          if [ "$CONFIGURATION" != "Debug" ]; then profile="--release"; fi
-          exec cargo build --locked $profile --manifest-path "$SRCROOT/RustIpc/Cargo.toml"
-        basedOnDependencyAnalysis: false
+      # Its own target so Xcode builds it alongside the helper and the app's Swift; only linking waits.
+      - target: RustIpc
+        link: false
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: xyz.kuvshynov.Keywarden
@@ -110,6 +106,15 @@ targets:
         CODE_SIGN_IDENTITY: Apple Development
         TEST_TARGET_NAME: Keywarden
         GENERATE_INFOPLIST_FILE: YES
+aggregateTargets:
+  RustIpc:
+    buildScripts:
+      - name: Build Bitwarden SDK IPC
+        script: |
+          profile=""
+          if [ "$CONFIGURATION" != "Debug" ]; then profile="--release"; fi
+          exec cargo build --locked $profile --manifest-path "$SRCROOT/RustIpc/Cargo.toml"
+        basedOnDependencyAnalysis: false
 schemes:
   Keywarden:
     build:
