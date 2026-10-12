@@ -2,10 +2,6 @@
 
 [← Keywarden](../README.md)
 
-## Sign in and unlock
-
-Click or Tab into the password/PIN field; opening or reactivating the vault does not focus it. Return submits. Touch ID starts from **Unlock with Touch ID**.
-
 ## Shortcuts
 
 App shortcuts, not global hotkeys. Item actions apply to the current selection; copy and reveal actions respect re-prompt and organization restrictions.
