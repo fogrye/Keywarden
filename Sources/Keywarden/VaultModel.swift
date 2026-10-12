@@ -616,28 +616,60 @@ final class VaultModel {
     }
 
     func unlockBiometrics() async {
-        guard phase == .locked, !isBusy, let accountHash, let accountId else { return }
+        guard !Task.isCancelled, phase == .locked, !isBusy, let accountHash, let accountId else { return }
         isBusy = true
-        defer { isBusy = false }
-        let expected = generation
-        let data = await Task.detached {
-            BiometricCoordinator.shared.readAuthorizedEnrollment(id: accountId, connection: BiometricCoordinator.appConnection, browser: false)
-        }.value
-        guard generation == expected else { return }
-        guard var data else {
-            if let failure = BiometricCoordinator.shared.lastFailure { errorMessage = failure }
-            return
+        defer {
+            if Task.isCancelled, phase == .locked,
+               self.accountId == accountId, self.accountHash == accountHash {
+                generation = SDKClient.shared.generation()
+            }
+            isBusy = false
         }
-        defer { data.resetBytes(in: data.startIndex..<data.endIndex) }
-        guard let record = try? JSONDecoder().decode(StoredEnrollment.self, from: data),
-              record.accountId.caseInsensitiveCompare(accountId) == .orderedSame,
-              record.server == server else { errorMessage = String(localized: "Touch ID enrollment does not match this account."); return }
-        do {
-            accept(try await SDKClient.shared.unlockBiometrics(
-                authorization: Data(record.keyB64.utf8), generation: expected))
-            refreshInBackground()
-        } catch { errorMessage = error.localizedDescription }
-        biometricEnabled = PlatformCredentials.enrolled(accountHash)
+        let expected = generation
+        let client = SDKClient.shared
+        let enrollmentRead = Task.detached {
+            BiometricCoordinator.shared.readAuthorizedEnrollment(
+                id: accountId, connection: BiometricCoordinator.appConnection, browser: false)
+        }
+        let snapshot: VaultSnapshot? = await withTaskCancellationHandler {
+            guard var data = await enrollmentRead.value else {
+                guard !Task.isCancelled, generation == expected, phase == .locked,
+                      self.accountId == accountId, self.accountHash == accountHash else { return nil }
+                if let failure = BiometricCoordinator.shared.lastFailure { errorMessage = failure }
+                return nil
+            }
+            defer { data.resetBytes(in: data.startIndex..<data.endIndex) }
+            guard !Task.isCancelled, generation == expected, phase == .locked,
+                  self.accountId == accountId, self.accountHash == accountHash else { return nil }
+            guard let record = try? JSONDecoder().decode(StoredEnrollment.self, from: data),
+                  record.accountId.caseInsensitiveCompare(accountId) == .orderedSame,
+                  record.server == server else {
+                errorMessage = String(localized: "Touch ID enrollment does not match this account.")
+                return nil
+            }
+            let snapshot: VaultSnapshot?
+            do {
+                snapshot = try await SDKClient.shared.unlockBiometrics(
+                    authorization: Data(record.keyB64.utf8), generation: expected)
+            } catch {
+                guard !Task.isCancelled, generation == expected, phase == .locked,
+                      self.accountId == accountId, self.accountHash == accountHash else { return nil }
+                errorMessage = error.localizedDescription
+                snapshot = nil
+            }
+            guard !Task.isCancelled, generation == expected, phase == .locked,
+                  self.accountId == accountId, self.accountHash == accountHash else { return nil }
+            biometricEnabled = PlatformCredentials.enrolled(accountHash)
+            return snapshot
+        } onCancel: {
+            enrollmentRead.cancel()
+            BiometricCoordinator.shared.cancel(BiometricCoordinator.appConnection)
+            client.invalidateSession()
+        }
+        guard let snapshot, !Task.isCancelled, generation == expected, phase == .locked,
+              self.accountId == accountId, self.accountHash == accountHash else { return }
+        accept(snapshot)
+        refreshInBackground()
     }
 
     private func refreshBiometricPreferences() {

@@ -137,7 +137,7 @@ final class BiometricCoordinator: @unchecked Sendable {
     }
 
     func readAuthorizedEnrollment(id: String, connection: UInt64, browser: Bool) -> Data? {
-        guard let account = identity(id, browser: browser) else { return nil }
+        guard !Task.isCancelled, let account = identity(id, browser: browser) else { return nil }
         let context = LAContext()
         context.localizedFallbackTitle = ""
         lock.lock()
@@ -153,6 +153,7 @@ final class BiometricCoordinator: @unchecked Sendable {
         lock.unlock()
         displaced.forEach { $0.invalidate() }
         defer { release(context, connection: connection) }
+        guard !Task.isCancelled else { return nil }
         let started = Date()
         let data: Data?
         do {

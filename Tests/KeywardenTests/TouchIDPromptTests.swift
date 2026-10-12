@@ -1,5 +1,6 @@
 import AppKit
 import LocalAuthentication
+import SwiftUI
 import XCTest
 @testable import Keywarden
 
@@ -58,89 +59,320 @@ final class TouchIDPromptTests: XCTestCase {
         coordinator.release(late, connection: other)
     }
 
-    /// The lock screen's password field holds Secure Input, which hides key releases from a
-    /// launcher's or remapper's event tap. It stays disabled and unfocused while a hotkey's keys are
-    /// held, so they can't be left pressed, and takes focus once they're let go.
-    @MainActor func testLockScreenWaitsForHeldKeysBeforeFocusingThePassword() async throws {
-        var held = true
-        let original = LoginView.keysHeld
-        LoginView.keysHeld = { held }
-        defer { LoginView.keysHeld = original }
-        let model = VaultModel()
-        let deadline = Date().addingTimeInterval(15)
-        while !model.isReady, Date() < deadline { try await Task.sleep(for: .milliseconds(50)) }
-        model.phase = .locked
-        let hosted = HostedWindow(LoginView(model: model), size: NSSize(width: 420, height: 520))
+    @MainActor func testSecureEntryRequiresExplicitFocusAcrossWindowLifecycle() async throws {
+        let account = try VaultFlowTests.account()
+        let model = try await isolatedSession(account)
+        await model.lock()
+        let hosted = HostedWindow(RootView(model: model))
         defer { hosted.close() }
+        try await activate(hosted)
+        try await assertNeutralEntry(hosted, label: "Master password")
 
-        // The PIN field when a PIN is set up, else the master password field.
-        func secureField(_ tree: AXTree) -> AXTree.Node? { tree.nodes.first { ["PIN", "Master password"].contains($0.label) } }
-        var tree = try await hosted.tree(containing: "Vault Locked")
-        var field = try XCTUnwrap(secureField(tree), "\(tree.texts)")
-        XCTAssertFalse(field.enabled, "The field must wait while a modifier is held")
-        XCTAssertFalse(hosted.window.firstResponder is NSTextView, "Nothing may take Secure Input yet")
+        // Tab enters the native secure field; ordinary text goes through its field editor.
+        try await key(hosted.window, code: 48, characters: "\t")
+        XCTAssertTrue(secureFocused(hosted.window), "Tab must reach the password from neutral focus")
+        try await enter("first entry", in: hosted, label: "Master password", click: false)
+        XCTAssertEqual(model.password, "first entry")
 
-        try await Task.sleep(for: .milliseconds(2300))
-        tree = try await hosted.tree()
-        field = try XCTUnwrap(secureField(tree))
-        XCTAssertFalse(field.enabled, "Holding a hotkey longer than two seconds must not enable Secure Input")
-        XCTAssertFalse(hosted.window.firstResponder is NSTextView)
+        let other = HostedWindow(TextField("Other window", text: .constant("")))
+        defer { other.close() }
+        try await activate(other)
+        XCTAssertTrue(NSApp.isActive, "This must exercise key loss without app deactivation")
+        XCTAssertFalse(secureFocused(hosted.window))
+        _ = try await other.tree()
+        let typedOther = try await other.type("other entry", label: "Other window")
+        XCTAssertTrue(typedOther)
+        let otherResponder = other.window.firstResponder
+        try await activate(hosted)
+        try await assertNeutralEntry(hosted, label: "Master password")
+        try await enter("second entry", in: hosted, label: "Master password")
+        XCTAssertEqual(model.password, "second entry")
 
-        held = false
-        tree = try await hosted.tree()
-        field = try XCTUnwrap(secureField(tree))
-        XCTAssertTrue(field.enabled)
-        let editor = try XCTUnwrap(hosted.window.firstResponder as? NSTextView)
-        XCTAssertTrue(editor.delegate is NSSecureTextField, "The field takes focus once the keys are up")
+        let finder = try XCTUnwrap(NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.finder").first)
+        NSApp.yieldActivation(to: finder)
+        XCTAssertTrue(finder.activate(options: []))
+        try await wait { !NSApp.isActive }
+        XCTAssertFalse(secureFocused(hosted.window), "Deactivation must release the secure editor")
+        XCTAssertEqual(model.password, "second entry", "Backgrounding must not discard entered text")
+        try await activate(hosted)
+        try await assertNeutralEntry(hosted, label: "Master password")
+        try await enter("before close", in: hosted, label: "Master password")
 
-        held = true
-        NotificationCenter.default.post(name: NSApplication.didResignActiveNotification, object: NSApp)
-        NotificationCenter.default.post(name: NSApplication.didBecomeActiveNotification, object: NSApp)
-        tree = try await hosted.tree()
-        XCTAssertFalse(try XCTUnwrap(secureField(tree)).enabled)
-
-        // A pending wait must not restore focus after the app goes back into the background.
-        NotificationCenter.default.post(name: NSApplication.didResignActiveNotification, object: NSApp)
-        held = false
-        tree = try await hosted.tree()
-        XCTAssertFalse(try XCTUnwrap(secureField(tree)).enabled)
-        XCTAssertFalse(hosted.window.firstResponder is NSTextView)
-
-        NotificationCenter.default.post(name: NSApplication.didBecomeActiveNotification, object: NSApp)
-        tree = try await hosted.tree()
-        XCTAssertTrue(try XCTUnwrap(secureField(tree)).enabled)
-        XCTAssertTrue((hosted.window.firstResponder as? NSTextView)?.delegate is NSSecureTextField)
+        // Close the actual owner, not just a notification; queued callbacks must not touch another window.
+        hosted.close()
+        try await activate(other)
+        XCTAssertTrue(other.window.makeFirstResponder(otherResponder))
+        _ = try await other.tree()
+        XCTAssertFalse(hosted.window.isVisible)
+        XCTAssertFalse(secureFocused(hosted.window))
+        XCTAssertTrue(other.window.firstResponder === otherResponder)
+        let reopened = HostedWindow(RootView(model: model))
+        defer { reopened.close() }
+        try await activate(reopened)
+        try await assertNeutralEntry(reopened, label: "Master password")
+        try await enter(account.password, in: reopened, label: "Master password")
+        try await key(reopened.window, code: 36, characters: "\r")
+        try await wait { model.phase == .unlocked }
+        try await assertSeedContent(reopened)
     }
 
-    @MainActor func testLetterHotkeysWaitForHardwareAndRemappedKeyRelease() async throws {
-        let original = LoginView.keyIsDown
-        var held = true
-        var source = CGEventSourceStateID.hidSystemState
-        // L, with no modifier flags: a launcher can release Control before its letter.
-        LoginView.keyIsDown = { held && $0 == source && $1 == 37 }
-        defer { LoginView.keyIsDown = original }
-        let model = VaultModel()
-        let deadline = Date().addingTimeInterval(15)
-        while !model.isReady, Date() < deadline { try await Task.sleep(for: .milliseconds(50)) }
-        model.phase = .locked
-        let hosted = HostedWindow(LoginView(model: model), size: NSSize(width: 420, height: 520))
+    @MainActor func testPinAndMasterPasswordModesRemainUsable() async throws {
+        let account = try VaultFlowTests.account()
+        let model = try await isolatedSession(account)
+        let enabled = await model.enablePin("472691")
+        XCTAssertTrue(enabled, model.errorMessage ?? "")
+        await model.lock()
+        let hosted = HostedWindow(RootView(model: model))
         defer { hosted.close() }
+        try await activate(hosted)
+        try await assertNeutralEntry(hosted, label: "PIN")
+        try await enter("000000", in: hosted, label: "PIN")
+        try await press(hosted, label: "Unlock vault")
+        try await wait { model.errorMessage != nil && !model.isBusy }
+        XCTAssertEqual(model.phase, .locked)
+        try await dismissError(hosted, model: model)
+        let pinControl = try await secureControl(hosted, label: "PIN")
+        XCTAssertTrue(pinControl.isEnabled)
+        try await enter("472691", in: hosted, label: "PIN")
+        try await press(hosted, label: "Unlock vault")
+        try await wait { model.phase == .unlocked }
+        try await assertSeedContent(hosted)
 
-        for state in [CGEventSourceStateID.hidSystemState, .combinedSessionState] {
-            source = state
-            held = true
-            NotificationCenter.default.post(name: NSApplication.didResignActiveNotification, object: NSApp)
-            NotificationCenter.default.post(name: NSApplication.didBecomeActiveNotification, object: NSApp)
-            var tree = try await hosted.tree(containing: "Vault Locked")
-            func field(_ tree: AXTree) throws -> AXTree.Node {
-                try XCTUnwrap(tree.nodes.first { ["PIN", "Master password"].contains($0.label) })
-            }
-            XCTAssertFalse(try field(tree).enabled, "A letter alone must keep Secure Input off")
-            XCTAssertFalse(hosted.window.firstResponder is NSTextView)
-            held = false
-            tree = try await hosted.tree()
-            XCTAssertTrue(try field(tree).enabled)
-            XCTAssertTrue((hosted.window.firstResponder as? NSTextView)?.delegate is NSSecureTextField)
+        await model.lock()
+        try await assertNeutralEntry(hosted, label: "PIN")
+        try await press(hosted, label: "Use master password")
+        _ = try await secureControl(hosted, label: "Master password")
+        XCTAssertTrue(secureFocused(hosted.window), "Explicit mode switches may focus secure entry")
+        try await press(hosted, label: "Use PIN")
+        _ = try await secureControl(hosted, label: "PIN")
+        XCTAssertTrue(secureFocused(hosted.window))
+        try await press(hosted, label: "Use master password")
+        try await enter(account.password, in: hosted, label: "Master password")
+        try await key(hosted.window, code: 36, characters: "\r")
+        try await wait { model.phase == .unlocked }
+        try await assertSeedContent(hosted)
+        await model.disablePin()
+        XCTAssertFalse(model.pinEnabled)
+    }
+
+    /// Uses isolated Debug credentials and real SDK key material, not a physical fingerprint.
+    @MainActor func testBiometricFailureDoesNotStrandSecureEntryAndRetryUnlocks() async throws {
+        let account = try VaultFlowTests.account()
+        var model = try await isolatedSession(account)
+        try await SDKClient.shared.enrollBiometrics(generation: SDKClient.shared.generation())
+        await model.lock()
+        model = try await restoredLockedModel()
+        XCTAssertTrue(model.biometricEnabled, "Enrollment must be discovered from credentials")
+        let status = try await SDKClient.shared.status()
+        let hash = try XCTUnwrap(status.accountHash)
+        let hosted = HostedWindow(RootView(model: model))
+        defer { hosted.close() }
+        try await activate(hosted)
+        try await assertNeutralEntry(hosted, label: "Master password")
+        try PlatformCredentials.delete(PlatformCredentials.biometric, hash)
+        XCTAssertTrue(model.biometricEnabled, "The visible flag deliberately precedes enrollment removal")
+        try await enter("partial entry", in: hosted, label: "Master password")
+        try await press(hosted, label: "Unlock with Touch ID")
+        try await wait { model.errorMessage != nil && !model.isBusy }
+        XCTAssertEqual(model.phase, .locked)
+        try await dismissError(hosted, model: model)
+        try await assertNeutralEntry(hosted, label: "Master password")
+        try await enter(account.password, in: hosted, label: "Master password")
+        try await key(hosted.window, code: 36, characters: "\r")
+        try await wait { model.phase == .unlocked }
+        try await assertSeedContent(hosted)
+        hosted.close()
+
+        try await SDKClient.shared.enrollBiometrics(generation: SDKClient.shared.generation())
+        await model.lock()
+        model = try await restoredLockedModel()
+        let retry = HostedWindow(RootView(model: model))
+        defer { retry.close() }
+        try await activate(retry)
+        try await assertNeutralEntry(retry, label: "Master password")
+        try await press(retry, label: "Unlock with Touch ID")
+        try await wait { model.phase == .unlocked }
+        try await assertSeedContent(retry)
+        XCTAssertNil(model.errorMessage)
+        await model.disableBiometrics()
+    }
+
+    @MainActor func testCancelledEnrollmentReadCannotDisplaceBrowserPrompt() async throws {
+        let account = try VaultFlowTests.account()
+        var model = try await isolatedSession(account)
+        try await SDKClient.shared.enrollBiometrics(generation: SDKClient.shared.generation())
+        await model.lock()
+        model = try await restoredLockedModel()
+        let status = try await SDKClient.shared.status()
+        let id = try XCTUnwrap(status.accountId)
+        let hash = try XCTUnwrap(status.accountHash)
+        func restoreIdentity() {
+            coordinator.configure(id: id, hash: hash, server: account.server, email: account.email)
+            coordinator.setBrowserEnabled(model.browserBiometricsEnabled)
         }
+        defer { restoreIdentity() }
+        let disposableID = UUID().uuidString
+        coordinator.configure(id: disposableID, hash: String(repeating: "a", count: 64),
+                              server: account.server, email: account.email)
+        let held = LAContext(), late = LAContext()
+        defer { coordinator.release(held, connection: browser); coordinator.release(late, connection: other) }
+        XCTAssertNotNil(coordinator.claimPrompt(held, connection: browser))
+        let read = Task.detached {
+            // Cancellation-aware suspension guarantees the actual read runs with cancellation set.
+            try? await Task.sleep(for: .seconds(30))
+            return BiometricCoordinator.shared.readAuthorizedEnrollment(
+                id: disposableID, connection: BiometricCoordinator.appConnection, browser: false)
+        }
+        read.cancel()
+        let authorization = await read.value
+        XCTAssertNil(authorization)
+        XCTAssertNil(coordinator.claimPrompt(late, connection: other),
+                     "The cancelled app read must not displace the browser's held context")
+        coordinator.release(held, connection: browser)
+        XCTAssertNotNil(coordinator.claimPrompt(late, connection: other))
+        coordinator.release(late, connection: other)
+        restoreIdentity()
+
+        let cancelled = Task { @MainActor in
+            try? await Task.sleep(for: .seconds(30))
+            await model.unlockBiometrics()
+        }
+        cancelled.cancel()
+        await cancelled.value
+        let afterCancellation = try await SDKClient.shared.status()
+        XCTAssertEqual(afterCancellation.phase, .locked)
+        XCTAssertEqual(model.phase, .locked)
+        XCTAssertFalse(model.isBusy)
+        XCTAssertNil(model.errorMessage)
+        await model.unlockBiometrics()
+        XCTAssertEqual(model.phase, .unlocked, model.errorMessage ?? "")
+        XCTAssertTrue(model.items.contains { $0.name == "Seed Login" })
+        await model.disableBiometrics()
+    }
+
+    // MARK: Real account and native responder helpers
+
+    @MainActor private func isolatedSession(_ account: VaultFlowTests.Account) async throws -> VaultModel {
+        #if !DEBUG
+        throw XCTSkip("These credential regressions require the isolated Debug credential store")
+        #else
+        guard ProcessInfo.processInfo.environment["BW_TEST_NAMESPACE"].flatMap(UUID.init(uuidString:)) != nil else {
+            throw XCTSkip("An isolated Debug credential namespace is required")
+        }
+        let model = try await VaultFlowTests.signedIn(account)
+        addTeardownBlock { @MainActor in
+            if let status = try? await SDKClient.shared.status(), let hash = status.accountHash {
+                try? PlatformCredentials.delete(PlatformCredentials.biometric, hash)
+                BrowserUnlockPreference.set(false, hash)
+                try? PlatformCredentials.delete(PlatformCredentials.pin, hash)
+            }
+            await SeededSession.finish()
+        }
+        return model
+        #endif
+    }
+
+    @MainActor private func restoredLockedModel() async throws -> VaultModel {
+        let model = VaultModel()
+        try await wait { model.isReady }
+        XCTAssertEqual(model.phase, .locked)
+        SeededSession.model = model
+        return model
+    }
+
+    @MainActor private func wait(_ predicate: () -> Bool, timeout: TimeInterval = 15,
+                                 file: StaticString = #filePath, line: UInt = #line) async throws {
+        let deadline = Date().addingTimeInterval(timeout)
+        while !predicate(), Date() < deadline { try await Task.sleep(for: .milliseconds(50)) }
+        XCTAssertTrue(predicate(), "The expected real UI/authentication transition did not finish", file: file, line: line)
+    }
+
+    @MainActor private func activate(_ hosted: HostedWindow) async throws {
+        NSApp.unhide(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        hosted.window.makeKeyAndOrderFront(nil)
+        try await wait { NSApp.isActive && hosted.window.isKeyWindow }
+        _ = try await hosted.tree()
+        // Accessibility priming can finish the app's initial scene presentation.
+        // Establish this fixture's ownership after that presentation has settled.
+        hosted.window.makeKeyAndOrderFront(nil)
+        try await wait { NSApp.isActive && hosted.window.isKeyWindow }
+        try await Task.sleep(for: .milliseconds(100))
+    }
+
+    @MainActor private func secureFocused(_ window: NSWindow) -> Bool {
+        (window.firstResponder as? NSTextView)?.delegate is NSSecureTextField
+    }
+
+    @MainActor private func secureControl(_ hosted: HostedWindow, label: String) async throws -> NSSecureTextField {
+        let tree = try await hosted.tree(containing: label)
+        let controls = tree.nodes.filter { $0.label == label }.compactMap { node -> NSSecureTextField? in
+            let target = (node.element as? NSCell)?.controlView ?? node.element
+            return target as? NSSecureTextField
+        }
+        return try XCTUnwrap(controls.first, "Entry must remain a native secure text field")
+    }
+
+    @MainActor private func assertNeutralEntry(_ hosted: HostedWindow, label: String,
+                                               file: StaticString = #filePath, line: UInt = #line) async throws {
+        let control = try await secureControl(hosted, label: label)
+        XCTAssertTrue(control.isEnabled,
+                      "active=\(NSApp.isActive) key=\(hosted.window.isKeyWindow) visible=\(hosted.window.isVisible)",
+                      file: file, line: line)
+        XCTAssertFalse(secureFocused(hosted.window), "Presentation/activation must not own secure entry")
+    }
+
+    @MainActor private func enter(_ text: String, in hosted: HostedWindow, label: String,
+                                  click: Bool = true) async throws {
+        let control = try await secureControl(hosted, label: label)
+        if click {
+            let point = control.convert(NSPoint(x: control.bounds.midX, y: control.bounds.midY), to: nil)
+            for type in [NSEvent.EventType.leftMouseDown, .leftMouseUp] {
+                let event = try XCTUnwrap(NSEvent.mouseEvent(
+                    with: type, location: point, modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime,
+                    windowNumber: hosted.window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1))
+                hosted.window.sendEvent(event)
+            }
+            try await Task.sleep(for: .milliseconds(100))
+        }
+        XCTAssertTrue(secureFocused(hosted.window),
+                      "Explicit entry: enabled=\(control.isEnabled) active=\(NSApp.isActive) key=\(hosted.window.isKeyWindow), responder=\(String(describing: type(of: hosted.window.firstResponder)))")
+        let editor = try XCTUnwrap(control.currentEditor())
+        editor.selectAll(nil)
+        editor.insertText(text)
+        try await Task.sleep(for: .milliseconds(100))
+    }
+
+    @MainActor private func key(_ window: NSWindow, code: UInt16, characters: String) async throws {
+        for type in [NSEvent.EventType.keyDown, .keyUp] {
+            let event = try XCTUnwrap(NSEvent.keyEvent(
+                with: type, location: .zero, modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime,
+                windowNumber: window.windowNumber, context: nil, characters: characters,
+                charactersIgnoringModifiers: characters, isARepeat: false, keyCode: code))
+            window.sendEvent(event)
+        }
+        try await Task.sleep(for: .milliseconds(300))
+    }
+
+    @MainActor private func press(_ hosted: HostedWindow, label: String) async throws {
+        let tree = try await hosted.tree(containing: label)
+        XCTAssertEqual(tree.node(label: label)?.enabled, true,
+                       "\(label): active=\(NSApp.isActive) key=\(hosted.window.isKeyWindow)")
+        let pressed = try await hosted.press(label: label)
+        XCTAssertTrue(pressed, "\(label) must be available")
+    }
+
+    @MainActor private func assertSeedContent(_ hosted: HostedWindow) async throws {
+        let tree = try await hosted.tree(containing: "Seed Login")
+        XCTAssertTrue(tree.contains("Seed Login"))
+    }
+
+    @MainActor private func dismissError(_ hosted: HostedWindow, model: VaultModel) async throws {
+        let alert = try await hosted.sheetTree(containing: "OK")
+        XCTAssertTrue(alert.contains("OK"), "The real authentication error alert must appear")
+        let dismissed = try await hosted.press(label: "OK", sheet: true)
+        XCTAssertTrue(dismissed)
+        try await wait { model.errorMessage == nil && hosted.window.attachedSheet == nil }
+        try await activate(hosted)
     }
 }

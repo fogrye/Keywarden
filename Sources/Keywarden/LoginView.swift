@@ -1,5 +1,4 @@
 import AppKit
-import Carbon.HIToolbox
 import SwiftUI
 
 struct LoginView: View {
@@ -10,14 +9,10 @@ struct LoginView: View {
     @State private var pin = ""
     /// Touch ID is being asked for; the PIN or password field is disabled meanwhile.
     @State private var askingTouchID = false
-    /// The PIN or password field waits, disabled, for a hotkey's keys to be let go before it
-    /// takes focus and turns on Secure Input.
-    @State private var waitingForKeys = true
-    @State private var focusTask: Task<Void, Never>?
     @State private var touchIDTask: Task<Void, Never>?
-    @State private var isActive = true
+    @State private var focusOwner = LoginFocusOwner()
 
-    private enum Field { case email, server, password }
+    private enum Field { case email, server, password, pin }
     private var locked: Bool { model.phase == .locked }
     private var usesPin: Bool { locked && model.pinEnabled && !useMasterPassword }
 
@@ -51,26 +46,26 @@ struct LoginView: View {
                     if region == .selfHosted {
                         TextField("Server URL", text: $model.server, prompt: Text("https://vault.example.com"))
                             .focused($focus, equals: .server)
-                            .onSubmit { focusPassword(model.email.isEmpty ? .email : .password) }
+                            .onSubmit { selectField(model.email.isEmpty ? .email : .password) }
                             .accessibilityLabel("Account server")
                     }
                     TextField("Email", text: $model.email)
                         .textContentType(.username)
                         .focused($focus, equals: .email)
-                        .onSubmit { focusPassword() }
+                        .onSubmit { selectField(.password) }
                         .accessibilityLabel("Account email")
                 }
                 if usesPin {
                     SecureField("PIN", text: $pin)
-                        .focused($focus, equals: .password)
-                        .disabled(askingTouchID || waitingForKeys)
+                        .focused($focus, equals: .pin)
+                        .disabled(askingTouchID || !focusOwner.isEligible)
                         .onSubmit(submit)
                         .accessibilityLabel("PIN")
                 } else {
                     SecureField("Master password", text: $model.password)
                         .textContentType(.password)
                         .focused($focus, equals: .password)
-                        .disabled((askingTouchID && locked) || waitingForKeys)
+                        .disabled(askingTouchID || !focusOwner.isEligible)
                         .onSubmit(submit)
                         .accessibilityLabel("Master password")
                 }
@@ -101,7 +96,7 @@ struct LoginView: View {
                     Label("Unlock with Touch ID", systemImage: "touchid").frame(maxWidth: .infinity)
                 }
                 .controlSize(.large)
-                .disabled(model.isBusy || askingTouchID)
+                .disabled(model.isBusy || askingTouchID || !focusOwner.isEligible)
             }
 
             if locked {
@@ -109,7 +104,7 @@ struct LoginView: View {
                     if model.pinEnabled {
                         Button(useMasterPassword ? "Use PIN" : "Use master password") {
                             useMasterPassword.toggle()
-                            focusPassword()
+                            selectField(usesPin ? .pin : .password)
                         }
                         Spacer()
                     }
@@ -140,118 +135,51 @@ struct LoginView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(LoginFocusAnchor(owner: focusOwner, clearFocus: { focus = nil }, detached: {
+            touchIDTask?.cancel()
+        }).accessibilityHidden(true))
         .onAppear {
             region = ServerRegion(server: model.server)
-            focusPassword(locked || !model.email.isEmpty ? .password : .email)
+            focus = nil
         }
         .onChange(of: model.phase) { _, phase in
             if phase != .locked {
                 touchIDTask?.cancel()
                 askingTouchID = false
             }
-            if phase == .unlocked {
-                focusTask?.cancel()
-            } else {
-                focusPassword(phase == .loggedOut && model.email.isEmpty ? .email : .password)
-            }
+            focus = nil
+            focusOwner.parkFocus()
             if phase == .loggedOut { region = ServerRegion(server: model.server) }
             pin = ""
         }
         .onChange(of: model.pinEnabled) { _, enabled in if !enabled { useMasterPassword = false } }
         .onDisappear {
-            focusTask?.cancel()
+            focusOwner.detach()
             touchIDTask?.cancel()
         }
-        // A field still focused when the app is reactivated by a hotkey would turn Secure Input
-        // back on while the hotkey is held, so it is disabled while Keywarden is in the background.
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didResignActiveNotification)) { _ in
-            isActive = false
-            focusTask?.cancel()
-            waitingForKeys = true
-            focus = nil
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
-            isActive = true
-            if !askingTouchID { focusPassword(locked || !model.email.isEmpty ? .password : .email) }
-        }
     }
 
-    /// Focuses the PIN or password field once a launcher hotkey's keys (rcmd, Tinycast, a Hyper
-    /// key) are let go. The field holds Secure Input, which hides key events from other apps'
-    /// event taps: turned on mid-hotkey, the launcher or remapper never saw its keys released and
-    /// kept them pressed, so typing, arrows and ⌘H went nowhere until the hotkey was pressed again.
-    private func focusPassword(_ field: Field = .password) {
-        focusTask?.cancel()
-        waitingForKeys = true
-        focus = nil
-        guard isActive, !askingTouchID else { return }
-        focusTask = Task {
-            guard await Self.keysReleased(for: "Login field focused", secureInputOff: false),
-                  !Task.isCancelled, isActive, !askingTouchID else { return }
-            waitingForKeys = false
-            focus = field
-        }
+    private func selectField(_ field: Field) {
+        guard focusOwner.isEligible, !askingTouchID else { return }
+        focus = field
     }
 
-    /// Asks for Touch ID with the PIN or password field disabled, once a launcher hotkey's keys
-    /// (Tinycast, Raycast) are let go. A field that can take focus holds Secure Input, which keeps
-    /// the Touch ID panel from coming to the front: modifiers released then reached no app and stayed
-    /// pressed for the whole system, so typing and ⌘Q went nowhere until the hotkey was pressed again.
-    /// Releasing focus alone wasn't enough, because SwiftUI gave it straight back to the field.
     private func askForTouchID() async {
-        guard !askingTouchID else { return }
+        guard locked, focusOwner.isEligible, !model.isBusy, !askingTouchID else { return }
         askingTouchID = true
-        focusTask?.cancel()
-        waitingForKeys = true
         focus = nil
-        NSApp.keyWindow?.makeFirstResponder(nil)
-        // Not when the wait was cancelled: the lock screen has gone away meanwhile.
-        if await Self.keysReleased(for: "Touch ID asked", secureInputOff: true),
-           !Task.isCancelled, locked {
-            await model.unlockBiometrics()
+        defer {
+            askingTouchID = false
+            if locked { focus = nil; focusOwner.parkFocus() }
         }
-        askingTouchID = false
-        if !Task.isCancelled, model.phase != .unlocked { focusPassword() }
-    }
-
-    /// Waits for every physical and remapped key to stay released for 100 ms, with no timeout
-    /// that could enable Secure Input mid-hotkey. False if the owning view cancels the wait.
-    private static func keysReleased(for purpose: String, secureInputOff: Bool) async -> Bool {
-        let start = Date()
-        var releasedAt: ContinuousClock.Instant?
-        while !Task.isCancelled {
-            let held = keysHeld()
-            let secure = secureInputOff && IsSecureEventInputEnabled()
-            if held || secure {
-                releasedAt = nil
-            } else if let releasedAt {
-                if releasedAt.duration(to: .now) >= .milliseconds(100) {
-                    let waited = Int(Date().timeIntervalSince(start) * 1000)
-                    biometricLog.notice("\(purpose, privacy: .public) after \(waited) ms")
-                    return true
-                }
-            } else {
-                releasedAt = .now
+        guard await focusOwner.prepareForBiometrics() else {
+            if !Task.isCancelled, focusOwner.isEligible {
+                model.errorMessage = String(localized: "Could not leave the password field. Try again.")
             }
-            do { try await Task.sleep(for: .milliseconds(25)) } catch { return false }
+            return
         }
-        return false
-    }
-
-    /// Check both hardware and session state: remappers can post keys that aren't physically
-    /// held, and AppKit only knows events sent to this app. Never record which keys are held.
-    static var keysHeld: () -> Bool = {
-        let modifiers: CGEventFlags = [.maskCommand, .maskAlternate, .maskControl, .maskShift]
-        if !CGEventSource.flagsState(.hidSystemState).isDisjoint(with: modifiers)
-            || !CGEventSource.flagsState(.combinedSessionState).isDisjoint(with: modifiers) { return true }
-        for key: CGKeyCode in 0..<128 {
-            if keyIsDown(.hidSystemState, key) || keyIsDown(.combinedSessionState, key) { return true }
-        }
-        return false
-    }
-
-    static var keyIsDown: (CGEventSourceStateID, CGKeyCode) -> Bool = {
-        CGEventSource.keyState($0, key: $1)
+        guard !Task.isCancelled, locked, focusOwner.isEligible else { return }
+        await model.unlockBiometrics()
     }
 
     private var canSubmit: Bool {
@@ -269,8 +197,153 @@ struct LoginView: View {
             if usesPin { await model.unlock(pin: entered) }
             else if locked { await model.unlock() }
             else { await model.login() }
-            if model.phase != .unlocked { focusPassword() }
         }
+    }
+}
+
+/// Secure entry belongs to this window's first responder, never global keyboard state.
+@MainActor @Observable private final class LoginFocusOwner {
+    private(set) var isEligible = false
+    @ObservationIgnored private weak var window: NSWindow?
+    @ObservationIgnored private weak var anchor: NSView?
+    @ObservationIgnored private weak var previousInitialResponder: NSView?
+    @ObservationIgnored private var observers: [NSObjectProtocol] = []
+    @ObservationIgnored private var generation = 0
+    @ObservationIgnored var clearFocus: (() -> Void)?
+    @ObservationIgnored var detached: (() -> Void)?
+
+    func attach(_ view: NSView) {
+        guard window !== view.window || anchor !== view else { return }
+        detach()
+        guard let window = view.window else { return }
+        generation += 1
+        self.window = window
+        anchor = view
+        previousInitialResponder = window.initialFirstResponder
+        window.initialFirstResponder = view
+        parkFocus()
+        let center = NotificationCenter.default
+        for name in [NSWindow.didBecomeKeyNotification, NSWindow.didResignKeyNotification,
+                     NSWindow.didMiniaturizeNotification, NSWindow.didDeminiaturizeNotification,
+                     NSWindow.willCloseNotification] {
+            observers.append(center.addObserver(forName: name, object: window, queue: .main) { [weak self] notification in
+                let closing = notification.name == NSWindow.willCloseNotification
+                MainActor.assumeIsolated {
+                    guard let self else { return }
+                    if closing {
+                        self.detach()
+                    } else {
+                        self.clearFocus?()
+                        self.parkFocus()
+                        self.refreshEligibility()
+                    }
+                }
+            })
+        }
+        for name in [NSApplication.willResignActiveNotification, NSApplication.didResignActiveNotification,
+                     NSApplication.didBecomeActiveNotification] {
+            observers.append(center.addObserver(forName: name, object: NSApp, queue: .main) { [weak self] notification in
+                let resigning = notification.name == NSApplication.willResignActiveNotification
+                MainActor.assumeIsolated {
+                    guard let self else { return }
+                    self.clearFocus?()
+                    self.parkFocus()
+                    self.refreshEligibility(resigning: resigning)
+                }
+            })
+        }
+        // Attachment runs inside SwiftUI rendering. Native focus is released immediately;
+        // observable eligibility and FocusState are published on the next main turn.
+        let attachedGeneration = generation
+        DispatchQueue.main.async { [weak self] in
+            guard let self, self.generation == attachedGeneration, self.anchor === view else { return }
+            self.clearFocus?()
+            self.parkFocus()
+            self.refreshEligibility()
+        }
+    }
+
+    private func refreshEligibility(resigning: Bool = false) {
+        isEligible = !resigning && NSApp.isActive && window?.isVisible == true
+            && window?.isMiniaturized == false && window?.isKeyWindow == true && anchor?.window === window
+    }
+
+    @discardableResult func parkFocus() -> Bool {
+        guard let window, let anchor, anchor.window === window else { return false }
+        return window.makeFirstResponder(anchor) && window.firstResponder === anchor
+    }
+
+    func prepareForBiometrics() async -> Bool {
+        guard !Task.isCancelled, isEligible, parkFocus() else { return false }
+        await withCheckedContinuation { continuation in
+            DispatchQueue.main.async { continuation.resume() }
+        }
+        guard !Task.isCancelled, isEligible, let window, let anchor, anchor.window === window else { return false }
+        return !((window.firstResponder as? NSTextView)?.delegate is NSSecureTextField)
+    }
+
+    func detach() {
+        generation += 1
+        for observer in observers { NotificationCenter.default.removeObserver(observer) }
+        observers.removeAll()
+        if let window, let anchor, window.initialFirstResponder === anchor {
+            parkFocus()
+            window.initialFirstResponder = previousInitialResponder
+        }
+        window = nil
+        anchor = nil
+        previousInitialResponder = nil
+        // Detachment can happen during a view update as well.
+        let detachedGeneration = generation
+        DispatchQueue.main.async { [weak self] in
+            guard let self, self.generation == detachedGeneration else { return }
+            self.isEligible = false
+            self.clearFocus?()
+            self.detached?()
+            self.clearFocus = nil
+            self.detached = nil
+        }
+    }
+
+    isolated deinit {
+        for observer in observers { NotificationCenter.default.removeObserver(observer) }
+    }
+}
+
+private struct LoginFocusAnchor: NSViewRepresentable {
+    let owner: LoginFocusOwner
+    let clearFocus: () -> Void
+    let detached: () -> Void
+
+    func makeNSView(context: Context) -> Anchor {
+        owner.clearFocus = clearFocus
+        owner.detached = detached
+        return Anchor(owner: owner)
+    }
+
+    func updateNSView(_ view: Anchor, context: Context) {
+        owner.clearFocus = clearFocus
+        owner.detached = detached
+    }
+
+    static func dismantleNSView(_ view: Anchor, coordinator: ()) { view.owner.detach() }
+
+    final class Anchor: NSView {
+        let owner: LoginFocusOwner
+        init(owner: LoginFocusOwner) {
+            self.owner = owner
+            super.init(frame: .zero)
+            setAccessibilityElement(false)
+        }
+        required init?(coder: NSCoder) { nil }
+        override var acceptsFirstResponder: Bool { true }
+        override var canBecomeKeyView: Bool { false }
+        override func viewDidMoveToWindow() {
+            super.viewDidMoveToWindow()
+            owner.attach(self)
+        }
+        override func insertTab(_ sender: Any?) { window?.selectNextKeyView(self) }
+        override func insertBacktab(_ sender: Any?) { window?.selectPreviousKeyView(self) }
     }
 }
 

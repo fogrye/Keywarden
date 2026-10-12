@@ -2,6 +2,12 @@
 
 [← Keywarden](../README.md)
 
+## Sign in and unlock
+
+Opening or reactivating a signed-out or locked vault leaves password and PIN entry unfocused. Click the field or use Tab to start typing; Return signs in or unlocks. Switching between PIN and master password explicitly focuses the chosen field.
+
+Moving to another window or app releases secure entry without discarding what you typed. Returning to the vault does not restore password/PIN focus automatically. Touch ID starts only when you press **Unlock with Touch ID** and releases the vault's text editor before requesting authorization.
+
 ## Shortcuts
 
 App shortcuts, not global hotkeys. Item actions apply to the current selection; copy and reveal actions respect re-prompt and organization restrictions.
