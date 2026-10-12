@@ -44,7 +44,7 @@ jobs:
             ~/.cargo/registry
             ~/.cargo/git
             RustIpc/target/release
-          key: cargo-v2-${{ runner.os }}-${{ runner.arch }}-release-${{ steps.rust.outputs.fingerprint }}-${{ hashFiles('RustIpc/Cargo.lock') }}-${{ hashFiles('RustIpc/Cargo.toml', 'RustIpc/src/**') }}
+          key: cargo-v2-${{ runner.os }}-${{ runner.arch }}-release-${{ steps.rust.outputs.fingerprint }}-${{ hashFiles('RustIpc/Cargo.lock') }}-${{ hashFiles('RustIpc/Cargo.toml', 'RustIpc/src/**', '.cargo/config.toml') }}
           restore-keys: |
             cargo-v2-${{ runner.os }}-${{ runner.arch }}-release-${{ steps.rust.outputs.fingerprint }}-${{ hashFiles('RustIpc/Cargo.lock') }}-
             cargo-v2-${{ runner.os }}-${{ runner.arch }}-release-${{ steps.rust.outputs.fingerprint }}-
