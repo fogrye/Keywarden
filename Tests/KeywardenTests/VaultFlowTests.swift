@@ -195,6 +195,9 @@ final class VaultFlowTests: XCTestCase {
         let model = try await Self.signedIn(account)
         let hosted = HostedWindow(RootView(model: model))
         defer { hosted.close() }
+        NSApp.unhide(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        hosted.window.makeKeyAndOrderFront(nil)
         var tree = try await hosted.tree(containing: "Seed Login")
         XCTAssertTrue(tree.contains("Seed Login"))
 

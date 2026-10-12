@@ -29438,6 +29438,45 @@
         }
       }
     },
+    "Could not leave the password field. Try again." : {
+      "localizations" : {
+        "af" : { "stringUnit" : { "state" : "needs_review", "value" : "Kon nie die wagwoordveld verlaat nie. Probeer weer." } },
+        "ar" : { "stringUnit" : { "state" : "needs_review", "value" : "تعذّر مغادرة حقل كلمة المرور. حاول مرة أخرى." } },
+        "az" : { "stringUnit" : { "state" : "needs_review", "value" : "Şifrə sahəsindən çıxmaq mümkün olmadı. Yenidən cəhd edin." } },
+        "be" : { "stringUnit" : { "state" : "needs_review", "value" : "Не ўдалося пакінуць поле пароля. Паспрабуйце яшчэ раз." } },
+        "bg" : { "stringUnit" : { "state" : "needs_review", "value" : "Полето за парола не може да бъде напуснато. Опитайте отново." } },
+        "cs" : { "stringUnit" : { "state" : "needs_review", "value" : "Pole hesla se nepodařilo opustit. Zkuste to znovu." } },
+        "de" : { "stringUnit" : { "state" : "needs_review", "value" : "Das Passwortfeld konnte nicht verlassen werden. Versuche es erneut." } },
+        "es" : { "stringUnit" : { "state" : "needs_review", "value" : "No se pudo salir del campo de contraseña. Inténtalo de nuevo." } },
+        "et" : { "stringUnit" : { "state" : "needs_review", "value" : "Parooliväljalt ei saanud lahkuda. Proovi uuesti." } },
+        "fa" : { "stringUnit" : { "state" : "needs_review", "value" : "خروج از کادر گذرواژه ممکن نشد. دوباره تلاش کنید." } },
+        "fi" : { "stringUnit" : { "state" : "needs_review", "value" : "Salasanakentästä ei voitu poistua. Yritä uudelleen." } },
+        "fr" : { "stringUnit" : { "state" : "needs_review", "value" : "Impossible de quitter le champ du mot de passe. Réessayez." } },
+        "hi" : { "stringUnit" : { "state" : "needs_review", "value" : "पासवर्ड फ़ील्ड से बाहर नहीं निकल सके। फिर से कोशिश करें।" } },
+        "hr" : { "stringUnit" : { "state" : "needs_review", "value" : "Nije moguće napustiti polje za lozinku. Pokušajte ponovno." } },
+        "hu" : { "stringUnit" : { "state" : "needs_review", "value" : "Nem sikerült elhagyni a jelszómezőt. Próbálja újra." } },
+        "id" : { "stringUnit" : { "state" : "needs_review", "value" : "Tidak dapat keluar dari kolom kata sandi. Coba lagi." } },
+        "it" : { "stringUnit" : { "state" : "needs_review", "value" : "Impossibile uscire dal campo della password. Riprova." } },
+        "ja" : { "stringUnit" : { "state" : "needs_review", "value" : "パスワード欄からフォーカスを移せませんでした。もう一度お試しください。" } },
+        "ko" : { "stringUnit" : { "state" : "needs_review", "value" : "비밀번호 필드에서 벗어날 수 없습니다. 다시 시도하세요." } },
+        "nl" : { "stringUnit" : { "state" : "needs_review", "value" : "Het wachtwoordveld kon niet worden verlaten. Probeer het opnieuw." } },
+        "pl" : { "stringUnit" : { "state" : "needs_review", "value" : "Nie udało się opuścić pola hasła. Spróbuj ponownie." } },
+        "pt-BR" : { "stringUnit" : { "state" : "needs_review", "value" : "Não foi possível sair do campo de senha. Tente novamente." } },
+        "pt-PT" : { "stringUnit" : { "state" : "needs_review", "value" : "Não foi possível sair do campo da palavra-passe. Tente novamente." } },
+        "ru" : { "stringUnit" : { "state" : "needs_review", "value" : "Не удалось выйти из поля пароля. Попробуйте ещё раз." } },
+        "sk" : { "stringUnit" : { "state" : "needs_review", "value" : "Pole hesla sa nepodarilo opustiť. Skúste to znova." } },
+        "sr" : { "stringUnit" : { "state" : "needs_review", "value" : "Није могуће напустити поље за лозинку. Покушајте поново." } },
+        "sv" : { "stringUnit" : { "state" : "needs_review", "value" : "Det gick inte att lämna lösenordsfältet. Försök igen." } },
+        "ta" : { "stringUnit" : { "state" : "needs_review", "value" : "கடவுச்சொல் புலத்திலிருந்து வெளியேற முடியவில்லை. மீண்டும் முயற்சிக்கவும்." } },
+        "te" : { "stringUnit" : { "state" : "needs_review", "value" : "పాస్‌వర్డ్ ఫీల్డ్ నుండి బయటకు వెళ్లలేకపోయింది. మళ్లీ ప్రయత్నించండి." } },
+        "th" : { "stringUnit" : { "state" : "needs_review", "value" : "ไม่สามารถออกจากช่องรหัสผ่านได้ โปรดลองอีกครั้ง" } },
+        "tr" : { "stringUnit" : { "state" : "needs_review", "value" : "Parola alanından çıkılamadı. Tekrar deneyin." } },
+        "uk" : { "stringUnit" : { "state" : "needs_review", "value" : "Не вдалося вийти з поля пароля. Спробуйте ще раз." } },
+        "vi" : { "stringUnit" : { "state" : "needs_review", "value" : "Không thể rời khỏi trường mật khẩu. Hãy thử lại." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "needs_review", "value" : "无法离开密码输入框。请重试。" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "needs_review", "value" : "無法離開密碼輸入欄位。請再試一次。" } }
+      }
+    },
     "Could not remove Touch ID enrollment." : {
       "localizations" : {
         "af" : {

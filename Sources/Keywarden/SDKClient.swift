@@ -99,7 +99,7 @@ final class SDKClient {
     }
 
     // The priority path never waits for the request queue: late native results cannot republish a key.
-    @discardableResult func invalidateSession() -> UInt64 { bwAppInvalidateSession() }
+    @discardableResult nonisolated func invalidateSession() -> UInt64 { bwAppInvalidateSession() }
     func generation() -> UInt64 { bwAppGeneration() }
     func enrollBiometrics(generation: UInt64) async throws {
         let result = await withCheckedContinuation { continuation in

@@ -254,6 +254,8 @@ mod tests {
       Err(error)=>panic!("identity fixture did not receive a request: {error}"),
      }
     };
+    // macOS inherits the listener's nonblocking mode on accepted sockets.
+    stream.set_nonblocking(false).unwrap();
     stream.set_read_timeout(Some(Duration::from_secs(5))).unwrap();
     let mut reader=std::io::BufReader::new(&mut stream);
     let mut line=String::new();

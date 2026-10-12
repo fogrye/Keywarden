@@ -106,6 +106,23 @@ final class VaultUITests: XCTestCase {
         statusMenu("Lock Vault")
         XCTAssertTrue(app.staticTexts["Vault Locked"].waitForExistence(timeout: 10))
         let unlockField = app.secureTextFields["Master password"]
+        XCTAssertTrue(unlockField.isEnabled, "Opening a locked vault must not wait on global keys")
+        XCTAssertEqual(unlockField.value(forKey: "hasKeyboardFocus") as? Bool, false)
+        app.typeKey(.tab, modifierFlags: [])
+        XCTAssertEqual(unlockField.value(forKey: "hasKeyboardFocus") as? Bool, true,
+                       "Tab explicitly starts secure entry")
+        app.typeKey(.tab, modifierFlags: .shift)
+        app.typeKey("g", modifierFlags: .command)
+        XCTAssertTrue(app.windows["generator"].firstMatch.waitForExistence(timeout: 5))
+        app.typeKey("w", modifierFlags: .command)
+        XCTAssertEqual(unlockField.value(forKey: "hasKeyboardFocus") as? Bool, false,
+                       "Returning from another window must not restore secure entry")
+        unlockField.click()
+        app.typeKey("h", modifierFlags: .command)
+        XCTAssertTrue(app.wait(for: .runningBackground, timeout: 5), "⌘H must still hide secure entry")
+        app.activate()
+        XCTAssertTrue(unlockField.waitForExistence(timeout: 5))
+        XCTAssertEqual(unlockField.value(forKey: "hasKeyboardFocus") as? Bool, false)
         unlockField.click()
         unlockField.typeText(password + "\r")
         XCTAssertTrue(app.staticTexts["Seed Login"].firstMatch.waitForExistence(timeout: 30))
@@ -126,6 +143,10 @@ final class VaultUITests: XCTestCase {
         app.windows["vault"].firstMatch.buttons[XCUIIdentifierCloseWindow].click()
         statusMenu("Open Vault")
         XCTAssertTrue(app.staticTexts["Vault Locked"].waitForExistence(timeout: 10), "Close must lock")
+        XCTAssertTrue(app.secureTextFields["Master password"].isEnabled)
+        XCTAssertEqual(app.secureTextFields["Master password"].value(forKey: "hasKeyboardFocus") as? Bool, false)
+        app.typeKey("q", modifierFlags: .command)
+        XCTAssertTrue(app.wait(for: .notRunning, timeout: 5), "⌘Q must work from neutral login focus")
     }
 
     /// Chooses an item from the menu bar extra (the app menu bar has some of the same titles).
