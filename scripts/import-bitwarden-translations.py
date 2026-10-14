@@ -6,8 +6,9 @@ Bitwarden desktop app (or, failing that, the browser extension) at the pinned co
 translations come from Bitwarden's Crowdin project and are GPL-3.0, like Keywarden.
 
 Imported values are marked "translated". Values that are not imported keep their state; AI-written
-translations are marked "needs_review" until a person checks them. A value already present is only
-replaced when it is "needs_review", so reviewed translations are never overwritten.
+translations are marked "needs_review" until a person checks them. Only missing values are filled, so
+run this before translating new strings; existing values, including corrections of Bitwarden strings
+that read wrong in Keywarden's context, are never overwritten.
 
 Usage: scripts/import-bitwarden-translations.py [--dry-run]
 """
@@ -101,8 +102,8 @@ def main():
             value = convert(message, source, key)
             if value is None:
                 continue
-            current = entry.get("localizations", {}).get(language, {}).get("stringUnit")
-            if current and current["state"] != "needs_review":
+            # Existing values may be corrections of a Bitwarden string that doesn't fit our context.
+            if entry.get("localizations", {}).get(language, {}).get("stringUnit"):
                 continue
             entry.setdefault("localizations", {})[language] = {
                 "stringUnit": {"state": "translated", "value": value}}
