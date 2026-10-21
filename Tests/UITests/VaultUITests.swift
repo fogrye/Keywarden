@@ -1,3 +1,4 @@
+import AppKit
 import XCTest
 
 /// A short smoke test of what only a separate app process can show. Everything about the vault
@@ -127,10 +128,11 @@ final class VaultUITests: XCTestCase {
         unlockField.typeText(password + "\r")
         XCTAssertTrue(app.staticTexts["Seed Login"].firstMatch.waitForExistence(timeout: 30))
 
-        // Closing the window keeps the resident session; the menu bar reopens it unlocked.
+        // Closing the window keeps the resident session. A launcher reopening the menu-bar-only app
+        // brings it in front of the app in use, unlocked; it used to stay behind it, last in ⌘Tab.
         app.windows["vault"].firstMatch.buttons[XCUIIdentifierCloseWindow].click()
         XCTAssertTrue(app.staticTexts["Seed Login"].firstMatch.waitForNonExistence(timeout: 5))
-        statusMenu("Open Vault")
+        try reopenFromLauncher()
         XCTAssertTrue(app.staticTexts["Seed Login"].firstMatch.waitForExistence(timeout: 10),
                       "Reopening must keep the vault unlocked")
 
@@ -147,6 +149,29 @@ final class VaultUITests: XCTestCase {
         XCTAssertEqual(app.secureTextFields["Master password"].value(forKey: "hasKeyboardFocus") as? Bool, false)
         app.typeKey("q", modifierFlags: .command)
         XCTAssertTrue(app.wait(for: .notRunning, timeout: 5), "⌘Q must work from neutral login focus")
+    }
+
+    /// Opens the running app again the way Spotlight or a launcher does, while Finder is in front.
+    private func reopenFromLauncher() throws {
+        XCUIApplication(bundleIdentifier: "com.apple.finder").activate()
+        waitUntilInFront("com.apple.finder")
+        let bundle = try XCTUnwrap(NSRunningApplication.runningApplications(withBundleIdentifier: "xyz.kuvshynov.Keywarden")
+            .first?.bundleURL)
+        let opened = expectation(description: "LaunchServices reopened Keywarden")
+        NSWorkspace.shared.openApplication(at: bundle, configuration: NSWorkspace.OpenConfiguration()) { _, _ in
+            opened.fulfill()
+        }
+        wait(for: [opened], timeout: 10)
+        waitUntilInFront("xyz.kuvshynov.Keywarden")
+    }
+
+    /// The app owns the menu bar. An app that AppKit counts as active can still leave the menu bar,
+    /// and ⌘Tab's first place, to the app before it.
+    private func waitUntilInFront(_ bundleID: String, file: StaticString = #filePath, line: UInt = #line) {
+        let owner = NSPredicate { _, _ in NSWorkspace.shared.menuBarOwningApplication?.bundleIdentifier == bundleID }
+        let result = XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: owner, object: nil)], timeout: 5)
+        XCTAssertEqual(result, .completed, "\(bundleID) doesn't own the menu bar: "
+                       + "\(NSWorkspace.shared.menuBarOwningApplication?.bundleIdentifier ?? "none")", file: file, line: line)
     }
 
     /// Chooses an item from the menu bar extra (the app menu bar has some of the same titles).

@@ -532,7 +532,18 @@ enum WindowFront {
     static func present(_ id: String, open: () -> Void) {
         // An accessory app's windows open behind the frontmost app, so become a regular app
         // before the window exists rather than after it gets focus.
-        if NSApp.activationPolicy() != .regular { NSApp.setActivationPolicy(.regular) }
+        if NSApp.activationPolicy() != .regular {
+            NSApp.setActivationPolicy(.regular)
+            // A launcher activates Keywarden while it is still an accessory app, before asking it to
+            // reopen. AppKit then counts it as active and ignores another activation, but macOS keeps
+            // the previous app in front: ⌘Tab lists Keywarden last, and minimizing the window hands
+            // focus back to that app. Passing activation to the Dock lets the activation below count.
+            if NSApp.isActive,
+               let dock = NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.dock").first {
+                NSApp.yieldActivation(to: dock)
+                dock.activate()
+            }
+        }
         // Since macOS 14 `NSApp.activate()` is only a request, which macOS refuses when a launcher
         // starts Keywarden. `open` orders the window front and makes it key.
         NSApp.activate(ignoringOtherApps: true)
