@@ -147,6 +147,16 @@ final class VaultUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Vault Locked"].waitForExistence(timeout: 10), "Close must lock")
         XCTAssertTrue(app.secureTextFields["Master password"].isEnabled)
         XCTAssertEqual(app.secureTextFields["Master password"].value(forKey: "hasKeyboardFocus") as? Bool, false)
+        // Closing the locked vault and opening it from a launcher leaves unlocking available: the
+        // password field and Touch ID wait for the window to be key in the active app.
+        app.windows["vault"].firstMatch.buttons[XCUIIdentifierCloseWindow].click()
+        XCTAssertTrue(app.staticTexts["Vault Locked"].waitForNonExistence(timeout: 5))
+        try reopenFromLauncher()
+        XCTAssertTrue(app.staticTexts["Vault Locked"].waitForExistence(timeout: 10))
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isEnabled == true"),
+                                                object: app.secureTextFields["Master password"])
+        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 5), .completed,
+                       "Unlocking must be available after a launcher reopens the locked vault")
         app.typeKey("q", modifierFlags: .command)
         XCTAssertTrue(app.wait(for: .notRunning, timeout: 5), "⌘Q must work from neutral login focus")
     }

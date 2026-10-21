@@ -135,7 +135,7 @@ struct LoginView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(LoginFocusAnchor(owner: focusOwner, clearFocus: { focus = nil }, detached: {
+        .background(LoginFocusAnchor(owner: focusOwner, clearFocus: { focus = nil }, interrupted: {
             touchIDTask?.cancel()
         }).accessibilityHidden(true))
         .onAppear {
@@ -153,10 +153,9 @@ struct LoginView: View {
             pin = ""
         }
         .onChange(of: model.pinEnabled) { _, enabled in if !enabled { useMasterPassword = false } }
-        .onDisappear {
-            focusOwner.detach()
-            touchIDTask?.cancel()
-        }
+        // Not `focusOwner.detach()`: closing the window makes this disappear, but reopening it shows
+        // the same view again without moving it to a window, so nothing would attach it.
+        .onDisappear { touchIDTask?.cancel() }
     }
 
     private func selectField(_ field: Field) {
@@ -210,7 +209,7 @@ struct LoginView: View {
     @ObservationIgnored private var observers: [NSObjectProtocol] = []
     @ObservationIgnored private var generation = 0
     @ObservationIgnored var clearFocus: (() -> Void)?
-    @ObservationIgnored var detached: (() -> Void)?
+    @ObservationIgnored var interrupted: (() -> Void)?
 
     func attach(_ view: NSView) {
         guard window !== view.window || anchor !== view else { return }
@@ -230,13 +229,11 @@ struct LoginView: View {
                 let closing = notification.name == NSWindow.willCloseNotification
                 MainActor.assumeIsolated {
                     guard let self else { return }
-                    if closing {
-                        self.detach()
-                    } else {
-                        self.clearFocus?()
-                        self.parkFocus()
-                        self.refreshEligibility()
-                    }
+                    self.clearFocus?()
+                    // A closed window comes back with this view still in it, so keep watching it.
+                    if closing { self.interrupted?() }
+                    self.parkFocus()
+                    self.refreshEligibility(resigning: closing)
                 }
             })
         }
@@ -299,9 +296,9 @@ struct LoginView: View {
             guard let self, self.generation == detachedGeneration else { return }
             self.isEligible = false
             self.clearFocus?()
-            self.detached?()
+            self.interrupted?()
             self.clearFocus = nil
-            self.detached = nil
+            self.interrupted = nil
         }
     }
 
@@ -313,17 +310,17 @@ struct LoginView: View {
 private struct LoginFocusAnchor: NSViewRepresentable {
     let owner: LoginFocusOwner
     let clearFocus: () -> Void
-    let detached: () -> Void
+    let interrupted: () -> Void
 
     func makeNSView(context: Context) -> Anchor {
         owner.clearFocus = clearFocus
-        owner.detached = detached
+        owner.interrupted = interrupted
         return Anchor(owner: owner)
     }
 
     func updateNSView(_ view: Anchor, context: Context) {
         owner.clearFocus = clearFocus
-        owner.detached = detached
+        owner.interrupted = interrupted
     }
 
     static func dismantleNSView(_ view: Anchor, coordinator: ()) { view.owner.detach() }

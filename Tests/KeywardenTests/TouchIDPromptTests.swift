@@ -106,6 +106,10 @@ final class TouchIDPromptTests: XCTestCase {
         XCTAssertFalse(hosted.window.isVisible)
         XCTAssertFalse(secureFocused(hosted.window))
         XCTAssertTrue(other.window.firstResponder === otherResponder)
+        // The vault scene shows a closed window again with the same lock screen still in it.
+        try await activate(hosted)
+        try await assertNeutralEntry(hosted, label: "Master password")
+        hosted.close()
         let reopened = HostedWindow(RootView(model: model))
         defer { reopened.close() }
         try await activate(reopened)
