@@ -8,7 +8,6 @@ struct KeywardenApp: App {
     var body: some Scene {
         Window("Keywarden", id: WindowID.vault) {
             RootView(model: delegate.model)
-                .movesToActiveSpace()
                 .onAppear { delegate.vaultWindowOpened() }
                 .onDisappear { delegate.vaultWindowClosed() }
         }
@@ -22,7 +21,6 @@ struct KeywardenApp: App {
 
         Window("Password Generator", id: WindowID.generator) {
             GeneratorView()
-                .movesToActiveSpace()
         }
         .windowResizability(.contentSize)
         // Floats above other apps' windows, so a generated value can be copied into any form.
@@ -32,7 +30,6 @@ struct KeywardenApp: App {
 
         Settings {
             SettingsView(settings: delegate.settings, model: delegate.model)
-                .movesToActiveSpace()
         }
 
         MenuBarExtra(isInserted: Bindable(delegate.settings).showsMenuBarIcon) {
@@ -535,43 +532,25 @@ enum WindowFront {
     static func present(_ id: String, open: () -> Void) {
         // An accessory app's windows open behind the frontmost app, so become a regular app
         // before the window exists rather than after it gets focus.
-        if NSApp.activationPolicy() != .regular { NSApp.setActivationPolicy(.regular) }
+        if NSApp.activationPolicy() != .regular {
+            NSApp.setActivationPolicy(.regular)
+            // A launcher activates Keywarden while it is still an accessory app, before asking it to
+            // reopen. AppKit then counts it as active and ignores another activation, but macOS keeps
+            // the previous app in front: ⌘Tab lists Keywarden last, and minimizing the window hands
+            // focus back to that app. Passing activation to the Dock lets the activation below count.
+            if NSApp.isActive,
+               let dock = NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.dock").first {
+                NSApp.yieldActivation(to: dock)
+                dock.activate()
+            }
+        }
+        // Since macOS 14 `NSApp.activate()` is only a request, which macOS refuses when a launcher
+        // starts Keywarden. `open` orders the window front and makes it key.
+        NSApp.activate(ignoringOtherApps: true)
         open()
-        // Since macOS 14 `NSApp.activate()` is only a request, and macOS refuses it when a
-        // launcher starts Keywarden, so the window opened behind the app in front.
-        NSApp.activate(ignoringOtherApps: true)
-        focus(id)
-        // A window opened for the first time is created on the next pass of the run loop.
-        DispatchQueue.main.async { focus(id) }
-    }
-
-    private static func focus(_ id: String) {
-        guard let window = NSApp.windows.first(where: { $0.identifier?.rawValue.hasPrefix(id) == true }) else { return }
-        if window.isMiniaturized { window.deminiaturize(nil) }
-        window.orderFrontRegardless()
-        window.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
-    }
-}
-
-extension View {
-    /// Reopening the window brings it to the Space you are on instead of switching to the Space
-    /// where it was last shown.
-    func movesToActiveSpace() -> some View {
-        background(ActiveSpaceWindow())
-    }
-}
-
-private struct ActiveSpaceWindow: NSViewRepresentable {
-    func makeNSView(context: Context) -> NSView { WindowObserver() }
-    func updateNSView(_ view: NSView, context: Context) {}
-
-    private final class WindowObserver: NSView {
-        override func viewDidMoveToWindow() {
-            super.viewDidMoveToWindow()
-            guard let window else { return }
-            window.collectionBehavior.remove(.canJoinAllSpaces)
-            window.collectionBehavior.insert(.moveToActiveSpace)
+        if let window = NSApp.windows.first(where: { $0.identifier?.rawValue.hasPrefix(id) == true }),
+           window.isMiniaturized {
+            window.deminiaturize(nil)
         }
     }
 }
