@@ -211,7 +211,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : " - 克隆"
+            "value" : " - 副本"
           }
         }
       }
@@ -386,7 +386,7 @@
         "ta" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%@-இல் ஏற்கெனவே ஒரு Bitwarden இணைப்பு உள்ளது. பொறுப்பேற்க அதை மாற்றவும்."
+            "value" : "%@-இல் ஏற்கெனவே ஒரு Bitwarden இணைப்பு உள்ளது. அதை இந்தச் செயலிக்கு மாற்ற, இணைப்பை மாற்றவும்."
           }
         },
         "te" : {
@@ -676,7 +676,7 @@
         "be" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ зарэгістраваны ў файле %2$@. Гэта рэгістрацыя захавана і будзе адноўлена, калі вы адключыце браўзер."
+            "value" : "У %1$@ зарэгістравана праграма %2$@. Гэта рэгістрацыя захавана і будзе адноўлена, калі вы адключыце браўзер."
           }
         },
         "bg" : {
@@ -802,7 +802,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ зарегистрирован в файле %2$@. Эта регистрация сохранена и будет восстановлена, если вы отключите браузер."
+            "value" : "В %1$@ зарегистрировано приложение %2$@. Эта регистрация сохранена и будет восстановлена, если вы отключите браузер."
           }
         },
         "sk" : {
@@ -850,7 +850,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ зареєстровано у файлі %2$@. Цю реєстрацію збережено, і її буде відновлено, якщо ви від’єднаєте браузер."
+            "value" : "У %1$@ зареєстровано програму %2$@. Цю реєстрацію збережено, і її буде відновлено, якщо ви від’єднаєте браузер."
           }
         },
         "vi" : {
@@ -12063,7 +12063,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%lld วิ"
+            "value" : "%lld วินาที"
           }
         },
         "tr" : {
@@ -12331,8 +12331,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "API açar"
+            "state" : "needs_review",
+            "value" : "API açarı"
           }
         },
         "be" : {
@@ -12385,8 +12385,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clé d'IPA"
+            "state" : "needs_review",
+            "value" : "Clé d’API"
           }
         },
         "hi" : {
@@ -12469,8 +12469,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "АПИ Кључ"
+            "state" : "needs_review",
+            "value" : "АПИ кључ"
           }
         },
         "sv" : {
@@ -12765,8 +12765,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Email рахунка"
+            "state" : "needs_review",
+            "value" : "Email уліковага запісу"
           }
         },
         "bg" : {
@@ -12801,8 +12801,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "حساب ایمیل"
+            "state" : "needs_review",
+            "value" : "ایمیل حساب"
           }
         },
         "fi" : {
@@ -12825,8 +12825,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "e-pošta računa"
+            "state" : "needs_review",
+            "value" : "E-pošta računa"
           }
         },
         "hu" : {
@@ -12903,8 +12903,8 @@
         },
         "sv" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konto E-post"
+            "state" : "needs_review",
+            "value" : "Kontots e-postadress"
           }
         },
         "ta" : {
@@ -12951,8 +12951,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "電子郵件帳戶："
+            "state" : "needs_review",
+            "value" : "帳戶電子郵件"
           }
         }
       }
@@ -13111,8 +13111,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Broj računa"
+            "state" : "needs_review",
+            "value" : "Број рачуна"
           }
         },
         "sv" : {
@@ -13181,44 +13181,44 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "الحساب مقيد"
+            "state" : "needs_review",
+            "value" : "مقيّد بالحساب"
           }
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hesab məhdudlaşdırıldı"
+            "state" : "needs_review",
+            "value" : "Hesabla məhdudlaşdırılmış"
           }
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Абмежаваны рахункам"
+            "state" : "needs_review",
+            "value" : "Абмежавана ўліковым запісам"
           }
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Регистрацията е ограничена"
+            "state" : "needs_review",
+            "value" : "Ограничено до регистрацията"
           }
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Účet je omezený"
+            "state" : "needs_review",
+            "value" : "Omezeno na účet"
           }
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konto eingeschränkt"
+            "state" : "needs_review",
+            "value" : "Kontogebunden"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cuenta restringida"
+            "state" : "needs_review",
+            "value" : "Restringido a la cuenta"
           }
         },
         "et" : {
@@ -13229,20 +13229,20 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "حساب کاربری محدود شده است"
+            "state" : "needs_review",
+            "value" : "محدود به حساب"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiliä on rajoitettu"
+            "state" : "needs_review",
+            "value" : "Tiliin rajattu"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compte restreint"
+            "state" : "needs_review",
+            "value" : "Restreint au compte"
           }
         },
         "hi" : {
@@ -13253,26 +13253,26 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Račun ograničen"
+            "state" : "needs_review",
+            "value" : "Ograničeno na račun"
           }
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Korlátozott fiók"
+            "state" : "needs_review",
+            "value" : "Fiókhoz kötött"
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terbatas akun"
+            "state" : "needs_review",
+            "value" : "Terbatas pada akun"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Account limitato"
+            "state" : "needs_review",
+            "value" : "Limitato all’account"
           }
         },
         "ja" : {
@@ -13295,8 +13295,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konto zostało ograniczone"
+            "state" : "needs_review",
+            "value" : "Ograniczone do konta"
           }
         },
         "pt-BR" : {
@@ -13307,8 +13307,8 @@
         },
         "pt-PT" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conta restringida"
+            "state" : "needs_review",
+            "value" : "Restrito à conta"
           }
         },
         "ru" : {
@@ -13319,20 +13319,20 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obmedzený účet"
+            "state" : "needs_review",
+            "value" : "Obmedzené na účet"
           }
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Налог је ограничен"
+            "state" : "needs_review",
+            "value" : "Ограничено на налог"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konto med restriktioner"
+            "state" : "needs_review",
+            "value" : "Kontobegränsad"
           }
         },
         "ta" : {
@@ -13367,8 +13367,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tài khoản bị hạn chế"
+            "state" : "needs_review",
+            "value" : "Giới hạn theo tài khoản"
           }
         },
         "zh-Hans" : {
@@ -13657,8 +13657,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "نوع حساب‌"
+            "state" : "needs_review",
+            "value" : "نوع حساب"
           }
         },
         "fi" : {
@@ -13699,8 +13699,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tipo account bancario"
+            "state" : "needs_review",
+            "value" : "Tipo di conto"
           }
         },
         "ja" : {
@@ -13753,8 +13753,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tip računa"
+            "state" : "needs_review",
+            "value" : "Тип рачуна"
           }
         },
         "sv" : {
@@ -14739,8 +14739,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajouter le site web"
+            "state" : "needs_review",
+            "value" : "Ajouter un site web"
           }
         },
         "hi" : {
@@ -14942,7 +14942,7 @@
         "fa" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "افزودن به مورد علاقه"
+            "value" : "افزودن به علاقه‌مندی‌ها"
           }
         },
         "fi" : {
@@ -15957,8 +15957,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle Items"
+            "state" : "needs_review",
+            "value" : "Alle items"
           }
         },
         "ar" : {
@@ -16005,8 +16005,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kõik kirjed"
+            "state" : "needs_review",
+            "value" : "Kõik üksused"
           }
         },
         "fa" : {
@@ -16119,8 +16119,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "அனைத்து பொருட்கள்"
+            "state" : "needs_review",
+            "value" : "அனைத்து உருப்படிகள்"
           }
         },
         "te" : {
@@ -16963,8 +16963,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aplikacija"
+            "state" : "needs_review",
+            "value" : "Апликација"
           }
         },
         "sv" : {
@@ -17135,8 +17135,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "보관함"
+            "state" : "needs_review",
+            "value" : "보관"
           }
         },
         "nl" : {
@@ -17201,8 +17201,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ที่เก็บถาวร"
+            "state" : "needs_review",
+            "value" : "เก็บถาวร"
           }
         },
         "tr" : {
@@ -17790,7 +17790,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Wymagane automatycznie, gdy sejf jest zablokowany. Potrzebne także do odblokowywania w przeglądarkach."
+            "value" : "Wyświetlane automatycznie, gdy sejf jest zablokowany. Potrzebne także do odblokowywania w przeglądarkach."
           }
         },
         "pt-BR" : {
@@ -18115,8 +18115,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Далучэнні"
+            "state" : "needs_review",
+            "value" : "Укладанні"
           }
         },
         "bg" : {
@@ -18175,8 +18175,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privíci"
+            "state" : "needs_review",
+            "value" : "Privici"
           }
         },
         "hu" : {
@@ -18763,14 +18763,14 @@
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Автоматично изчистване на буфера след поставяне на стойността."
+            "state" : "needs_review",
+            "value" : "Автоматично изчистване на копираните стойности от буфера."
           }
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automaticky vymaže zkopírované hodnoty z Vaší schránky."
+            "state" : "needs_review",
+            "value" : "Automaticky vymaže zkopírované hodnoty z vaší schránky."
           }
         },
         "de" : {
@@ -18781,8 +18781,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Borrar automáticamente los valores copiados de su portapapeles."
+            "state" : "needs_review",
+            "value" : "Borrar automáticamente los valores copiados del portapapeles."
           }
         },
         "et" : {
@@ -19320,8 +19320,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bankovni račun"
+            "state" : "needs_review",
+            "value" : "Банковни рачун"
           }
         },
         "sv" : {
@@ -19628,8 +19628,8 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Názov banky"
+            "state" : "needs_review",
+            "value" : "Název banky"
           }
         },
         "de" : {
@@ -19748,8 +19748,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Naziv banke"
+            "state" : "needs_review",
+            "value" : "Назив банке"
           }
         },
         "sv" : {
@@ -21316,8 +21316,8 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "الحروف الكبيرة"
+            "state" : "needs_review",
+            "value" : "تكبير الحرف الأول"
           }
         },
         "az" : {
@@ -21334,8 +21334,8 @@
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Главни букви"
+            "state" : "needs_review",
+            "value" : "С главна буква"
           }
         },
         "cs" : {
@@ -21430,8 +21430,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wielkie litery"
+            "state" : "needs_review",
+            "value" : "Wielka litera na początku"
           }
         },
         "pt-BR" : {
@@ -21472,8 +21472,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "தலைப்பு"
+            "state" : "needs_review",
+            "value" : "முதல் எழுத்தைப் பெரிய எழுத்தாக்கு"
           }
         },
         "te" : {
@@ -21496,8 +21496,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Великі літери"
+            "state" : "needs_review",
+            "value" : "З великої літери"
           }
         },
         "vi" : {
@@ -21514,8 +21514,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "大寫"
+            "state" : "needs_review",
+            "value" : "首字母大寫"
           }
         }
       }
@@ -21674,8 +21674,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кредитна Картица"
+            "state" : "needs_review",
+            "value" : "Кредитна картица"
           }
         },
         "sv" : {
@@ -21888,8 +21888,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Име Власника Картице"
+            "state" : "needs_review",
+            "value" : "Име власника картице"
           }
         },
         "sv" : {
@@ -21912,8 +21912,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cardholder Name"
+            "state" : "needs_review",
+            "value" : "ชื่อผู้ถือบัตร"
           }
         },
         "tr" : {
@@ -22024,8 +22024,8 @@
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "कार्ड्स"
+            "state" : "needs_review",
+            "value" : "कार्ड"
           }
         },
         "hr" : {
@@ -22102,8 +22102,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кредитне Картице"
+            "state" : "needs_review",
+            "value" : "Кредитне картице"
           }
         },
         "sv" : {
@@ -22244,8 +22244,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dohvati sve (catch-all) e-pošta"
+            "state" : "needs_review",
+            "value" : "Catch-all adresa e-pošte"
           }
         },
         "hu" : {
@@ -22476,8 +22476,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Caselle di controllo"
+            "state" : "needs_review",
+            "value" : "Casella di controllo"
           }
         },
         "ja" : {
@@ -24242,8 +24242,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Očisti sve"
+            "state" : "needs_review",
+            "value" : "Очисти све"
           }
         },
         "sv" : {
@@ -24682,8 +24682,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "குளோன்"
+            "state" : "needs_review",
+            "value" : "குளோன் செய்"
           }
         },
         "te" : {
@@ -24724,8 +24724,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "克隆"
+            "state" : "needs_review",
+            "value" : "建立副本"
           }
         }
       }
@@ -24885,7 +24885,7 @@
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Клонирај: %@"
+            "value" : "Клонирање: %@"
           }
         },
         "sv" : {
@@ -24897,7 +24897,7 @@
         "ta" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%@ நகல்"
+            "value" : "%@-ஐ குளோன் செய்"
           }
         },
         "te" : {
@@ -24939,7 +24939,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "克隆%@"
+            "value" : "建立%@副本"
           }
         }
       }
@@ -25590,8 +25590,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bevesting lêer-wagwoord"
+            "state" : "needs_review",
+            "value" : "Bevestig lêerwagwoord"
           }
         },
         "ar" : {
@@ -25674,8 +25674,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fájl jelszó megerősítés"
+            "state" : "needs_review",
+            "value" : "Fájljelszó megerősítése"
           }
         },
         "id" : {
@@ -27742,14 +27742,14 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ - kopyala"
+            "state" : "needs_review",
+            "value" : "Kopyala: %@"
           }
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скапіраваць %@"
+            "state" : "needs_review",
+            "value" : "Скапіяваць %@"
           }
         },
         "bg" : {
@@ -27760,8 +27760,8 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopírovat %@"
+            "state" : "needs_review",
+            "value" : "Kopírovat: %@"
           }
         },
         "de" : {
@@ -27808,8 +27808,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopiraj %@"
+            "state" : "needs_review",
+            "value" : "Kopiraj: %@"
           }
         },
         "hu" : {
@@ -27850,8 +27850,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopiuj %@"
+            "state" : "needs_review",
+            "value" : "Kopiuj: %@"
           }
         },
         "pt-BR" : {
@@ -27874,14 +27874,14 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopírovať %@"
+            "state" : "needs_review",
+            "value" : "Kopírovať: %@"
           }
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopiraj %@"
+            "state" : "needs_review",
+            "value" : "Копирај %@"
           }
         },
         "sv" : {
@@ -27962,8 +27962,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скапіраваць нататкі"
+            "state" : "needs_review",
+            "value" : "Скапіяваць нататкі"
           }
         },
         "bg" : {
@@ -27992,8 +27992,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopeeri märkused"
+            "state" : "needs_review",
+            "value" : "Kopeeri märkmed"
           }
         },
         "fa" : {
@@ -28004,8 +28004,8 @@
         },
         "fi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopioi muistiinpanot"
+            "state" : "needs_review",
+            "value" : "Kopioi merkinnät"
           }
         },
         "fr" : {
@@ -28094,8 +28094,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopiraj beleške"
+            "state" : "needs_review",
+            "value" : "Копирај белешке"
           }
         },
         "sv" : {
@@ -28158,8 +28158,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopieer Wagwoord"
+            "state" : "needs_review",
+            "value" : "Kopieer wagwoord"
           }
         },
         "ar" : {
@@ -28260,8 +28260,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "パスワードのコピー"
+            "state" : "needs_review",
+            "value" : "パスワードをコピー"
           }
         },
         "ko" : {
@@ -28272,8 +28272,8 @@
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopieer wachtwoord"
+            "state" : "needs_review",
+            "value" : "Wachtwoord kopiëren"
           }
         },
         "pl" : {
@@ -28372,8 +28372,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopieer Gebruikersnaam"
+            "state" : "needs_review",
+            "value" : "Kopieer gebruikersnaam"
           }
         },
         "ar" : {
@@ -28474,8 +28474,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ユーザー名のコピー"
+            "state" : "needs_review",
+            "value" : "ユーザー名をコピー"
           }
         },
         "ko" : {
@@ -28522,8 +28522,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Копирај име"
+            "state" : "needs_review",
+            "value" : "Копирај корисничко име"
           }
         },
         "sv" : {
@@ -28604,8 +28604,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скапіраваць код пацверджання"
+            "state" : "needs_review",
+            "value" : "Скапіяваць код пацверджання"
           }
         },
         "bg" : {
@@ -28688,8 +28688,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "認証コードのコピー"
+            "state" : "needs_review",
+            "value" : "認証コードをコピー"
           }
         },
         "ko" : {
@@ -28819,7 +28819,7 @@
         "be" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Скапіраваць аднаразовы код"
+            "value" : "Скапіяваць аднаразовы код"
           }
         },
         "bg" : {
@@ -29032,8 +29032,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скапіраваць сайт"
+            "state" : "needs_review",
+            "value" : "Скапіяваць сайт"
           }
         },
         "bg" : {
@@ -29164,8 +29164,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopiraj veb lokaciju"
+            "state" : "needs_review",
+            "value" : "Копирај веб сајт"
           }
         },
         "sv" : {
@@ -29440,41 +29440,216 @@
     },
     "Could not leave the password field. Try again." : {
       "localizations" : {
-        "af" : { "stringUnit" : { "state" : "needs_review", "value" : "Kon nie die wagwoordveld verlaat nie. Probeer weer." } },
-        "ar" : { "stringUnit" : { "state" : "needs_review", "value" : "تعذّر مغادرة حقل كلمة المرور. حاول مرة أخرى." } },
-        "az" : { "stringUnit" : { "state" : "needs_review", "value" : "Şifrə sahəsindən çıxmaq mümkün olmadı. Yenidən cəhd edin." } },
-        "be" : { "stringUnit" : { "state" : "needs_review", "value" : "Не ўдалося пакінуць поле пароля. Паспрабуйце яшчэ раз." } },
-        "bg" : { "stringUnit" : { "state" : "needs_review", "value" : "Полето за парола не може да бъде напуснато. Опитайте отново." } },
-        "cs" : { "stringUnit" : { "state" : "needs_review", "value" : "Pole hesla se nepodařilo opustit. Zkuste to znovu." } },
-        "de" : { "stringUnit" : { "state" : "needs_review", "value" : "Das Passwortfeld konnte nicht verlassen werden. Versuche es erneut." } },
-        "es" : { "stringUnit" : { "state" : "needs_review", "value" : "No se pudo salir del campo de contraseña. Inténtalo de nuevo." } },
-        "et" : { "stringUnit" : { "state" : "needs_review", "value" : "Parooliväljalt ei saanud lahkuda. Proovi uuesti." } },
-        "fa" : { "stringUnit" : { "state" : "needs_review", "value" : "خروج از کادر گذرواژه ممکن نشد. دوباره تلاش کنید." } },
-        "fi" : { "stringUnit" : { "state" : "needs_review", "value" : "Salasanakentästä ei voitu poistua. Yritä uudelleen." } },
-        "fr" : { "stringUnit" : { "state" : "needs_review", "value" : "Impossible de quitter le champ du mot de passe. Réessayez." } },
-        "hi" : { "stringUnit" : { "state" : "needs_review", "value" : "पासवर्ड फ़ील्ड से बाहर नहीं निकल सके। फिर से कोशिश करें।" } },
-        "hr" : { "stringUnit" : { "state" : "needs_review", "value" : "Nije moguće napustiti polje za lozinku. Pokušajte ponovno." } },
-        "hu" : { "stringUnit" : { "state" : "needs_review", "value" : "Nem sikerült elhagyni a jelszómezőt. Próbálja újra." } },
-        "id" : { "stringUnit" : { "state" : "needs_review", "value" : "Tidak dapat keluar dari kolom kata sandi. Coba lagi." } },
-        "it" : { "stringUnit" : { "state" : "needs_review", "value" : "Impossibile uscire dal campo della password. Riprova." } },
-        "ja" : { "stringUnit" : { "state" : "needs_review", "value" : "パスワード欄からフォーカスを移せませんでした。もう一度お試しください。" } },
-        "ko" : { "stringUnit" : { "state" : "needs_review", "value" : "비밀번호 필드에서 벗어날 수 없습니다. 다시 시도하세요." } },
-        "nl" : { "stringUnit" : { "state" : "needs_review", "value" : "Het wachtwoordveld kon niet worden verlaten. Probeer het opnieuw." } },
-        "pl" : { "stringUnit" : { "state" : "needs_review", "value" : "Nie udało się opuścić pola hasła. Spróbuj ponownie." } },
-        "pt-BR" : { "stringUnit" : { "state" : "needs_review", "value" : "Não foi possível sair do campo de senha. Tente novamente." } },
-        "pt-PT" : { "stringUnit" : { "state" : "needs_review", "value" : "Não foi possível sair do campo da palavra-passe. Tente novamente." } },
-        "ru" : { "stringUnit" : { "state" : "needs_review", "value" : "Не удалось выйти из поля пароля. Попробуйте ещё раз." } },
-        "sk" : { "stringUnit" : { "state" : "needs_review", "value" : "Pole hesla sa nepodarilo opustiť. Skúste to znova." } },
-        "sr" : { "stringUnit" : { "state" : "needs_review", "value" : "Није могуће напустити поље за лозинку. Покушајте поново." } },
-        "sv" : { "stringUnit" : { "state" : "needs_review", "value" : "Det gick inte att lämna lösenordsfältet. Försök igen." } },
-        "ta" : { "stringUnit" : { "state" : "needs_review", "value" : "கடவுச்சொல் புலத்திலிருந்து வெளியேற முடியவில்லை. மீண்டும் முயற்சிக்கவும்." } },
-        "te" : { "stringUnit" : { "state" : "needs_review", "value" : "పాస్‌వర్డ్ ఫీల్డ్ నుండి బయటకు వెళ్లలేకపోయింది. మళ్లీ ప్రయత్నించండి." } },
-        "th" : { "stringUnit" : { "state" : "needs_review", "value" : "ไม่สามารถออกจากช่องรหัสผ่านได้ โปรดลองอีกครั้ง" } },
-        "tr" : { "stringUnit" : { "state" : "needs_review", "value" : "Parola alanından çıkılamadı. Tekrar deneyin." } },
-        "uk" : { "stringUnit" : { "state" : "needs_review", "value" : "Не вдалося вийти з поля пароля. Спробуйте ще раз." } },
-        "vi" : { "stringUnit" : { "state" : "needs_review", "value" : "Không thể rời khỏi trường mật khẩu. Hãy thử lại." } },
-        "zh-Hans" : { "stringUnit" : { "state" : "needs_review", "value" : "无法离开密码输入框。请重试。" } },
-        "zh-Hant" : { "stringUnit" : { "state" : "needs_review", "value" : "無法離開密碼輸入欄位。請再試一次。" } }
+        "af" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kon nie die wagwoordveld verlaat nie. Probeer weer."
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "تعذّر مغادرة حقل كلمة المرور. حاول مرة أخرى."
+          }
+        },
+        "az" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Şifrə sahəsindən çıxmaq mümkün olmadı. Yenidən cəhd edin."
+          }
+        },
+        "be" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Не ўдалося пакінуць поле пароля. Паспрабуйце яшчэ раз."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Полето за парола не може да бъде напуснато. Опитайте отново."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pole hesla se nepodařilo opustit. Zkuste to znovu."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Das Passwortfeld konnte nicht verlassen werden. Versuche es erneut."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "No se pudo salir del campo de contraseña. Inténtalo de nuevo."
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Parooliväljalt ei saanud lahkuda. Proovi uuesti."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "خروج از کادر کلمه عبور ممکن نشد. دوباره تلاش کنید."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Salasanakentästä ei voitu poistua. Yritä uudelleen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Impossible de quitter le champ du mot de passe. Réessayez."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "पासवर्ड फ़ील्ड से बाहर नहीं निकल सके। फिर से कोशिश करें।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nije moguće napustiti polje za lozinku. Pokušajte ponovno."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nem sikerült elhagyni a jelszómezőt. Próbálja újra."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tidak dapat keluar dari kolom kata sandi. Coba lagi."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Impossibile uscire dal campo della password. Riprova."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "パスワード欄からフォーカスを移せませんでした。もう一度お試しください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "비밀번호 필드에서 벗어날 수 없습니다. 다시 시도하십시오."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Het wachtwoordveld kon niet worden verlaten. Probeer het opnieuw."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nie udało się opuścić pola hasła. Spróbuj ponownie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Não foi possível sair do campo de senha. Tente novamente."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Não foi possível sair do campo da palavra-passe. Tente novamente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Не удалось выйти из поля пароля. Попробуйте ещё раз."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pole hesla sa nepodarilo opustiť. Skúste to znova."
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Није могуће напустити поље за лозинку. Покушајте поново."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Det gick inte att lämna lösenordsfältet. Försök igen."
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "கடவுச்சொல் புலத்திலிருந்து வெளியேற முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "పాస్‌వర్డ్ ఫీల్డ్ నుండి బయటకు వెళ్లలేకపోయింది. మళ్లీ ప్రయత్నించండి."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ไม่สามารถออกจากช่องรหัสผ่านได้ โปรดลองอีกครั้ง"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Parola alanından çıkılamadı. Tekrar deneyin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Не вдалося вийти з поля пароля. Спробуйте ще раз."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Không thể rời khỏi trường mật khẩu. Hãy thử lại."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "无法离开密码输入框。请重试。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "無法離開密碼輸入欄位。請再試一次。"
+          }
+        }
       }
     },
     "Could not remove Touch ID enrollment." : {
@@ -30355,8 +30530,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Створана"
+            "state" : "needs_review",
+            "value" : "Створаны"
           }
         },
         "bg" : {
@@ -30641,8 +30816,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kolom Ubahsuai"
+            "state" : "needs_review",
+            "value" : "Bidang Khusus"
           }
         },
         "it" : {
@@ -30701,8 +30876,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прилагођена Поља"
+            "state" : "needs_review",
+            "value" : "Прилагођена поља"
           }
         },
         "sv" : {
@@ -30725,8 +30900,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom Fields"
+            "state" : "needs_review",
+            "value" : "ฟิลด์กำหนดเอง"
           }
         },
         "tr" : {
@@ -30915,8 +31090,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Datum rođenja"
+            "state" : "needs_review",
+            "value" : "Датум рођења"
           }
         },
         "sv" : {
@@ -31241,8 +31416,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kustuta Kaust"
+            "state" : "needs_review",
+            "value" : "Kustuta kaust"
           }
         },
         "fa" : {
@@ -31307,8 +31482,8 @@
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verwijder folder"
+            "state" : "needs_review",
+            "value" : "Map verwijderen"
           }
         },
         "pl" : {
@@ -33560,7 +33735,7 @@
         "az" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Ayır"
+            "value" : "Bağlantını kəs"
           }
         },
         "be" : {
@@ -33774,7 +33949,7 @@
         "az" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%@ ayrılsın?"
+            "value" : "%@ brauzerinin bağlantısı kəsilsin?"
           }
         },
         "be" : {
@@ -33988,7 +34163,7 @@
         "az" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Ayır…"
+            "value" : "Bağlantını kəs…"
           }
         },
         "be" : {
@@ -34583,8 +34758,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alan Adı"
+            "state" : "needs_review",
+            "value" : "Alan adı"
           }
         },
         "uk" : {
@@ -34629,8 +34804,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bitdi"
+            "state" : "needs_review",
+            "value" : "Hazırdır"
           }
         },
         "be" : {
@@ -34803,8 +34978,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Виконано"
+            "state" : "needs_review",
+            "value" : "Готово"
           }
         },
         "vi" : {
@@ -35063,8 +35238,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пашпарт"
+            "state" : "needs_review",
+            "value" : "Вадзіцельскае пасведчанне"
           }
         },
         "bg" : {
@@ -35195,8 +35370,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vozačka dozvola"
+            "state" : "needs_review",
+            "value" : "Возачка дозвола"
           }
         },
         "sv" : {
@@ -35510,7 +35685,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Jedes Generieren erstellt einen neuen Alias bei %1$@. %2$@ bleibt im Schlüsselbund."
+            "value" : "Jedes Generieren erstellt einen neuen Alias bei %1$@. Der %2$@ bleibt im Schlüsselbund."
           }
         },
         "en" : {
@@ -35606,13 +35781,13 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Cada geração cria um novo alias no %1$@. O %2$@ fica nas Chaves."
+            "value" : "Cada geração cria um novo alias no %1$@. A credencial (%2$@) fica nas Chaves."
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Cada geração cria um novo alias no %1$@. O %2$@ fica no porta-chaves."
+            "value" : "Cada geração cria um novo alias no %1$@. A credencial (%2$@) fica no porta-chaves."
           }
         },
         "ru" : {
@@ -35759,8 +35934,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Édition"
+            "state" : "needs_review",
+            "value" : "Modifier"
           }
         },
         "hi" : {
@@ -35831,8 +36006,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Правка"
+            "state" : "needs_review",
+            "value" : "Изменить"
           }
         },
         "sk" : {
@@ -35919,8 +36094,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ - düzəliş"
+            "state" : "needs_review",
+            "value" : "Düzəliş: %@"
           }
         },
         "be" : {
@@ -36057,8 +36232,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uredi %@"
+            "state" : "needs_review",
+            "value" : "Уреди %@"
           }
         },
         "sv" : {
@@ -36087,8 +36262,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ Düzenle"
+            "state" : "needs_review",
+            "value" : "Düzenle: %@"
           }
         },
         "uk" : {
@@ -38529,8 +38704,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "تاريخ انقضاء"
+            "state" : "needs_review",
+            "value" : "تاریخ انقضاء"
           }
         },
         "fi" : {
@@ -38553,8 +38728,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vremenski ograničeni pristup"
+            "state" : "needs_review",
+            "value" : "Datum isteka"
           }
         },
         "hu" : {
@@ -38565,8 +38740,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tanggal habis tempo"
+            "state" : "needs_review",
+            "value" : "Tanggal kedaluwarsa"
           }
         },
         "it" : {
@@ -38625,8 +38800,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Рок употребе"
+            "state" : "needs_review",
+            "value" : "Датум истека"
           }
         },
         "sv" : {
@@ -38679,8 +38854,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "逾期日期"
+            "state" : "needs_review",
+            "value" : "到期日期"
           }
         }
       }
@@ -38893,8 +39068,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "逾期月份"
+            "state" : "needs_review",
+            "value" : "到期月份"
           }
         }
       }
@@ -39107,8 +39282,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "逾期年份"
+            "state" : "needs_review",
+            "value" : "到期年份"
           }
         }
       }
@@ -39117,8 +39292,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uitvoer"
+            "state" : "needs_review",
+            "value" : "Voer uit"
           }
         },
         "ar" : {
@@ -39129,8 +39304,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Xaricə köçürmə"
+            "state" : "needs_review",
+            "value" : "İxrac et"
           }
         },
         "be" : {
@@ -39165,14 +39340,14 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eksport"
+            "state" : "needs_review",
+            "value" : "Ekspordi"
           }
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "برون ریزی"
+            "state" : "needs_review",
+            "value" : "برون‌ریزی"
           }
         },
         "fi" : {
@@ -39189,14 +39364,14 @@
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "निर्यात"
+            "state" : "needs_review",
+            "value" : "निर्यात करें"
           }
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Izvoz"
+            "state" : "needs_review",
+            "value" : "Izvezi"
           }
         },
         "hu" : {
@@ -39237,26 +39412,26 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eksportowanie"
+            "state" : "needs_review",
+            "value" : "Eksportuj"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exportação"
+            "state" : "needs_review",
+            "value" : "Exportar"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exportação"
+            "state" : "needs_review",
+            "value" : "Exportar"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Экспорт"
+            "state" : "needs_review",
+            "value" : "Экспортировать"
           }
         },
         "sk" : {
@@ -39279,20 +39454,20 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ஏற்றுமதி"
+            "state" : "needs_review",
+            "value" : "ஏற்றுமதி செய்"
           }
         },
         "te" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ఎగుమతి"
+            "state" : "needs_review",
+            "value" : "ఎగుమతి చేయండి"
           }
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "การส่งออก"
+            "state" : "needs_review",
+            "value" : "ส่งออก"
           }
         },
         "tr" : {
@@ -39303,8 +39478,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Експорт"
+            "state" : "needs_review",
+            "value" : "Експортувати"
           }
         },
         "vi" : {
@@ -39362,7 +39537,7 @@
         "cs" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Export trezoru"
+            "value" : "Exportovat trezor"
           }
         },
         "de" : {
@@ -39410,7 +39585,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Izvoz trezora"
+            "value" : "Izvezi trezor"
           }
         },
         "hu" : {
@@ -39470,13 +39645,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Экспорт хранилища"
+            "value" : "Экспортировать хранилище"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Export trezoru"
+            "value" : "Exportovať trezor"
           }
         },
         "sr" : {
@@ -39518,7 +39693,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Експорт сховища"
+            "value" : "Експортувати сховище"
           }
         },
         "vi" : {
@@ -39958,13 +40133,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "已导出%@"
+            "value" : "已导出 %@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "已匯出%@"
+            "value" : "已匯出 %@"
           }
         }
       }
@@ -40241,8 +40416,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "مورد علاقه"
+            "state" : "needs_review",
+            "value" : "علاقه‌مندی‌ها"
           }
         },
         "fi" : {
@@ -40705,8 +40880,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "File Format"
+            "state" : "needs_review",
+            "value" : "Format file"
           }
         },
         "it" : {
@@ -40789,8 +40964,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "File Format"
+            "state" : "needs_review",
+            "value" : "รูปแบบไฟล์"
           }
         },
         "tr" : {
@@ -41263,8 +41438,8 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "بصمة الأصبع"
+            "state" : "needs_review",
+            "value" : "بصمة المفتاح"
           }
         },
         "az" : {
@@ -41287,8 +41462,8 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otisk prstu"
+            "state" : "needs_review",
+            "value" : "Otisk klíče"
           }
         },
         "de" : {
@@ -41323,8 +41498,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Empreinte digitale"
+            "state" : "needs_review",
+            "value" : "Empreinte"
           }
         },
         "hi" : {
@@ -41335,8 +41510,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otisak prsta"
+            "state" : "needs_review",
+            "value" : "Otisak ključa"
           }
         },
         "hu" : {
@@ -41691,8 +41866,8 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "الاسم"
+            "state" : "needs_review",
+            "value" : "الاسم الأول"
           }
         },
         "az" : {
@@ -41769,8 +41944,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Személynév"
+            "state" : "needs_review",
+            "value" : "Utónév"
           }
         },
         "id" : {
@@ -42131,8 +42306,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Назва тэчкі"
+            "state" : "needs_review",
+            "value" : "Назва папкі"
           }
         },
         "bg" : {
@@ -42155,8 +42330,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de la Carpeta"
+            "state" : "needs_review",
+            "value" : "Nombre de la carpeta"
           }
         },
         "et" : {
@@ -42691,8 +42866,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Псеудоним прослешне е-поште"
+            "state" : "needs_review",
+            "value" : "Псеудоним прослеђене е-поште"
           }
         },
         "sv" : {
@@ -42703,8 +42878,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "மின்னஞ்சல் புனைப்பெயர் அனுப்பப்பட்டது"
+            "state" : "needs_review",
+            "value" : "முன்னனுப்பப்பட்ட மின்னஞ்சல் புனைப்பெயர்"
           }
         },
         "te" : {
@@ -43011,8 +43186,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre"
+            "state" : "needs_review",
+            "value" : "Nombre completo"
           }
         },
         "et" : {
@@ -44051,8 +44226,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parol yarat"
+            "state" : "needs_review",
+            "value" : "Yaradılmış parol"
           }
         },
         "be" : {
@@ -44093,8 +44268,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "کلمه عبور تولید شد"
+            "state" : "needs_review",
+            "value" : "کلمه عبور تولیدشده"
           }
         },
         "fi" : {
@@ -44117,8 +44292,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Generiraj lozinku"
+            "state" : "needs_review",
+            "value" : "Generirana lozinka"
           }
         },
         "hu" : {
@@ -44147,8 +44322,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "비밀번호 생성"
+            "state" : "needs_review",
+            "value" : "생성된 비밀번호"
           }
         },
         "nl" : {
@@ -44617,8 +44792,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Генератор историје"
+            "state" : "needs_review",
+            "value" : "Историја генератора"
           }
         },
         "sv" : {
@@ -45003,8 +45178,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "괜찮음"
+            "state" : "needs_review",
+            "value" : "좋음"
           }
         },
         "nl" : {
@@ -45069,8 +45244,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ไม่เลว"
+            "state" : "needs_review",
+            "value" : "ดี"
           }
         },
         "tr" : {
@@ -45301,8 +45476,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bí ẩn"
+            "state" : "needs_review",
+            "value" : "Ẩn"
           }
         },
         "zh-Hans" : {
@@ -45474,7 +45649,7 @@
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Сакриј %@"
+            "value" : "Сакриј: %@"
           }
         },
         "sv" : {
@@ -45556,7 +45731,7 @@
         "be" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Хаваць Keywarden пры капіраванні даных элемента і вяртацца ў праграму, з якой вы працавалі."
+            "value" : "Хаваць Keywarden пры капіяванні даных элемента і вяртацца ў праграму, з якой вы працавалі."
           }
         },
         "bg" : {
@@ -46097,8 +46272,8 @@
         },
         "pt-PT" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Domínio"
+            "state" : "needs_review",
+            "value" : "Anfitrião"
           }
         },
         "ru" : {
@@ -46731,7 +46906,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Zaimportować: %@?"
+            "value" : "Zaimportować %@?"
           }
         },
         "pt-BR" : {
@@ -46809,13 +46984,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "要导入%@吗？"
+            "value" : "要导入 %@ 吗？"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "要匯入%@嗎？"
+            "value" : "要匯入 %@ 嗎？"
           }
         }
       }
@@ -48007,7 +48182,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "استورد ملف تصدير من Bitwarden إلى خزنتك. الملفات المدعومة هي ‎.json و‎.csv من Bitwarden و‎.json المشفّر (الحساب مقيد أو محمي بكلمة مرور)."
+            "value" : "استورد ملف تصدير من Bitwarden إلى خزنتك. الملفات المدعومة هي ‎.json و‎.csv من Bitwarden و‎.json المشفّر (مقيّد بالحساب أو محمي بكلمة مرور)."
           }
         },
         "az" : {
@@ -48067,7 +48242,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Importez une exportation Bitwarden dans votre coffre. Les fichiers pris en charge sont les fichiers Bitwarden .json, .csv et .json chiffré (compte restreint ou protégé par mot de passe)."
+            "value" : "Importez une exportation Bitwarden dans votre coffre. Les fichiers pris en charge sont les fichiers Bitwarden .json, .csv et .json chiffré (restreint au compte ou protégé par mot de passe)."
           }
         },
         "hi" : {
@@ -48085,13 +48260,13 @@
         "hu" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Bitwarden-export importálása a széfbe. Támogatott fájlok: Bitwarden .json, .csv és titkosított .json (korlátozott fiók vagy jelszóval védett)."
+            "value" : "Bitwarden-export importálása a széfbe. Támogatott fájlok: Bitwarden .json, .csv és titkosított .json (fiókhoz kötött vagy jelszóval védett)."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Impor ekspor Bitwarden ke brankas Anda. File yang didukung adalah .json, .csv, dan .json terenkripsi dari Bitwarden (terbatas akun atau dilindungi kata sandi)."
+            "value" : "Impor ekspor Bitwarden ke brankas Anda. File yang didukung adalah .json, .csv, dan .json terenkripsi dari Bitwarden (terbatas pada akun atau dilindungi kata sandi)."
           }
         },
         "it" : {
@@ -48133,7 +48308,7 @@
         "pt-PT" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Importe uma exportação do Bitwarden para o seu cofre. Os ficheiros suportados são .json, .csv e .json encriptado do Bitwarden (restringido à conta ou protegido por palavra-passe)."
+            "value" : "Importe uma exportação do Bitwarden para o seu cofre. Os ficheiros suportados são .json, .csv e .json encriptado do Bitwarden (restrito à conta ou protegido por palavra-passe)."
           }
         },
         "ru" : {
@@ -48413,13 +48588,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "已导入%@"
+            "value" : "已导入 %@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "已匯入%@"
+            "value" : "已匯入 %@"
           }
         }
       }
@@ -49220,8 +49395,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Datum izdavanja"
+            "state" : "needs_review",
+            "value" : "Датум издавања"
           }
         },
         "sv" : {
@@ -49362,8 +49537,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Izdao"
+            "state" : "needs_review",
+            "value" : "Tijelo izdavanja"
           }
         },
         "hu" : {
@@ -49434,8 +49609,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Organ izdavanja"
+            "state" : "needs_review",
+            "value" : "Орган издавања"
           }
         },
         "sv" : {
@@ -49528,8 +49703,8 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Země vydání průkazu"
+            "state" : "needs_review",
+            "value" : "Země vydání"
           }
         },
         "de" : {
@@ -49648,8 +49823,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zemlja izdavanja"
+            "state" : "needs_review",
+            "value" : "Земља издавања"
           }
         },
         "sv" : {
@@ -49725,7 +49900,7 @@
         "az" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Verən ştat"
+            "value" : "Təqdim edən ştat"
           }
         },
         "be" : {
@@ -50004,8 +50179,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Predmet"
+            "state" : "needs_review",
+            "value" : "Stavka"
           }
         },
         "hu" : {
@@ -50076,8 +50251,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stavka"
+            "state" : "needs_review",
+            "value" : "Ставка"
           }
         },
         "sv" : {
@@ -50112,8 +50287,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Елемент"
+            "state" : "needs_review",
+            "value" : "Запис"
           }
         },
         "vi" : {
@@ -50224,8 +50399,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elem név"
+            "state" : "needs_review",
+            "value" : "Elem neve"
           }
         },
         "id" : {
@@ -50932,8 +51107,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nastavi uređivanje"
+            "state" : "needs_review",
+            "value" : "Настави уређивање"
           }
         },
         "sv" : {
@@ -51069,7 +51244,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Keywarden को बैकग्राउंड में चलता रखें"
+            "value" : "Keywarden को बैकग्राउंड में चलते रहने दें"
           }
         },
         "hr" : {
@@ -51219,8 +51394,8 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "اللقب"
+            "state" : "needs_review",
+            "value" : "اسم العائلة"
           }
         },
         "az" : {
@@ -51804,7 +51979,7 @@
         "ta" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "கடைசியாக ஒத்திசைத்தது %@"
+            "value" : "கடைசியாக %@ ஒத்திசைக்கப்பட்டது"
           }
         },
         "te" : {
@@ -52087,26 +52262,26 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нумар ліцэнзіі"
+            "state" : "needs_review",
+            "value" : "Нумар вадзіцельскага пасведчання"
           }
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "№ на лиценза"
+            "state" : "needs_review",
+            "value" : "№ на шофьорската книжка"
           }
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Číslo dokladu totožnosti"
+            "state" : "needs_review",
+            "value" : "Číslo řidičského průkazu"
           }
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lizenznummer"
+            "state" : "needs_review",
+            "value" : "Führerscheinnummer"
           }
         },
         "es" : {
@@ -52117,8 +52292,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litsentsi number"
+            "state" : "needs_review",
+            "value" : "Juhiloa number"
           }
         },
         "fa" : {
@@ -52147,8 +52322,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Broj osobne iskaznice"
+            "state" : "needs_review",
+            "value" : "Broj vozačke dozvole"
           }
         },
         "hu" : {
@@ -52255,8 +52430,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Номер ліцензії"
+            "state" : "needs_review",
+            "value" : "Номер посвідчення водія"
           }
         },
         "vi" : {
@@ -52295,8 +52470,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Əlaqə yaradıldı"
+            "state" : "needs_review",
+            "value" : "Əlaqəli"
           }
         },
         "be" : {
@@ -52325,14 +52500,14 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conectado"
+            "state" : "needs_review",
+            "value" : "Vinculado"
           }
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ühenduses"
+            "state" : "needs_review",
+            "value" : "Seotud"
           }
         },
         "fa" : {
@@ -52961,8 +53136,8 @@
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Standort"
+            "state" : "needs_review",
+            "value" : "Ort"
           }
         },
         "es" : {
@@ -53021,8 +53196,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Luogo"
+            "state" : "needs_review",
+            "value" : "Posizione"
           }
         },
         "ja" : {
@@ -53069,8 +53244,8 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Poloha"
+            "state" : "needs_review",
+            "value" : "Umiestnenie"
           }
         },
         "sr" : {
@@ -53515,8 +53690,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "பெட்டகத்தை பூட்டவும்"
+            "state" : "needs_review",
+            "value" : "வால்ட்டைப் பூட்டு"
           }
         },
         "te" : {
@@ -53995,8 +54170,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Teken Uit"
+            "state" : "needs_review",
+            "value" : "Teken uit"
           }
         },
         "ar" : {
@@ -54121,8 +54296,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desconectar"
+            "state" : "needs_review",
+            "value" : "Encerrar sessão"
           }
         },
         "pt-PT" : {
@@ -54169,8 +54344,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Log Out"
+            "state" : "needs_review",
+            "value" : "ออกจากระบบ"
           }
         },
         "tr" : {
@@ -54336,7 +54511,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Desconectar remove a conta deste Mac; para entrar de novo, são necessárias a senha principal e uma conexão."
+            "value" : "Encerrar a sessão remove a conta deste Mac; para iniciar sessão de novo, são necessárias a senha principal e uma conexão."
           }
         },
         "pt-PT" : {
@@ -54447,8 +54622,8 @@
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вход"
+            "state" : "needs_review",
+            "value" : "Запис за вход"
           }
         },
         "cs" : {
@@ -54513,8 +54688,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Masuk"
+            "state" : "needs_review",
+            "value" : "Info Masuk"
           }
         },
         "it" : {
@@ -54597,8 +54772,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "เข้าสู่ระบบ"
+            "state" : "needs_review",
+            "value" : "ข้อมูลเข้าสู่ระบบ"
           }
         },
         "tr" : {
@@ -54609,8 +54784,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вхід"
+            "state" : "needs_review",
+            "value" : "Запис входу"
           }
         },
         "vi" : {
@@ -54627,8 +54802,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "登入"
+            "state" : "needs_review",
+            "value" : "登入項目"
           }
         }
       }
@@ -54655,14 +54830,14 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Уліковыя даныя"
+            "state" : "needs_review",
+            "value" : "Лагіны"
           }
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Записи"
+            "state" : "needs_review",
+            "value" : "Записи за вход"
           }
         },
         "cs" : {
@@ -54709,8 +54884,8 @@
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "लॉग इन"
+            "state" : "needs_review",
+            "value" : "लॉगिन"
           }
         },
         "hr" : {
@@ -55369,8 +55544,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sandi Utama"
+            "state" : "needs_review",
+            "value" : "Kata sandi utama"
           }
         },
         "it" : {
@@ -55429,8 +55604,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Главна Лозинка"
+            "state" : "needs_review",
+            "value" : "Главна лозинка"
           }
         },
         "sv" : {
@@ -55667,8 +55842,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Match Detection"
+            "state" : "needs_review",
+            "value" : "การตรวจจับการจับคู่"
           }
         },
         "tr" : {
@@ -55882,7 +56057,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Match Detection จะกำหนดว่าส่วนขยายเบราว์เซอร์จะแนะนำข้อมูลเข้าสู่ระบบนี้ในหน้าใดบ้าง"
+            "value" : "การตรวจจับการจับคู่จะกำหนดว่าส่วนขยายเบราว์เซอร์จะแนะนำข้อมูลเข้าสู่ระบบนี้ในหน้าใดบ้าง"
           }
         },
         "tr" : {
@@ -56096,7 +56271,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Match Detection: วิธีที่ส่วนขยายเบราว์เซอร์ตัดสินว่าหน้าเว็บเป็นของเว็บไซต์นี้"
+            "value" : "การตรวจจับการจับคู่: วิธีที่ส่วนขยายเบราว์เซอร์ตัดสินว่าหน้าเว็บเป็นของเว็บไซต์นี้"
           }
         },
         "tr" : {
@@ -57009,8 +57184,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Згарнуць пасля капіявання ў буфер абмену"
+            "state" : "needs_review",
+            "value" : "Згортваць пры капіяванні ў буфер абмену"
           }
         },
         "bg" : {
@@ -57045,8 +57220,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "پایین کشیدن پنجره موقع کپی کردن در حافظه موقت"
+            "state" : "needs_review",
+            "value" : "کوچک کردن پنجره هنگام کپی در حافظه موقت"
           }
         },
         "fi" : {
@@ -57129,8 +57304,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Свернуть после копирования в буфер обмена"
+            "state" : "needs_review",
+            "value" : "Сворачивать при копировании в буфер обмена"
           }
         },
         "sk" : {
@@ -57289,8 +57464,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Minimális szám"
+            "state" : "needs_review",
+            "value" : "Számjegyek minimális száma"
           }
         },
         "id" : {
@@ -57355,8 +57530,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Минимално Бројева"
+            "state" : "needs_review",
+            "value" : "Најмање бројева"
           }
         },
         "sv" : {
@@ -57397,8 +57572,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Số kí tự tối thiểu"
+            "state" : "needs_review",
+            "value" : "Số chữ số tối thiểu"
           }
         },
         "zh-Hans" : {
@@ -57503,8 +57678,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Minimális speciális"
+            "state" : "needs_review",
+            "value" : "Speciális karakterek minimális száma"
           }
         },
         "id" : {
@@ -57557,8 +57732,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Минимум символов"
+            "state" : "needs_review",
+            "value" : "Минимум спецсимволов"
           }
         },
         "sk" : {
@@ -57569,8 +57744,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Минимално Специјално"
+            "state" : "needs_review",
+            "value" : "Најмање специјалних знакова"
           }
         },
         "sv" : {
@@ -57949,8 +58124,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "詳細"
+            "state" : "needs_review",
+            "value" : "その他"
           }
         },
         "ko" : {
@@ -57997,8 +58172,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Više"
+            "state" : "needs_review",
+            "value" : "Више"
           }
         },
         "sv" : {
@@ -58312,7 +58487,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "In Ordner bewegen"
+            "value" : "In Ordner verschieben"
           }
         },
         "es" : {
@@ -59013,8 +59188,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome del conto"
+            "state" : "needs_review",
+            "value" : "Intestatario del conto"
           }
         },
         "ja" : {
@@ -59037,8 +59212,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nazwa konta"
+            "state" : "needs_review",
+            "value" : "Właściciel konta"
           }
         },
         "pt-BR" : {
@@ -59067,8 +59242,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ime na računu"
+            "state" : "needs_review",
+            "value" : "Име на рачуну"
           }
         },
         "sv" : {
@@ -59312,7 +59487,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "T.C. kimlik numarası"
+            "value" : "Ulusal kimlik numarası"
           }
         },
         "uk" : {
@@ -59357,8 +59532,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Milliyəti"
+            "state" : "needs_review",
+            "value" : "Milliyyət"
           }
         },
         "be" : {
@@ -59495,8 +59670,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nacionalnost"
+            "state" : "needs_review",
+            "value" : "Националност"
           }
         },
         "sv" : {
@@ -59531,8 +59706,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Національність"
+            "state" : "needs_review",
+            "value" : "Громадянство"
           }
         },
         "vi" : {
@@ -59661,14 +59836,14 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "表示しない"
+            "state" : "needs_review",
+            "value" : "しない"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "절대 안 함"
+            "state" : "needs_review",
+            "value" : "안 함"
           }
         },
         "nl" : {
@@ -59993,8 +60168,8 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "إضافة حساب بنكي جديد"
+            "state" : "needs_review",
+            "value" : "حساب بنكي جديد"
           }
         },
         "az" : {
@@ -60065,8 +60240,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Novi broj računa"
+            "state" : "needs_review",
+            "value" : "Novi bankovni račun"
           }
         },
         "hu" : {
@@ -60083,8 +60258,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuovo account bancario"
+            "state" : "needs_review",
+            "value" : "Nuovo conto corrente"
           }
         },
         "ja" : {
@@ -60137,8 +60312,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Novi bankovni račun"
+            "state" : "needs_review",
+            "value" : "Нови банковни рачун"
           }
         },
         "sv" : {
@@ -60219,8 +60394,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новая карта"
+            "state" : "needs_review",
+            "value" : "Новая картка"
           }
         },
         "bg" : {
@@ -60351,8 +60526,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nova kartica"
+            "state" : "needs_review",
+            "value" : "Нова картица"
           }
         },
         "sv" : {
@@ -60647,8 +60822,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новая тэчка"
+            "state" : "needs_review",
+            "value" : "Новая папка"
           }
         },
         "bg" : {
@@ -61075,8 +61250,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новая асоба"
+            "state" : "needs_review",
+            "value" : "Новае пасведчанне"
           }
         },
         "bg" : {
@@ -61159,8 +61334,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "新しい識別子"
+            "state" : "needs_review",
+            "value" : "新しい ID"
           }
         },
         "ko" : {
@@ -61207,8 +61382,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Novi identitet"
+            "state" : "needs_review",
+            "value" : "Нови идентитет"
           }
         },
         "sv" : {
@@ -61231,8 +61406,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ข้อมูลส่วนตัวใหม่"
+            "state" : "needs_review",
+            "value" : "ข้อมูลระบุตัวตนใหม่"
           }
         },
         "tr" : {
@@ -61271,8 +61446,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voeg Nuwe Item Toe"
+            "state" : "needs_review",
+            "value" : "Nuwe item"
           }
         },
         "ar" : {
@@ -61319,8 +61494,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lisa uus kirje"
+            "state" : "needs_review",
+            "value" : "Uus üksus"
           }
         },
         "fa" : {
@@ -61485,8 +61660,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuwe Aanmelding"
+            "state" : "needs_review",
+            "value" : "Nuwe aantekening"
           }
         },
         "ar" : {
@@ -61503,20 +61678,20 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новы ўваход"
+            "state" : "needs_review",
+            "value" : "Новы лагін"
           }
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нов елемент за вписване"
+            "state" : "needs_review",
+            "value" : "Нов запис за вход"
           }
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nové přihlášení"
+            "state" : "needs_review",
+            "value" : "Nové přihlašovací údaje"
           }
         },
         "de" : {
@@ -61527,14 +61702,14 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuevo inicio de sesión"
+            "state" : "needs_review",
+            "value" : "Nueva entrada"
           }
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uus sisselogimine"
+            "state" : "needs_review",
+            "value" : "Uus konto"
           }
         },
         "fa" : {
@@ -61545,14 +61720,14 @@
         },
         "fi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uusi kirjautuminen"
+            "state" : "needs_review",
+            "value" : "Uusi kirjautumistieto"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nouvel Identifiant"
+            "state" : "needs_review",
+            "value" : "Nouvel identifiant"
           }
         },
         "hi" : {
@@ -61575,8 +61750,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Login Baru"
+            "state" : "needs_review",
+            "value" : "Info Masuk Baru"
           }
         },
         "it" : {
@@ -61635,8 +61810,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nova prijava"
+            "state" : "needs_review",
+            "value" : "Нова пријава"
           }
         },
         "sv" : {
@@ -61671,8 +61846,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новий запис"
+            "state" : "needs_review",
+            "value" : "Новий запис входу"
           }
         },
         "vi" : {
@@ -61689,8 +61864,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "新增登入資料"
+            "state" : "needs_review",
+            "value" : "新增登入項目"
           }
         }
       }
@@ -61849,8 +62024,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Novi pasoš"
+            "state" : "needs_review",
+            "value" : "Нови пасош"
           }
         },
         "sv" : {
@@ -61913,8 +62088,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuwe veilige nota"
+            "state" : "needs_review",
+            "value" : "Nuwe beveiligde nota"
           }
         },
         "ar" : {
@@ -61925,14 +62100,14 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni güvənli not"
+            "state" : "needs_review",
+            "value" : "Yeni güvənli qeyd"
           }
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новая бяспечная нататка"
+            "state" : "needs_review",
+            "value" : "Новая абароненая нататка"
           }
         },
         "bg" : {
@@ -61955,8 +62130,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Añadir nota segura"
+            "state" : "needs_review",
+            "value" : "Nueva nota segura"
           }
         },
         "et" : {
@@ -61973,8 +62148,8 @@
         },
         "fi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uusi suojattu muistiinpano"
+            "state" : "needs_review",
+            "value" : "Uusi salattu muistio"
           }
         },
         "fr" : {
@@ -62063,8 +62238,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nova sigurna beleška"
+            "state" : "needs_review",
+            "value" : "Нова сигурносна белешка"
           }
         },
         "sv" : {
@@ -62081,8 +62256,8 @@
         },
         "te" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "కొత్త సురక్షిత గమనిక"
+            "state" : "needs_review",
+            "value" : "కొత్త సురక్షిత నోట్"
           }
         },
         "th" : {
@@ -64013,8 +64188,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "โน๊ต"
+            "state" : "needs_review",
+            "value" : "โน้ต"
           }
         },
         "tr" : {
@@ -64725,8 +64900,8 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "VYP."
+            "state" : "needs_review",
+            "value" : "Vypnuto"
           }
         },
         "de" : {
@@ -64803,8 +64978,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "끄기"
+            "state" : "needs_review",
+            "value" : "끔"
           }
         },
         "nl" : {
@@ -65154,7 +65329,7 @@
         "cs" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "ZAP."
+            "value" : "Zapnuto"
           }
         },
         "de" : {
@@ -65385,14 +65560,14 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arvuti taaskäivitamisel"
+            "state" : "needs_review",
+            "value" : "Rakenduse taaskäivitamisel"
           }
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "در راه اندازی مجدد"
+            "state" : "needs_review",
+            "value" : "هنگام راه‌اندازی مجدد"
           }
         },
         "fi" : {
@@ -65511,8 +65686,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "On Restart"
+            "state" : "needs_review",
+            "value" : "เมื่อรีสตาร์ท"
           }
         },
         "tr" : {
@@ -65641,8 +65816,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sistem kunci"
+            "state" : "needs_review",
+            "value" : "Saat sistem terkunci"
           }
         },
         "it" : {
@@ -65689,8 +65864,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вместе с компьютером"
+            "state" : "needs_review",
+            "value" : "При блокировке системы"
           }
         },
         "sk" : {
@@ -65725,8 +65900,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "On System Lock"
+            "state" : "needs_review",
+            "value" : "เมื่อล็อกระบบ"
           }
         },
         "tr" : {
@@ -65843,8 +66018,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stanje mirovanja"
+            "state" : "needs_review",
+            "value" : "Pri mirovanju sustava"
           }
         },
         "hu" : {
@@ -65891,8 +66066,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Na hibernação do sistema"
+            "state" : "needs_review",
+            "value" : "No repouso do sistema"
           }
         },
         "pt-PT" : {
@@ -65939,8 +66114,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "On System Sleep"
+            "state" : "needs_review",
+            "value" : "เมื่อระบบพักเครื่อง"
           }
         },
         "tr" : {
@@ -66456,7 +66631,7 @@
         "et" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Ava veebileht"
+            "value" : "Ava veebisait"
           }
         },
         "fa" : {
@@ -67205,14 +67380,14 @@
         },
         "sv" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nyckel"
+            "state" : "needs_review",
+            "value" : "Lösennyckel"
           }
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "கடவுச்சொல்"
+            "state" : "needs_review",
+            "value" : "பாஸ்கீ"
           }
         },
         "te" : {
@@ -67384,7 +67559,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Klucz dostępu utworzono %@"
+            "value" : "Klucz dostępu utworzony %@"
           }
         },
         "pt-BR" : {
@@ -67420,13 +67595,13 @@
         "sv" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Nyckel skapad %@"
+            "value" : "Lösennyckel skapad %@"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "பாஸ்கீ உருவாக்கப்பட்டது %@"
+            "value" : "பாஸ்கீ உருவாக்கப்பட்டது: %@"
           }
         },
         "te" : {
@@ -67841,8 +68016,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pasoš"
+            "state" : "needs_review",
+            "value" : "Пасош"
           }
         },
         "sv" : {
@@ -68269,8 +68444,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tip pasoša"
+            "state" : "needs_review",
+            "value" : "Тип пасоша"
           }
         },
         "sv" : {
@@ -68911,8 +69086,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Генератор Лозинке"
+            "state" : "needs_review",
+            "value" : "Генератор лозинки"
           }
         },
         "sv" : {
@@ -68923,8 +69098,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "கடவுச்சொல் உருவாக்குபவர்"
+            "state" : "needs_review",
+            "value" : "கடவுச்சொல் உருவாக்கி"
           }
         },
         "te" : {
@@ -69457,8 +69632,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "محافظت ‌شده با کلمه عبور"
+            "state" : "needs_review",
+            "value" : "محافظت‌شده با کلمه عبور"
           }
         },
         "fi" : {
@@ -69541,8 +69716,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пароль защищен"
+            "state" : "needs_review",
+            "value" : "Защищено паролем"
           }
         },
         "sk" : {
@@ -69595,8 +69770,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mật khẩu đã được bảo vệ"
+            "state" : "needs_review",
+            "value" : "Bảo vệ bằng mật khẩu"
           }
         },
         "zh-Hans" : {
@@ -70313,8 +70488,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "به علاوه نشانی ایمیل داده شده"
+            "state" : "needs_review",
+            "value" : "ایمیل با نشانی‌دهی پلاس"
           }
         },
         "fi" : {
@@ -70741,8 +70916,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "تنظیمات"
+            "state" : "needs_review",
+            "value" : "ترجیحات"
           }
         },
         "fi" : {
@@ -70765,8 +70940,8 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Postavke"
+            "state" : "needs_review",
+            "value" : "Preference"
           }
         },
         "hu" : {
@@ -70789,14 +70964,14 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
+            "state" : "needs_review",
+            "value" : "環境設定"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "설정"
+            "state" : "needs_review",
+            "value" : "환경설정"
           }
         },
         "nl" : {
@@ -70807,8 +70982,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ustawienia"
+            "state" : "needs_review",
+            "value" : "Preferencje"
           }
         },
         "pt-BR" : {
@@ -70908,7 +71083,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "سابقة"
+            "value" : "كلمة مرور سابقة"
           }
         },
         "az" : {
@@ -71004,7 +71179,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "以前"
+            "value" : "以前のパスワード"
           }
         },
         "ko" : {
@@ -71100,13 +71275,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "以前"
+            "value" : "旧密码"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "先前"
+            "value" : "先前的密碼"
           }
         }
       }
@@ -71127,8 +71302,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Private açar"
+            "state" : "needs_review",
+            "value" : "Şəxsi açar"
           }
         },
         "be" : {
@@ -71199,8 +71374,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Személyes kulcs"
+            "state" : "needs_review",
+            "value" : "Privát kulcs"
           }
         },
         "id" : {
@@ -71341,8 +71516,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Public açar"
+            "state" : "needs_review",
+            "value" : "Açıq açar"
           }
         },
         "be" : {
@@ -71977,8 +72152,8 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "كلمات عشوائية"
+            "state" : "needs_review",
+            "value" : "كلمة عشوائية"
           }
         },
         "az" : {
@@ -72037,8 +72212,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mots aléatoire"
+            "state" : "needs_review",
+            "value" : "Mot aléatoire"
           }
         },
         "hi" : {
@@ -72252,7 +72427,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Réauthentification pour afficher"
+            "value" : "Exiger une réauthentification pour afficher"
           }
         },
         "hi" : {
@@ -72613,8 +72788,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gewone uitdrukking"
+            "state" : "needs_review",
+            "value" : "Reëlmatige uitdrukking"
           }
         },
         "ar" : {
@@ -72703,8 +72878,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ekspresi umum"
+            "state" : "needs_review",
+            "value" : "Ekspresi reguler"
           }
         },
         "it" : {
@@ -73524,7 +73699,7 @@
         "fa" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "حذف از مورد علاقه"
+            "value" : "حذف از علاقه‌مندی‌ها"
           }
         },
         "fi" : {
@@ -73840,7 +74015,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Ta bort den här nyckeln när du sparar"
+            "value" : "Ta bort den här lösennyckeln när du sparar"
           }
         },
         "ta" : {
@@ -74440,7 +74615,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Map hernoemen"
+            "value" : "Mapnaam wijzigen"
           }
         },
         "pl" : {
@@ -75925,8 +76100,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "リストア"
+            "state" : "needs_review",
+            "value" : "復元"
           }
         },
         "ko" : {
@@ -76402,7 +76577,7 @@
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Прикажи %@"
+            "value" : "Прикажи: %@"
           }
         },
         "sv" : {
@@ -76495,8 +76670,8 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Variabilní symbol"
+            "state" : "needs_review",
+            "value" : "Směrovací číslo banky"
           }
         },
         "de" : {
@@ -76609,14 +76784,14 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Smerové číslo"
+            "state" : "needs_review",
+            "value" : "Smerové číslo banky"
           }
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Broj za rutiranje"
+            "state" : "needs_review",
+            "value" : "Број за рутирање"
           }
         },
         "sv" : {
@@ -76995,8 +77170,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "SSH キー"
+            "state" : "needs_review",
+            "value" : "SSH 鍵"
           }
         },
         "ko" : {
@@ -77149,8 +77324,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Llaves SSH"
+            "state" : "needs_review",
+            "value" : "Claves SSH"
           }
         },
         "et" : {
@@ -77161,8 +77336,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "کلید‌‌های SSH"
+            "state" : "needs_review",
+            "value" : "کلیدهای SSH"
           }
         },
         "fi" : {
@@ -77179,8 +77354,8 @@
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "SSH कुँजी"
+            "state" : "needs_review",
+            "value" : "SSH कुंजियाँ"
           }
         },
         "hr" : {
@@ -77257,8 +77432,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "SSH Кључеви"
+            "state" : "needs_review",
+            "value" : "SSH кључеви"
           }
         },
         "sv" : {
@@ -77680,7 +77855,7 @@
         "sk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Rodné číslo"
+            "value" : "Číslo poistenca"
           }
         },
         "sr" : {
@@ -77899,8 +78074,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "SWIFT kod"
+            "state" : "needs_review",
+            "value" : "SWIFT код"
           }
         },
         "sv" : {
@@ -79069,8 +79244,8 @@
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suche"
+            "state" : "needs_review",
+            "value" : "Suchen"
           }
         },
         "es" : {
@@ -79177,8 +79352,8 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hladať"
+            "state" : "needs_review",
+            "value" : "Hľadať"
           }
         },
         "sr" : {
@@ -79213,8 +79388,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arama"
+            "state" : "needs_review",
+            "value" : "Ara"
           }
         },
         "uk" : {
@@ -79265,8 +79440,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бяспечныя нататкі"
+            "state" : "needs_review",
+            "value" : "Абароненая нататка"
           }
         },
         "bg" : {
@@ -79337,8 +79512,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Catatan yang aman"
+            "state" : "needs_review",
+            "value" : "Catatan aman"
           }
         },
         "it" : {
@@ -79367,8 +79542,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notatka"
+            "state" : "needs_review",
+            "value" : "Bezpieczna notatka"
           }
         },
         "pt-BR" : {
@@ -79421,8 +79596,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "บันทึกการรักษาปลอดภัย"
+            "state" : "needs_review",
+            "value" : "โน้ตความปลอดภัย"
           }
         },
         "tr" : {
@@ -79509,8 +79684,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turvalised märkmed"
+            "state" : "needs_review",
+            "value" : "Turvalised märkused"
           }
         },
         "fa" : {
@@ -79533,8 +79708,8 @@
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Secure Notes"
+            "state" : "needs_review",
+            "value" : "सुरक्षित नोट"
           }
         },
         "hr" : {
@@ -79581,8 +79756,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notatki"
+            "state" : "needs_review",
+            "value" : "Bezpieczne notatki"
           }
         },
         "pt-BR" : {
@@ -80317,8 +80492,8 @@
       "localizations" : {
         "af" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "self-gehuisves"
+            "state" : "needs_review",
+            "value" : "Self-gehuisves"
           }
         },
         "ar" : {
@@ -80335,38 +80510,38 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "самастойна размяшчаецца"
+            "state" : "needs_review",
+            "value" : "Самастойнае размяшчэнне"
           }
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "собствен хостинг"
+            "state" : "needs_review",
+            "value" : "Собствен хостинг"
           }
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "vlastní server"
+            "state" : "needs_review",
+            "value" : "Vlastní server"
           }
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "selbst gehostet"
+            "state" : "needs_review",
+            "value" : "Selbst gehostet"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "autoalojado"
+            "state" : "needs_review",
+            "value" : "Autoalojado"
           }
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ise majutatud"
+            "state" : "needs_review",
+            "value" : "Ise majutatud"
           }
         },
         "fa" : {
@@ -80377,14 +80552,14 @@
         },
         "fi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "itse ylläpidetty"
+            "state" : "needs_review",
+            "value" : "Itse ylläpidetty"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "auto-hébergé"
+            "state" : "needs_review",
+            "value" : "Auto-hébergé"
           }
         },
         "hi" : {
@@ -80395,14 +80570,14 @@
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "vlastiti poslužitelj"
+            "state" : "needs_review",
+            "value" : "Vlastiti poslužitelj"
           }
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "saját üzemeltetésű"
+            "state" : "needs_review",
+            "value" : "Saját üzemeltetésű"
           }
         },
         "id" : {
@@ -80431,50 +80606,50 @@
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "zelfgehost"
+            "state" : "needs_review",
+            "value" : "Zelfgehost"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "samodzielnie hostowany"
+            "state" : "needs_review",
+            "value" : "Samodzielnie hostowany"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "auto-hospedado"
+            "state" : "needs_review",
+            "value" : "Auto-hospedado"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "auto-hospedado"
+            "state" : "needs_review",
+            "value" : "Auto-hospedado"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "собственный хостинг"
+            "state" : "needs_review",
+            "value" : "Собственный хостинг"
           }
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "vlastný hosting"
+            "state" : "needs_review",
+            "value" : "Vlastný hosting"
           }
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "личан хостинг"
+            "state" : "needs_review",
+            "value" : "Лични хостинг"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "egeninstallerad"
+            "state" : "needs_review",
+            "value" : "Egeninstallerad"
           }
         },
         "ta" : {
@@ -80497,20 +80672,20 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "şirket içinde barındırılan"
+            "state" : "needs_review",
+            "value" : "Şirket içinde barındırılan"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "власне розміщення"
+            "state" : "needs_review",
+            "value" : "Власне розміщення"
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "tự lưu trữ"
+            "state" : "needs_review",
+            "value" : "Tự lưu trữ"
           }
         },
         "zh-Hans" : {
@@ -81109,8 +81284,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "УРЛ Сервера"
+            "state" : "needs_review",
+            "value" : "УРЛ сервера"
           }
         },
         "sv" : {
@@ -81555,8 +81730,8 @@
         },
         "te" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "సెషన్ సమయం ముగిసింది"
+            "state" : "needs_review",
+            "value" : "సెషన్ గడువు సమయం"
           }
         },
         "th" : {
@@ -81667,8 +81842,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Définir un code NIP"
+            "state" : "needs_review",
+            "value" : "Définir le code PIN"
           }
         },
         "hi" : {
@@ -81685,8 +81860,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN kód beállítása"
+            "state" : "needs_review",
+            "value" : "Pinkód beállítása"
           }
         },
         "id" : {
@@ -81751,8 +81926,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поставите PIN"
+            "state" : "needs_review",
+            "value" : "Постави ПИН"
           }
         },
         "sv" : {
@@ -82255,8 +82430,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cinsi"
+            "state" : "needs_review",
+            "value" : "Cins"
           }
         },
         "be" : {
@@ -82393,8 +82568,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pol"
+            "state" : "needs_review",
+            "value" : "Пол"
           }
         },
         "sv" : {
@@ -82511,8 +82686,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "اشتراک گذاری شد"
+            "state" : "needs_review",
+            "value" : "اشتراکی"
           }
         },
         "fi" : {
@@ -82595,8 +82770,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Общие"
+            "state" : "needs_review",
+            "value" : "Общий доступ"
           }
         },
         "sk" : {
@@ -82631,8 +82806,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "แบ่งปัน"
+            "state" : "needs_review",
+            "value" : "แชร์แล้ว"
           }
         },
         "tr" : {
@@ -82643,8 +82818,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Спільні"
+            "state" : "needs_review",
+            "value" : "Спільний доступ"
           }
         },
         "vi" : {
@@ -83036,7 +83211,7 @@
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Прикажи %@"
+            "value" : "Прикажи: %@"
           }
         },
         "sv" : {
@@ -83338,13 +83513,13 @@
         "bg" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Показване на Keywarden в"
+            "value" : "Показване на Keywarden"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Zobrazovat Keywarden v"
+            "value" : "Kde zobrazovat Keywarden"
           }
         },
         "de" : {
@@ -83386,13 +83561,13 @@
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Keywarden यहाँ दिखाएं"
+            "value" : "Keywarden कहाँ दिखाएं"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Prikaži Keywarden u"
+            "value" : "Gdje prikazati Keywarden"
           }
         },
         "hu" : {
@@ -83434,7 +83609,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Pokazuj Keywarden na"
+            "value" : "Gdzie pokazywać Keywarden"
           }
         },
         "pt-BR" : {
@@ -83458,7 +83633,7 @@
         "sk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Zobrazovať Keywarden v"
+            "value" : "Kde zobrazovať Keywarden"
           }
         },
         "sr" : {
@@ -83482,7 +83657,7 @@
         "te" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Keywardenను ఇక్కడ చూపండి"
+            "value" : "Keywardenను ఎక్కడ చూపాలి"
           }
         },
         "th" : {
@@ -83500,7 +83675,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Показувати Keywarden у"
+            "value" : "Показувати Keywarden"
           }
         },
         "vi" : {
@@ -84296,7 +84471,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Desconectar…"
+            "value" : "Encerrar sessão…"
           }
         },
         "pt-PT" : {
@@ -84842,7 +85017,7 @@
         "cs" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Přihlaste se k trezoru"
+            "value" : "Přihlásit se k trezoru"
           }
         },
         "de" : {
@@ -84956,7 +85131,7 @@
         "sk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Prihláste sa do trezoru"
+            "value" : "Prihlásiť sa do trezoru"
           }
         },
         "sr" : {
@@ -85580,7 +85755,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Desconectado"
+            "value" : "Sessão encerrada"
           }
         },
         "pt-PT" : {
@@ -85616,7 +85791,7 @@
         "ta" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "வெளியேறப்பட்டது"
+            "value" : "உள்நுழையவில்லை"
           }
         },
         "te" : {
@@ -86137,8 +86312,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arranca automáticamente al iniciar sesión"
+            "state" : "needs_review",
+            "value" : "Abrir automáticamente al iniciar sesión"
           }
         },
         "et" : {
@@ -86577,8 +86752,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "شروع می شود با"
+            "state" : "needs_review",
+            "value" : "شروع می‌شود با"
           }
         },
         "fi" : {
@@ -86607,8 +86782,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ezzel kezdődik:"
+            "state" : "needs_review",
+            "value" : "Ezzel kezdődik"
           }
         },
         "id" : {
@@ -86631,8 +86806,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "...으로 시작"
+            "state" : "needs_review",
+            "value" : "다음으로 시작"
           }
         },
         "nl" : {
@@ -86963,8 +87138,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ölkə/Əyalət"
+            "state" : "needs_review",
+            "value" : "Ştat / vilayət"
           }
         },
         "be" : {
@@ -87605,8 +87780,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sinxr"
+            "state" : "needs_review",
+            "value" : "Sinxronlaşdır"
           }
         },
         "be" : {
@@ -87623,14 +87798,14 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronizace"
+            "state" : "needs_review",
+            "value" : "Synchronizovat"
           }
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronisierung"
+            "state" : "needs_review",
+            "value" : "Synchronisieren"
           }
         },
         "es" : {
@@ -87653,26 +87828,26 @@
         },
         "fi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synkronointi"
+            "state" : "needs_review",
+            "value" : "Synkronoi"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronisation"
+            "state" : "needs_review",
+            "value" : "Synchroniser"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "सिंक"
+            "state" : "needs_review",
+            "value" : "सिंक करें"
           }
         },
         "hr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sinkronizacija"
+            "state" : "needs_review",
+            "value" : "Sinkroniziraj"
           }
         },
         "hu" : {
@@ -87683,8 +87858,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sinkronisasi"
+            "state" : "needs_review",
+            "value" : "Sinkronkan"
           }
         },
         "it" : {
@@ -87713,8 +87888,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronizacja"
+            "state" : "needs_review",
+            "value" : "Synchronizuj"
           }
         },
         "pt-BR" : {
@@ -87731,20 +87906,20 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронизация"
+            "state" : "needs_review",
+            "value" : "Синхронизировать"
           }
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronizácia"
+            "state" : "needs_review",
+            "value" : "Synchronizovať"
           }
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронизација"
+            "state" : "needs_review",
+            "value" : "Синхронизуј"
           }
         },
         "sv" : {
@@ -87779,8 +87954,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронізація"
+            "state" : "needs_review",
+            "value" : "Синхронізувати"
           }
         },
         "vi" : {
@@ -88184,7 +88359,7 @@
         "ta" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "ஒத்திசைக்கப்பட்டது %@"
+            "value" : "%@ ஒத்திசைக்கப்பட்டது"
           }
         },
         "te" : {
@@ -88220,13 +88395,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "同步于 %@"
+            "value" : "上次同步：%@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "同步於 %@"
+            "value" : "上次同步：%@"
           }
         }
       }
@@ -89134,7 +89309,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "El servidor no ha devuelto ningún valor."
+            "value" : "El motor interno no ha devuelto ningún valor."
           }
         },
         "et" : {
@@ -89158,7 +89333,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Le serveur n’a renvoyé aucune valeur."
+            "value" : "Le moteur interne n’a renvoyé aucune valeur."
           }
         },
         "hi" : {
@@ -91725,8 +91900,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Délai dépassé"
+            "state" : "needs_review",
+            "value" : "Délai d’expiration"
           }
         },
         "hi" : {
@@ -91827,8 +92002,8 @@
         },
         "te" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "సమయం ముగిసింది"
+            "state" : "needs_review",
+            "value" : "గడువు సమయం"
           }
         },
         "th" : {
@@ -92011,8 +92186,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тайм-аут действия"
+            "state" : "needs_review",
+            "value" : "Действие по тайм-ауту"
           }
         },
         "sk" : {
@@ -92041,8 +92216,8 @@
         },
         "te" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "సమయం ముగిసిన చర్య"
+            "state" : "needs_review",
+            "value" : "గడువు ముగిసినప్పుడు చర్య"
           }
         },
         "th" : {
@@ -92065,8 +92240,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hành động sau khi đóng kho"
+            "state" : "needs_review",
+            "value" : "Hành động khi hết thời gian chờ"
           }
         },
         "zh-Hans" : {
@@ -92099,8 +92274,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başlıq"
+            "state" : "needs_review",
+            "value" : "Titul"
           }
         },
         "be" : {
@@ -92135,8 +92310,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pealkiri"
+            "state" : "needs_review",
+            "value" : "Tiitel"
           }
         },
         "fa" : {
@@ -92171,8 +92346,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Címzés"
+            "state" : "needs_review",
+            "value" : "Megszólítás"
           }
         },
         "id" : {
@@ -92195,8 +92370,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "제목"
+            "state" : "needs_review",
+            "value" : "호칭"
           }
         },
         "nl" : {
@@ -92237,8 +92412,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Наслов"
+            "state" : "needs_review",
+            "value" : "Титула"
           }
         },
         "sv" : {
@@ -92279,8 +92454,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiêu đề"
+            "state" : "needs_review",
+            "value" : "Danh xưng"
           }
         },
         "zh-Hans" : {
@@ -92654,7 +92829,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Touch ID не удалось прочитать ключ (%@)."
+            "value" : "Не удалось прочитать ключ с помощью Touch ID (%@)."
           }
         },
         "sk" : {
@@ -92702,7 +92877,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Touch ID не вдалося прочитати ключ (%@)."
+            "value" : "Не вдалося прочитати ключ через Touch ID (%@)."
           }
         },
         "vi" : {
@@ -94293,8 +94468,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Essayez de nouveau"
+            "state" : "needs_review",
+            "value" : "Réessayer"
           }
         },
         "hi" : {
@@ -94311,8 +94486,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Próbáluk újra"
+            "state" : "needs_review",
+            "value" : "Próbálja újra"
           }
         },
         "id" : {
@@ -94365,8 +94540,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Попробуйте снова"
+            "state" : "needs_review",
+            "value" : "Повторить попытку"
           }
         },
         "sk" : {
@@ -94377,8 +94552,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Покушајте поново"
+            "state" : "needs_review",
+            "value" : "Покушај поново"
           }
         },
         "sv" : {
@@ -94413,8 +94588,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Спробуйте знову"
+            "state" : "needs_review",
+            "value" : "Спробувати знову"
           }
         },
         "vi" : {
@@ -95547,8 +95722,8 @@
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wiederherstellen"
+            "state" : "needs_review",
+            "value" : "Archivierung aufheben"
           }
         },
         "es" : {
@@ -95595,8 +95770,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Visszavétel archívumból"
+            "state" : "needs_review",
+            "value" : "Archiválás visszavonása"
           }
         },
         "id" : {
@@ -95697,8 +95872,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Видобути"
+            "state" : "needs_review",
+            "value" : "Розархівувати"
           }
         },
         "vi" : {
@@ -95993,8 +96168,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "حذف از مورد علاقه"
+            "state" : "needs_review",
+            "value" : "حذف از علاقه‌مندی‌ها"
           }
         },
         "fi" : {
@@ -96023,8 +96198,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nem kedvenc"
+            "state" : "needs_review",
+            "value" : "Eltávolítás a kedvencek közül"
           }
         },
         "id" : {
@@ -96101,8 +96276,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "விருப்பநீக்கு"
+            "state" : "needs_review",
+            "value" : "பிடித்தவையிலிருந்து அகற்று"
           }
         },
         "te" : {
@@ -96131,8 +96306,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bỏ thích"
+            "state" : "needs_review",
+            "value" : "Bỏ yêu thích"
           }
         },
         "zh-Hans" : {
@@ -96243,8 +96418,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buka"
+            "state" : "needs_review",
+            "value" : "Buka kunci"
           }
         },
         "it" : {
@@ -96327,8 +96502,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ปลดล็อค"
+            "state" : "needs_review",
+            "value" : "ปลดล็อก"
           }
         },
         "tr" : {
@@ -96351,8 +96526,8 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "解锁​​​​"
+            "state" : "needs_review",
+            "value" : "解锁"
           }
         },
         "zh-Hant" : {
@@ -96385,8 +96560,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Параметры блакіроўкі"
+            "state" : "needs_review",
+            "value" : "Параметры разблакіроўкі"
           }
         },
         "bg" : {
@@ -96421,8 +96596,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "باز کردن امکانات"
+            "state" : "needs_review",
+            "value" : "گزینه‌های باز کردن قفل"
           }
         },
         "fi" : {
@@ -96457,8 +96632,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pilihan Penguncian"
+            "state" : "needs_review",
+            "value" : "Pilihan Buka Kunci"
           }
         },
         "it" : {
@@ -96517,8 +96692,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Опције деблокирања"
+            "state" : "needs_review",
+            "value" : "Опције откључавања"
           }
         },
         "sv" : {
@@ -97949,8 +98124,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Felnyitás pinkóddal"
+            "state" : "needs_review",
+            "value" : "Feloldás pinkóddal"
           }
         },
         "id" : {
@@ -98003,8 +98178,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Разблокировка PIN-кодом"
+            "state" : "needs_review",
+            "value" : "Разблокировать PIN-кодом"
           }
         },
         "sk" : {
@@ -98051,8 +98226,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Розблокування з PIN-кодом"
+            "state" : "needs_review",
+            "value" : "Розблокувати PIN-кодом"
           }
         },
         "vi" : {
@@ -98091,8 +98266,8 @@
         },
         "az" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Touch ID kilidini aç"
+            "state" : "needs_review",
+            "value" : "Touch ID ilə kilidi aç"
           }
         },
         "be" : {
@@ -98133,8 +98308,8 @@
         },
         "fa" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "باز کردن با Touch ID"
+            "state" : "needs_review",
+            "value" : "باز کردن قفل با Touch ID"
           }
         },
         "fi" : {
@@ -98223,8 +98398,8 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Odomknúť s Touch ID"
+            "state" : "needs_review",
+            "value" : "Odomknúť pomocou Touch ID"
           }
         },
         "sr" : {
@@ -98241,8 +98416,8 @@
         },
         "ta" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Touch ID உடன் திறக்கவும்"
+            "state" : "needs_review",
+            "value" : "Touch ID மூலம் திறக்கவும்"
           }
         },
         "te" : {
@@ -98769,8 +98944,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jah, uuenda"
+            "state" : "needs_review",
+            "value" : "Uuenda"
           }
         },
         "fa" : {
@@ -98793,8 +98968,8 @@
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yes, Update Now"
+            "state" : "needs_review",
+            "value" : "अपडेट करें"
           }
         },
         "hr" : {
@@ -98811,8 +98986,8 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Iya, Perbarui Sekarang"
+            "state" : "needs_review",
+            "value" : "Perbarui"
           }
         },
         "it" : {
@@ -98823,20 +98998,20 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "今すぐ更新する"
+            "state" : "needs_review",
+            "value" : "更新"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "예, 지금 변경하겠습니다."
+            "state" : "needs_review",
+            "value" : "업데이트"
           }
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ja, nu bijwerken"
+            "state" : "needs_review",
+            "value" : "Bijwerken"
           }
         },
         "pl" : {
@@ -98941,8 +99116,8 @@
         },
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "استخدم رمز PIN"
+            "state" : "needs_review",
+            "value" : "استخدام رمز PIN"
           }
         },
         "az" : {
@@ -99001,8 +99176,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utiliser PIN"
+            "state" : "needs_review",
+            "value" : "Utiliser le code PIN"
           }
         },
         "hi" : {
@@ -99019,8 +99194,8 @@
         },
         "hu" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN kód használata"
+            "state" : "needs_review",
+            "value" : "Pinkód használata"
           }
         },
         "id" : {
@@ -99085,8 +99260,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Користите ПИН"
+            "state" : "needs_review",
+            "value" : "Користи ПИН"
           }
         },
         "sv" : {
@@ -99595,8 +99770,8 @@
         },
         "be" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выкарыстаць галоўны пароль"
+            "state" : "needs_review",
+            "value" : "Выкарыстаць асноўны пароль"
           }
         },
         "bg" : {
@@ -99727,8 +99902,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Користите главну лозинку"
+            "state" : "needs_review",
+            "value" : "Користи главну лозинку"
           }
         },
         "sv" : {
@@ -99912,7 +100087,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Użyj przycisku +, aby dodać."
+            "value" : "Użyj przycisku +, aby dodać element."
           }
         },
         "pt-BR" : {
@@ -100156,7 +100331,7 @@
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Користи Bitwarden Desktop"
+            "value" : "Користи га Bitwarden Desktop"
           }
         },
         "sv" : {
@@ -100370,7 +100545,7 @@
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Користи друга апликација"
+            "value" : "Користи га друга апликација"
           }
         },
         "sv" : {
@@ -100469,8 +100644,8 @@
         },
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nutzername"
+            "state" : "needs_review",
+            "value" : "Benutzername"
           }
         },
         "es" : {
@@ -100755,8 +100930,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "아이디 유형"
+            "state" : "needs_review",
+            "value" : "사용자 이름 유형"
           }
         },
         "nl" : {
@@ -100797,8 +100972,8 @@
         },
         "sr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тип имена"
+            "state" : "needs_review",
+            "value" : "Тип корисничког имена"
           }
         },
         "sv" : {
@@ -101308,7 +101483,7 @@
         "be" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Згенераваныя або скапіраваныя значэнні паказваюцца тут, пакуль вы не выйдзеце з уліковага запісу або не завершыце праграму."
+            "value" : "Згенераваныя або скапіяваныя значэнні паказваюцца тут, пакуль вы не выйдзеце з уліковага запісу або не завершыце праграму."
           }
         },
         "bg" : {
@@ -101416,7 +101591,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Os valores que você gerar ou copiar aparecem aqui até você se desconectar ou encerrar o app."
+            "value" : "Os valores que você gerar ou copiar aparecem aqui até você encerrar a sessão ou o app."
           }
         },
         "pt-PT" : {
@@ -101695,8 +101870,8 @@
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kho lưu trữ"
+            "state" : "needs_review",
+            "value" : "Kho"
           }
         },
         "zh-Hans" : {
@@ -102533,8 +102708,8 @@
         },
         "th" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ง่ายเกินไป"
+            "state" : "needs_review",
+            "value" : "อ่อน"
           }
         },
         "tr" : {
@@ -102621,8 +102796,8 @@
         },
         "et" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veebileht"
+            "state" : "needs_review",
+            "value" : "Veebisait"
           }
         },
         "fa" : {
@@ -105185,7 +105360,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ für %2$@ bestätigen"
+            "value" : "%1$@ für %2$@ zu bestätigen"
           }
         },
         "en" : {
@@ -105227,7 +105402,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%2$@ के लिए %1$@ की पुष्टि करना"
+            "value" : "%2$@ के लिए %1$@ की पुष्टि करने"
           }
         },
         "hr" : {
@@ -105635,7 +105810,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "den Tresorschlüssel für %1$@ an %2$@ senden"
+            "value" : "den Tresorschlüssel für %1$@ an %2$@ zu senden"
           }
         },
         "en" : {
@@ -105653,7 +105828,7 @@
         "et" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "saata konto %1$@ hoidla võti (saaja: %2$@)"
+            "value" : "saata konto %1$@ hoidla võtme (saaja: %2$@)"
           }
         },
         "fa" : {
@@ -105677,7 +105852,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ की वॉल्ट कुंजी %2$@ को भेजना"
+            "value" : "%1$@ की वॉल्ट कुंजी %2$@ को भेजने"
           }
         },
         "hr" : {
@@ -105856,7 +106031,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "„%@“ anzeigen"
+            "value" : "„%@“ anzuzeigen"
           }
         },
         "es" : {
@@ -105868,7 +106043,7 @@
         "et" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "kuvada üksus „%@“"
+            "value" : "kuvada üksuse „%@“"
           }
         },
         "fa" : {
@@ -105892,7 +106067,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "‘%@’ दिखाना"
+            "value" : "“%@” दिखाने"
           }
         },
         "hr" : {
@@ -105928,7 +106103,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "‘%@’ 보기"
+            "value" : "‘%@’ 표시"
           }
         },
         "nl" : {
@@ -106071,7 +106246,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Touch ID für %1$@ (%2$@) aktivieren"
+            "value" : "Touch ID für %1$@ (%2$@) zu aktivieren"
           }
         },
         "en" : {
@@ -106113,7 +106288,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ (%2$@) के लिए Touch ID चालू करना"
+            "value" : "%1$@ (%2$@) के लिए Touch ID चालू करने"
           }
         },
         "hr" : {
@@ -106143,13 +106318,13 @@
         "ja" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@（%2$@）の Touch ID をオンにする"
+            "value" : "%1$@（%2$@）の Touch ID をオンに"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@(%2$@)의 Touch ID 켜기"
+            "value" : "%1$@(%2$@)의 Touch ID 활성화"
           }
         },
         "nl" : {
@@ -106292,7 +106467,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ (%2$@) entsperren"
+            "value" : "%1$@ (%2$@) zu entsperren"
           }
         },
         "en" : {
@@ -106334,7 +106509,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "%1$@ (%2$@) को अनलॉक करना"
+            "value" : "%1$@ (%2$@) को अनलॉक करने"
           }
         },
         "hr" : {
