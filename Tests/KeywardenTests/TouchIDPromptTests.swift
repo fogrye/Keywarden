@@ -230,6 +230,20 @@ final class TouchIDPromptTests: XCTestCase {
         XCTAssertEqual(model.phase, .locked, "Nothing may ask while Keywarden is in the background")
         try await activate(hosted)
         try await wait { model.phase == .unlocked }
+
+        // The vault scene shows a closed window again with the same lock screen still in it.
+        await model.lock()
+        try await Task.sleep(for: .milliseconds(500))
+        XCTAssertEqual(model.phase, .locked)
+        hosted.close()
+        try await activate(hosted)
+        try await wait { model.phase == .unlocked }
+
+        // Locked while the window is closed: the lock screen first appears when it reopens.
+        hosted.close()
+        await model.lock()
+        try await activate(hosted)
+        try await wait { model.phase == .unlocked }
         await model.disableBiometrics()
     }
 

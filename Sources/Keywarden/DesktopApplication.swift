@@ -529,7 +529,8 @@ private struct ItemMenu: View {
 enum WindowFront {
     static let settings = "com_apple_SwiftUI_Settings_window"
 
-    static func present(_ id: String, open: () -> Void) {
+    static func present(_ id: String, open: @escaping @MainActor () -> Void) {
+        var handedToDock = false
         // An accessory app's windows open behind the frontmost app, so become a regular app
         // before the window exists rather than after it gets focus.
         if NSApp.activationPolicy() != .regular {
@@ -542,15 +543,40 @@ enum WindowFront {
                let dock = NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.dock").first {
                 NSApp.yieldActivation(to: dock)
                 dock.activate()
+                handedToDock = true
             }
         }
         // Since macOS 14 `NSApp.activate()` is only a request, which macOS refuses when a launcher
         // starts Keywarden. `open` orders the window front and makes it key.
         NSApp.activate(ignoringOtherApps: true)
+        guard handedToDock else { return show(id, open) }
+        // Activation goes to the Dock and comes back. A window already on screen meanwhile is drawn
+        // inactive and active again, and its sidebar flickers, so show it once Keywarden is back.
+        let pending = PendingPresentation()
+        pending.observer = NotificationCenter.default.addObserver(
+            forName: NSApplication.didBecomeActiveNotification, object: NSApp, queue: .main
+        ) { _ in MainActor.assumeIsolated { pending.finish { show(id, open) } } }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { pending.finish { show(id, open) } }
+    }
+
+    private static func show(_ id: String, _ open: () -> Void) {
         open()
         if let window = NSApp.windows.first(where: { $0.identifier?.rawValue.hasPrefix(id) == true }),
            window.isMiniaturized {
             window.deminiaturize(nil)
+        }
+    }
+
+    /// Shows the window once, on whichever comes first: reactivation or the fallback timeout.
+    @MainActor private final class PendingPresentation {
+        var observer: NSObjectProtocol?
+        private var done = false
+
+        func finish(_ show: () -> Void) {
+            guard !done else { return }
+            done = true
+            if let observer { NotificationCenter.default.removeObserver(observer) }
+            show()
         }
     }
 }

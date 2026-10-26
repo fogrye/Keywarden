@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import Observation
 
@@ -31,7 +32,7 @@ final class VaultModel {
     var phase: Phase = .loading {
         didSet {
             guard phase != oldValue else { return }
-            lockedAfterUse = phase == .locked && oldValue == .unlocked
+            lockedAfterUse = phase == .locked && oldValue == .unlocked && Self.vaultInFront
             // Generator history is secret: shown only while unlocked, and wiped on logout.
             GeneratorHistory.shared.sessionChanged(unlocked: phase == .unlocked, loggedOut: phase == .loggedOut)
             onPhaseChange?(phase)
@@ -40,6 +41,13 @@ final class VaultModel {
     /// The vault was open and then locked, rather than starting locked. A lock screen that takes
     /// the vault's place in front of the user doesn't ask for Touch ID by itself.
     private(set) var lockedAfterUse = false
+    /// The app is active with a window up, so a lock now happens in front of the user. A lock while
+    /// the window is closed or Keywarden is in the background shows the lock screen as new later.
+    private static var vaultInFront: Bool {
+        NSApp.isActive && NSApp.windows.contains {
+            $0.isVisible && !$0.isMiniaturized && $0.styleMask.contains(.titled) && !($0 is NSPanel)
+        }
+    }
     var onPhaseChange: (@MainActor (Phase) -> Void)?
     /// Runs once the stored account identity and biometric preferences are known.
     var onReady: (@MainActor () -> Void)?
