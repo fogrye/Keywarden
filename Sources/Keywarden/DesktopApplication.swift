@@ -250,7 +250,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func vaultWindowClosed() {
         guard settings.lockOnWindowClose, !terminating else { return }
-        Task { await model.lock() }
+        Task { await model.lock(outOfSight: true) }
     }
 
     // MARK: Firefox listener
@@ -542,8 +542,7 @@ enum WindowFront {
             if NSApp.isActive,
                let dock = NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.dock").first {
                 NSApp.yieldActivation(to: dock)
-                dock.activate()
-                handedToDock = true
+                handedToDock = dock.activate()
             }
         }
         // Since macOS 14 `NSApp.activate()` is only a request, which macOS refuses when a launcher
@@ -556,7 +555,13 @@ enum WindowFront {
         pending.observer = NotificationCenter.default.addObserver(
             forName: NSApplication.didBecomeActiveNotification, object: NSApp, queue: .main
         ) { _ in MainActor.assumeIsolated { pending.finish { show(id, open) } } }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { pending.finish { show(id, open) } }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            // Activation never came back: ask again, so the window doesn't open behind another app.
+            pending.finish {
+                if !NSApp.isActive { NSApp.activate(ignoringOtherApps: true) }
+                show(id, open)
+            }
+        }
     }
 
     private static func show(_ id: String, _ open: () -> Void) {

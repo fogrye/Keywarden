@@ -17820,7 +17820,7 @@
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Automatski zatraži Touch ID"
+            "value" : "Аутоматски затражи Touch ID"
           }
         },
         "sv" : {
@@ -17879,217 +17879,216 @@
         }
       }
     },
-    "Asked for automatically when the vault is locked. Also required for browser unlock." : {
-      "extractionState" : "stale",
+    "Asks when you bring the locked vault to the front. When off, use the Touch ID button." : {
       "localizations" : {
         "af" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Word outomaties gevra wanneer die kluis vergrendel is. Ook nodig om in die blaaier te ontgrendel."
+            "value" : "Vra wanneer jy die geslote kluis na vore bring. Wanneer dit af is, gebruik die Touch ID-knoppie."
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "يُطلب تلقائيًا عندما تكون الخزنة مقفلة. وهو مطلوب أيضًا لفتح القفل من المتصفح."
+            "value" : "يطلب البصمة عند إحضار الخزنة المقفلة إلى الواجهة. عند إيقافه، استخدم زر Touch ID."
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Seyf kilidli olanda avtomatik soruşulur. Brauzerdə kilidi açmaq üçün də tələb olunur."
+            "value" : "Kilidli seyfi önə gətirdiyiniz zaman soruşur. Söndürüldükdə Touch ID düyməsindən istifadə edin."
           }
         },
         "be" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Запытваецца аўтаматычна, калі сховішча заблакіравана. Таксама патрэбна для разблакіроўкі ў браўзерах."
+            "value" : "Пытае, калі вы выводзіце заблакіраванае сховішча на пярэдні план. Калі выключана, выкарыстоўвайце кнопку Touch ID."
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Изисква се автоматично, когато трезорът е заключен. Необходимо е и за отключване в браузърите."
+            "value" : "Пита, когато изведете заключения трезор на преден план. Когато е изключено, използвайте бутона Touch ID."
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Vyžádá se automaticky, když je trezor zamčený. Je také potřeba k odemykání v prohlížečích."
+            "value" : "Zeptá se, když zamčený trezor přenesete do popředí. Když je vypnuto, použijte tlačítko Touch ID."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Wird automatisch abgefragt, wenn der Tresor gesperrt ist. Auch zum Entsperren im Browser erforderlich."
+            "value" : "Fragt, wenn du den gesperrten Tresor in den Vordergrund holst. Wenn aus, nutze die Touch-ID-Schaltfläche."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Se solicita automáticamente cuando la caja fuerte está bloqueada. También es necesario para desbloquear en el navegador."
+            "value" : "Lo pide cuando traes la caja fuerte bloqueada al frente. Si está desactivado, usa el botón de Touch ID."
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Küsitakse automaatselt, kui hoidla on lukus. Vajalik ka brauserite lahtilukustamiseks."
+            "value" : "Küsib, kui tood lukustatud hoidla esiplaanile. Kui see on väljas, kasuta Touch ID nuppu."
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "وقتی گاوصندوق قفل است، به‌طور خودکار درخواست می‌شود. برای باز کردن قفل در مرورگر نیز لازم است."
+            "value" : "وقتی گاوصندوق قفل‌شده را به جلو می‌آورید، درخواست می‌کند. وقتی خاموش است، از دکمهٔ Touch ID استفاده کنید."
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Kysytään automaattisesti, kun holvi on lukittu. Vaaditaan myös selainten avaukseen."
+            "value" : "Kysyy, kun tuot lukitun holvin etualalle. Kun pois päältä, käytä Touch ID -painiketta."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Demandé automatiquement lorsque le coffre est verrouillé. Également requis pour le déverrouillage dans le navigateur."
+            "value" : "Demande lorsque vous ramenez le coffre verrouillé au premier plan. Désactivé, utilisez le bouton Touch ID."
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "वॉल्ट लॉक होने पर स्वचालित रूप से माँगा जाता है। ब्राउज़र अनलॉक के लिए भी आवश्यक है।"
+            "value" : "जब आप लॉक किए गए वॉल्ट को सामने लाते हैं तब पूछता है। बंद होने पर Touch ID बटन का उपयोग करें।"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Automatski se traži kad je trezor zaključan. Potrebno je i za otključavanje u preglednicima."
+            "value" : "Pita kada zaključani trezor dovedete u prvi plan. Kada je isključeno, koristite gumb Touch ID."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Automatikusan megjelenik, ha a széf le van zárva. A böngészők feloldásához is szükséges."
+            "value" : "Akkor kérdez, amikor a zárolt széfet előtérbe hozza. Kikapcsolva használja a Touch ID gombot."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Diminta secara otomatis saat brankas terkunci. Juga diperlukan untuk membuka kunci di browser."
+            "value" : "Meminta saat Anda membawa brankas terkunci ke depan. Jika nonaktif, gunakan tombol Touch ID."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Viene richiesto automaticamente quando la cassaforte è bloccata. È necessario anche per lo sblocco nel browser."
+            "value" : "Chiede quando porti in primo piano la cassaforte bloccata. Se disattivato, usa il pulsante Touch ID."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "保管庫がロックされているときに自動的に要求されます。ブラウザのロック解除にも必要です。"
+            "value" : "ロックされた保管庫を前面に出したときに確認します。オフのときはTouch IDボタンを使用します。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "보관함이 잠겨 있으면 자동으로 요청됩니다. 브라우저 잠금 해제에도 필요합니다."
+            "value" : "잠긴 보관함을 앞으로 가져올 때 요청합니다. 끄면 Touch ID 버튼을 사용하세요."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Wordt automatisch gevraagd als de kluis vergrendeld is. Ook vereist om in de browser te ontgrendelen."
+            "value" : "Vraagt erom wanneer je de vergrendelde kluis naar voren haalt. Uit: gebruik de Touch ID-knop."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Wymagane automatycznie, gdy sejf jest zablokowany. Potrzebne także do odblokowywania w przeglądarkach."
+            "value" : "Pyta, gdy przeniesiesz zablokowany sejf na pierwszy plan. Gdy wyłączone, użyj przycisku Touch ID."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Solicitado automaticamente quando o cofre está bloqueado. Também é necessário para desbloquear pelo navegador."
+            "value" : "Pede quando você traz o cofre bloqueado para a frente. Desativado, use o botão Touch ID."
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Pedido automaticamente quando o cofre está bloqueado. Também é necessário para o desbloqueio no navegador."
+            "value" : "Pede quando traz o cofre bloqueado para a frente. Desativado, utilize o botão Touch ID."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Запрашивается автоматически, когда хранилище заблокировано. Также нужно для разблокировки в браузерах."
+            "value" : "Запрашивает, когда вы выводите заблокированное хранилище на передний план. Если выключено, используйте кнопку Touch ID."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Vyžiada sa automaticky, keď je trezor zamknutý. Je potrebné aj na odomykanie v prehliadačoch."
+            "value" : "Opýta sa, keď zamknutý trezor prenesiete do popredia. Keď je vypnuté, použite tlačidlo Touch ID."
           }
         },
         "sr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Аутоматски се тражи када је сеф закључан. Потребно и за откључавање прегледача."
+            "value" : "Пита када закључани сеф доведете у први план. Када је искључено, користите дугме Touch ID."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Efterfrågas automatiskt när valvet är låst. Krävs också för upplåsning i webbläsaren."
+            "value" : "Frågar när du tar fram det låsta valvet. När det är av använder du Touch ID-knappen."
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "வால்ட் பூட்டப்பட்டிருக்கும்போது தானாகவே கேட்கப்படும். உலாவியில் திறப்பதற்கும் தேவை."
+            "value" : "பூட்டிய வால்ட்டை முன்னுக்குக் கொண்டுவரும்போது கேட்கும். அணைத்திருந்தால் Touch ID பொத்தானைப் பயன்படுத்தவும்."
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "వాల్ట్ లాక్ అయినప్పుడు స్వయంచాలకంగా అడుగుతుంది. బ్రౌజర్ అన్‌లాక్‌కు కూడా అవసరం."
+            "value" : "లాక్ చేసిన వాల్ట్‌ను ముందుకు తెచ్చినప్పుడు అడుగుతుంది. ఆఫ్‌లో ఉన్నప్పుడు Touch ID బటన్‌ను ఉపయోగించండి."
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "จะถูกถามโดยอัตโนมัติเมื่อตู้เซฟถูกล็อก และจำเป็นสำหรับการปลดล็อกในเบราว์เซอร์ด้วย"
+            "value" : "ขอเมื่อคุณนำตู้เซฟที่ล็อกอยู่ขึ้นมาด้านหน้า เมื่อปิด ให้ใช้ปุ่ม Touch ID"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Kasa kilitliyken otomatik olarak istenir. Tarayıcıda kilit açmak için de gereklidir."
+            "value" : "Kilitli kasayı öne getirdiğinizde sorar. Kapalıyken Touch ID düğmesini kullanın."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Запитується автоматично, коли сховище заблоковано. Також потрібно для розблокування в браузерах."
+            "value" : "Запитує, коли ви виводите заблоковане сховище на передній план. Якщо вимкнено, користуйтеся кнопкою Touch ID."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Được yêu cầu tự động khi kho bị khóa. Cũng cần thiết để mở khóa trên trình duyệt."
+            "value" : "Hỏi khi bạn đưa kho lưu trữ đã khóa lên phía trước. Khi tắt, hãy dùng nút Touch ID."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "密码库锁定时会自动要求使用。浏览器解锁也需要此项。"
+            "value" : "当你将已锁定的密码库切换到前台时请求。关闭时，请使用 Touch ID 按钮。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "密碼庫鎖定時會自動要求使用。瀏覽器解鎖也需要此項目。"
+            "value" : "當你將已鎖定的密碼庫切換到前景時要求。關閉時，請使用 Touch ID 按鈕。"
           }
         }
       }
@@ -84341,220 +84340,6 @@
         }
       }
     },
-    "Shows the Touch ID prompt as soon as the lock screen opens. Turn off to unlock with the button." : {
-      "localizations" : {
-        "af" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Wys die Touch ID-versoek sodra die sluitskerm oopmaak. Skakel af om met die knoppie te ontsluit."
-          }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "يعرض مطالبة Touch ID فور ظهور شاشة القفل. أوقف هذا الخيار لإلغاء القفل بالزر."
-          }
-        },
-        "az" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Kilid ekranı açılan kimi Touch ID sorğusunu göstərir. Düymə ilə kilidi açmaq üçün söndürün."
-          }
-        },
-        "be" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Паказвае запыт Touch ID адразу пасля адкрыцця экрана блакіроўкі. Выключыце, каб разблакіроўваць кнопкай."
-          }
-        },
-        "bg" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Показва заявката за Touch ID веднага щом се отвори екранът за заключване. Изключете, за да отключвате с бутона."
-          }
-        },
-        "cs" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Zobrazí výzvu k Touch ID, jakmile se otevře zamykací obrazovka. Vypněte, chcete-li odemykat tlačítkem."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Zeigt die Touch-ID-Abfrage, sobald der Sperrbildschirm erscheint. Ausschalten, um mit der Taste zu entsperren."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Muestra la solicitud de Touch ID en cuanto se abre la pantalla de bloqueo. Desactívalo para desbloquear con el botón."
-          }
-        },
-        "et" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Kuvab Touch ID viiba kohe, kui lukustuskuva avaneb. Lülita välja, et avada nupuga."
-          }
-        },
-        "fa" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "به‌محض باز شدن صفحهٔ قفل، درخواست Touch ID نمایش داده می‌شود. برای باز کردن قفل با دکمه، خاموش کنید."
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Näyttää Touch ID -kehotteen heti, kun lukitusnäyttö avautuu. Poista käytöstä, jos haluat avata painikkeella."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Affiche l’invite Touch ID dès que l’écran de verrouillage s’ouvre. Désactivez pour déverrouiller avec le bouton."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "लॉक स्क्रीन खुलते ही Touch ID का संकेत दिखाता है। बटन से अनलॉक करने के लिए इसे बंद करें।"
-          }
-        },
-        "hr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Prikazuje zahtjev za Touch ID čim se otvori zaslon zaključavanja. Isključite za otključavanje gumbom."
-          }
-        },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "A zárolási képernyő megnyitásakor azonnal megjeleníti a Touch ID-kérést. Kapcsold ki, ha a gombbal szeretnél feloldani."
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Menampilkan permintaan Touch ID segera setelah layar kunci terbuka. Matikan untuk membuka dengan tombol."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Mostra la richiesta di Touch ID appena si apre la schermata di blocco. Disattiva per sbloccare con il pulsante."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "ロック画面が開くとすぐにTouch IDの確認を表示します。ボタンで解除するにはオフにします。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "잠금 화면이 열리면 바로 Touch ID 요청을 표시합니다. 버튼으로 잠금을 해제하려면 끄세요."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Toont de Touch ID-melding zodra het vergrendelscherm opent. Zet uit om met de knop te ontgrendelen."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Wyświetla monit Touch ID zaraz po otwarciu ekranu blokady. Wyłącz, aby odblokowywać przyciskiem."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Mostra o pedido de Touch ID assim que a tela de bloqueio abre. Desative para desbloquear com o botão."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Mostra o pedido de Touch ID assim que o ecrã de bloqueio abre. Desative para desbloquear com o botão."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Показывает запрос Touch ID сразу после открытия экрана блокировки. Выключите, чтобы разблокировать кнопкой."
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Zobrazí výzvu na Touch ID hneď po otvorení uzamknutej obrazovky. Vypnite, ak chcete odomykať tlačidlom."
-          }
-        },
-        "sr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Prikazuje zahtev za Touch ID čim se otvori ekran zaključavanja. Isključite da biste otključavali dugmetom."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Visar Touch ID-frågan så fort låsskärmen öppnas. Stäng av för att låsa upp med knappen."
-          }
-        },
-        "ta" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "பூட்டுத் திரை திறந்தவுடன் Touch ID கோரிக்கையைக் காட்டும். பொத்தானால் திறக்க இதை அணைக்கவும்."
-          }
-        },
-        "te" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "లాక్ స్క్రీన్ తెరుచుకోగానే Touch ID ప్రాంప్ట్‌ను చూపిస్తుంది. బటన్‌తో అన్‌లాక్ చేయడానికి దీన్ని ఆఫ్ చేయండి."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "แสดงข้อความขอ Touch ID ทันทีที่หน้าจอล็อกเปิดขึ้น ปิดเพื่อปลดล็อกด้วยปุ่ม"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Kilit ekranı açılır açılmaz Touch ID istemini gösterir. Düğmeyle kilidi açmak için kapatın."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Показує запит Touch ID одразу після відкриття екрана блокування. Вимкніть, щоб розблоковувати кнопкою."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Hiển thị yêu cầu Touch ID ngay khi màn hình khóa mở ra. Tắt để mở khóa bằng nút."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "锁定屏幕一打开就显示 Touch ID 提示。关闭后可用按钮解锁。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "鎖定畫面一開啟就顯示 Touch ID 提示。關閉後可用按鈕解鎖。"
-          }
-        }
-      }
-    },
     "Sign In" : {
       "localizations" : {
         "af" : {
@@ -98247,6 +98032,220 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "解鎖密碼庫後才能檢視產生器歷史記錄。%@"
+          }
+        }
+      }
+    },
+    "Unlock the vault with your fingerprint. Also required for browser unlock." : {
+      "localizations" : {
+        "af" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ontsluit die kluis met jou vingerafdruk. Ook nodig vir blaaierontsluiting."
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "افتح الخزنة ببصمة إصبعك. مطلوب أيضًا لفتح القفل من المتصفح."
+          }
+        },
+        "az" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Seyfin kilidini barmaq izinizlə açın. Brauzerdə kilidi açmaq üçün də lazımdır."
+          }
+        },
+        "be" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Разблакіроўвайце сховішча адбіткам пальца. Таксама патрабуецца для разблакіроўкі ў браўзеры."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Отключвайте трезора с пръстов отпечатък. Нужно е и за отключване в браузъра."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Odemykejte trezor otiskem prstu. Vyžadováno také pro odemykání v prohlížeči."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Entsperre den Tresor mit deinem Fingerabdruck. Auch für das Entsperren im Browser erforderlich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Desbloquea la caja fuerte con tu huella. También es necesario para desbloquear en el navegador."
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ava hoidla sõrmejäljega. Vajalik ka brauseris avamiseks."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "گاوصندوق را با اثر انگشت باز کنید. برای باز کردن قفل در مرورگر هم لازم است."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Avaa holvi sormenjäljellä. Tarvitaan myös selaimen lukituksen avaamiseen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Déverrouillez le coffre avec votre empreinte. Également requis pour le déverrouillage dans le navigateur."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "अपने फ़िंगरप्रिंट से वॉल्ट अनलॉक करें। ब्राउज़र अनलॉक के लिए भी ज़रूरी है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Otključajte trezor otiskom prsta. Potrebno i za otključavanje u pregledniku."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Oldja fel a széfet ujjlenyomattal. A böngészőből való feloldáshoz is szükséges."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Buka brankas dengan sidik jari Anda. Juga diperlukan untuk membuka kunci di browser."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Sblocca la cassaforte con l’impronta digitale. Necessario anche per lo sblocco nel browser."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "指紋で保管庫のロックを解除します。ブラウザでのロック解除にも必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "지문으로 보관함 잠금을 해제합니다. 브라우저 잠금 해제에도 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ontgrendel de kluis met je vingerafdruk. Ook nodig voor ontgrendelen in de browser."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Odblokowuj sejf odciskiem palca. Wymagane także do odblokowania w przeglądarce."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Desbloqueie o cofre com sua digital. Também necessário para desbloquear no navegador."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Desbloqueie o cofre com a sua impressão digital. Também necessário para desbloquear no navegador."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Разблокируйте хранилище отпечатком пальца. Также нужно для разблокировки в браузере."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Odomykajte trezor odtlačkom prsta. Vyžaduje sa aj na odomykanie v prehliadači."
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Откључајте сеф отиском прста. Потребно и за откључавање у прегледачу."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Lås upp valvet med ditt fingeravtryck. Krävs även för upplåsning i webbläsaren."
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "உங்கள் கைரேகையால் வால்ட்டைத் திறக்கவும். உலாவியில் திறக்கவும் தேவை."
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "మీ వేలిముద్రతో వాల్ట్‌ను అన్‌లాక్ చేయండి. బ్రౌజర్ అన్‌లాక్‌కు కూడా అవసరం."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ปลดล็อกตู้เซฟด้วยลายนิ้วมือ จำเป็นสำหรับการปลดล็อกในเบราว์เซอร์ด้วย"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kasanın kilidini parmak izinizle açın. Tarayıcıda kilit açmak için de gereklidir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Розблоковуйте сховище відбитком пальця. Також потрібно для розблокування в браузері."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mở khóa kho lưu trữ bằng vân tay của bạn. Cũng cần để mở khóa trong trình duyệt."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "用指纹解锁密码库。在浏览器中解锁也需要此项。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "用指紋解鎖密碼庫。在瀏覽器中解鎖也需要此項。"
           }
         }
       }

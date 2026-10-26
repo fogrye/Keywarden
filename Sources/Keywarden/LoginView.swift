@@ -270,7 +270,7 @@ struct LoginView: View {
                     // A closed window comes back with this view still in it, so keep watching it.
                     if closing { self.interrupted?() }
                     self.parkFocus()
-                    self.refreshEligibility(resigning: closing)
+                    self.refreshEligibility(closing: closing)
                 }
             })
         }
@@ -298,11 +298,13 @@ struct LoginView: View {
     }
 
     /// Keywarden is active with this window on screen; its own sheets or other windows taking key
-    /// don't take it out of the front.
-    private func refreshEligibility(resigning: Bool = false) {
-        let inFront = !resigning && NSApp.isActive && window?.isVisible == true
-            && window?.isMiniaturized == false && anchor?.window === window
-        if !inFront && !prompting { promptArmed = true }
+    /// don't take it out of the front. The Touch ID prompt takes activation but never hides the
+    /// window, so only losing activation while it is up doesn't arm the next return.
+    private func refreshEligibility(resigning: Bool = false, closing: Bool = false) {
+        let shown = !closing && window?.isVisible == true && window?.isMiniaturized == false
+            && anchor?.window === window
+        let inFront = shown && !resigning && NSApp.isActive
+        if !shown || (!inFront && !prompting) { promptArmed = true }
         isEligible = inFront && window?.isKeyWindow == true
         if isEligible && promptArmed { arrivals += 1 }
     }
@@ -337,7 +339,7 @@ struct LoginView: View {
         DispatchQueue.main.async { [weak self] in
             guard let self, self.generation == detachedGeneration else { return }
             self.isEligible = false
-            if !self.prompting { self.promptArmed = true }
+            self.promptArmed = true
             self.clearFocus?()
             self.interrupted?()
             self.clearFocus = nil

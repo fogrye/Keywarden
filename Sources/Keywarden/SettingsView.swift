@@ -99,7 +99,7 @@ private struct SecuritySettings: View {
                     }
                 })) {
                     Text("Unlock with Touch ID")
-                    Text("Asked for automatically when the vault is locked. Also required for browser unlock.")
+                    Text("Unlock the vault with your fingerprint. Also required for browser unlock.")
                 }
                 .disabled(changingEnrollment)
                 .unavailable(model.phase != .unlocked)
@@ -107,7 +107,7 @@ private struct SecuritySettings: View {
                 if model.biometricEnabled {
                     Toggle(isOn: $settings.autoTouchID) {
                         Text("Ask for Touch ID automatically")
-                        Text("Shows the Touch ID prompt as soon as the lock screen opens. Turn off to unlock with the button.")
+                        Text("Asks when you bring the locked vault to the front. When off, use the Touch ID button.")
                     }
                     .accessibilityIdentifier("autoTouchID")
                     .unavailable(model.phase != .unlocked)

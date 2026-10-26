@@ -247,6 +247,24 @@ final class TouchIDPromptTests: XCTestCase {
         await model.disableBiometrics()
     }
 
+    /// With the setting off, coming to the front never asks; the lock screen waits for entry.
+    @MainActor func testAutomaticTouchIDOffNeverAsks() async throws {
+        let account = try VaultFlowTests.account()
+        var model = try await isolatedSession(account)
+        try await SDKClient.shared.enrollBiometrics(generation: SDKClient.shared.generation())
+        await model.lock()
+        model = try await restoredLockedModel()
+        let hosted = HostedWindow(RootView(model: model, autoTouchID: false))
+        defer { hosted.close() }
+        try await activate(hosted)
+        try await deactivate()
+        try await activate(hosted)
+        try await Task.sleep(for: .seconds(1))
+        XCTAssertEqual(model.phase, .locked, "The setting is off; only the button may ask")
+        try await assertNeutralEntry(hosted, label: "Master password")
+        await model.disableBiometrics()
+    }
+
     @MainActor func testCancelledEnrollmentReadCannotDisplaceBrowserPrompt() async throws {
         let account = try VaultFlowTests.account()
         var model = try await isolatedSession(account)
