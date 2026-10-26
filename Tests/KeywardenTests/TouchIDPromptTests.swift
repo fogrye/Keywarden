@@ -201,6 +201,38 @@ final class TouchIDPromptTests: XCTestCase {
         await model.disableBiometrics()
     }
 
+    /// The automatic prompt follows the lock screen being brought to the front, never a lock that
+    /// happens in front of the user. Isolated credentials answer it without a fingerprint.
+    @MainActor func testAutomaticTouchIDAsksOnlyWhenBroughtToFront() async throws {
+        let account = try VaultFlowTests.account()
+        var model = try await isolatedSession(account)
+        try await SDKClient.shared.enrollBiometrics(generation: SDKClient.shared.generation())
+        await model.lock()
+        model = try await restoredLockedModel()
+        let hosted = HostedWindow(RootView(model: model, autoTouchID: true))
+        defer { hosted.close() }
+        // Starting locked: opening the window asks.
+        try await activate(hosted)
+        try await wait { model.phase == .unlocked }
+
+        await model.lock()
+        try await Task.sleep(for: .seconds(1))
+        XCTAssertEqual(model.phase, .locked, "Locking in front of the user must not ask")
+        try await assertNeutralEntry(hosted, label: "Master password")
+
+        try await deactivate()
+        try await activate(hosted)
+        try await wait { model.phase == .unlocked }
+
+        try await deactivate()
+        await model.lock()
+        try await Task.sleep(for: .milliseconds(500))
+        XCTAssertEqual(model.phase, .locked, "Nothing may ask while Keywarden is in the background")
+        try await activate(hosted)
+        try await wait { model.phase == .unlocked }
+        await model.disableBiometrics()
+    }
+
     @MainActor func testCancelledEnrollmentReadCannotDisplaceBrowserPrompt() async throws {
         let account = try VaultFlowTests.account()
         var model = try await isolatedSession(account)
@@ -302,6 +334,13 @@ final class TouchIDPromptTests: XCTestCase {
         hosted.window.makeKeyAndOrderFront(nil)
         try await wait { NSApp.isActive && hosted.window.isKeyWindow }
         try await Task.sleep(for: .milliseconds(100))
+    }
+
+    @MainActor private func deactivate() async throws {
+        let finder = try XCTUnwrap(NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.finder").first)
+        NSApp.yieldActivation(to: finder)
+        XCTAssertTrue(finder.activate(options: []))
+        try await wait { !NSApp.isActive }
     }
 
     @MainActor private func secureFocused(_ window: NSWindow) -> Bool {

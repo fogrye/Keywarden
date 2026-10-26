@@ -7,7 +7,7 @@ struct KeywardenApp: App {
 
     var body: some Scene {
         Window("Keywarden", id: WindowID.vault) {
-            RootView(model: delegate.model)
+            RootView(model: delegate.model, autoTouchID: delegate.settings.autoTouchID)
                 .onAppear { delegate.vaultWindowOpened() }
                 .onDisappear { delegate.vaultWindowClosed() }
         }

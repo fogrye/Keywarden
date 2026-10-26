@@ -3,6 +3,8 @@ import SwiftUI
 
 struct LoginView: View {
     @Bindable var model: VaultModel
+    /// Ask for Touch ID by itself when the lock screen is brought to the front.
+    var autoTouchID = false
     @FocusState private var focus: Field?
     @State private var region = ServerRegion.us
     @State private var useMasterPassword = false
@@ -10,7 +12,16 @@ struct LoginView: View {
     /// Touch ID is being asked for; the PIN or password field is disabled meanwhile.
     @State private var askingTouchID = false
     @State private var touchIDTask: Task<Void, Never>?
+    /// The next time the lock screen is in front may ask for Touch ID by itself.
+    @State private var promptArmed: Bool
     @State private var focusOwner = LoginFocusOwner()
+
+    init(model: VaultModel, autoTouchID: Bool = false) {
+        self.model = model
+        self.autoTouchID = autoTouchID
+        // Starting locked counts as being brought to the front; locking in front of the user doesn't.
+        _promptArmed = State(initialValue: !model.lockedAfterUse)
+    }
 
     private enum Field { case email, server, password, pin }
     private var locked: Bool { model.phase == .locked }
@@ -151,7 +162,18 @@ struct LoginView: View {
             focusOwner.parkFocus()
             if phase == .loggedOut { region = ServerRegion(server: model.server) }
             pin = ""
+            askAutomatically()
         }
+        // Leaving the front arms the automatic prompt for the next return. The Touch ID prompt itself
+        // takes the front from Keywarden; that doesn't count.
+        .onChange(of: focusOwner.isInFront) { _, inFront in
+            if !inFront && !askingTouchID { promptArmed = true }
+            askAutomatically()
+        }
+        .onChange(of: focusOwner.isEligible) { askAutomatically() }
+        .onChange(of: model.biometricEnabled) { askAutomatically() }
+        .onChange(of: model.isBusy) { askAutomatically() }
+        .onChange(of: autoTouchID) { askAutomatically() }
         .onChange(of: model.pinEnabled) { _, enabled in if !enabled { useMasterPassword = false } }
         // Not `focusOwner.detach()`: closing the window makes this disappear, but reopening it shows
         // the same view again without moving it to a window, so nothing would attach it.
@@ -161,6 +183,15 @@ struct LoginView: View {
     private func selectField(_ field: Field) {
         guard focusOwner.isEligible, !askingTouchID else { return }
         focus = field
+    }
+
+    /// Asks for Touch ID once the lock screen has been brought to the front: opened, or returned to
+    /// from another app, a closed window or the Dock. Never because the vault locked in front of the user.
+    private func askAutomatically() {
+        guard autoTouchID, promptArmed, locked, model.biometricEnabled, !model.isBusy, !askingTouchID,
+              focusOwner.isEligible else { return }
+        promptArmed = false
+        touchIDTask = Task { await askForTouchID() }
     }
 
     private func askForTouchID() async {
@@ -203,6 +234,10 @@ struct LoginView: View {
 /// Secure entry belongs to this window's first responder, never global keyboard state.
 @MainActor @Observable private final class LoginFocusOwner {
     private(set) var isEligible = false
+    /// Keywarden is active with this window on screen. Its own sheets or other windows taking key
+    /// don't take it out of the front. Assumed until measured, so a lock screen that replaces the
+    /// vault in a window already in front doesn't count as arriving there.
+    private(set) var isInFront = true
     @ObservationIgnored private weak var window: NSWindow?
     @ObservationIgnored private weak var anchor: NSView?
     @ObservationIgnored private weak var previousInitialResponder: NSView?
@@ -261,8 +296,9 @@ struct LoginView: View {
     }
 
     private func refreshEligibility(resigning: Bool = false) {
-        isEligible = !resigning && NSApp.isActive && window?.isVisible == true
-            && window?.isMiniaturized == false && window?.isKeyWindow == true && anchor?.window === window
+        isInFront = !resigning && NSApp.isActive && window?.isVisible == true
+            && window?.isMiniaturized == false && anchor?.window === window
+        isEligible = isInFront && window?.isKeyWindow == true
     }
 
     @discardableResult func parkFocus() -> Bool {
@@ -295,6 +331,7 @@ struct LoginView: View {
         DispatchQueue.main.async { [weak self] in
             guard let self, self.generation == detachedGeneration else { return }
             self.isEligible = false
+            self.isInFront = false
             self.clearFocus?()
             self.interrupted?()
             self.clearFocus = nil

@@ -31,11 +31,15 @@ final class VaultModel {
     var phase: Phase = .loading {
         didSet {
             guard phase != oldValue else { return }
+            lockedAfterUse = phase == .locked && oldValue == .unlocked
             // Generator history is secret: shown only while unlocked, and wiped on logout.
             GeneratorHistory.shared.sessionChanged(unlocked: phase == .unlocked, loggedOut: phase == .loggedOut)
             onPhaseChange?(phase)
         }
     }
+    /// The vault was open and then locked, rather than starting locked. A lock screen that takes
+    /// the vault's place in front of the user doesn't ask for Touch ID by itself.
+    private(set) var lockedAfterUse = false
     var onPhaseChange: (@MainActor (Phase) -> Void)?
     /// Runs once the stored account identity and biometric preferences are known.
     var onReady: (@MainActor () -> Void)?

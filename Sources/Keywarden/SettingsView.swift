@@ -104,6 +104,15 @@ private struct SecuritySettings: View {
                 .disabled(changingEnrollment)
                 .unavailable(model.phase != .unlocked)
 
+                if model.biometricEnabled {
+                    Toggle(isOn: $settings.autoTouchID) {
+                        Text("Ask for Touch ID automatically")
+                        Text("Shows the Touch ID prompt as soon as the lock screen opens. Turn off to unlock with the button.")
+                    }
+                    .accessibilityIdentifier("autoTouchID")
+                    .unavailable(model.phase != .unlocked)
+                }
+
             } header: {
                 Text("Unlock Options")
             } footer: {

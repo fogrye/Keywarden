@@ -3,6 +3,8 @@ import SwiftUI
 
 struct RootView: View {
     @Bindable var model: VaultModel
+    /// Show Touch ID as soon as the lock screen is in front.
+    var autoTouchID = false
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
@@ -14,7 +16,7 @@ struct RootView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .keepsToolbarHeight()
             case .loggedOut, .locked:
-                LoginView(model: model)
+                LoginView(model: model, autoTouchID: autoTouchID)
                     .keepsToolbarHeight()
             case .unlocked:
                 VaultSplitView(model: model)
