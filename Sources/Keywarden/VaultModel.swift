@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import Observation
 
@@ -31,11 +32,26 @@ final class VaultModel {
     var phase: Phase = .loading {
         didSet {
             guard phase != oldValue else { return }
+            lockedAfterUse = phase == .locked && oldValue == .unlocked && !lockingOutOfSight && Self.vaultInFront
             // Generator history is secret: shown only while unlocked, and wiped on logout.
             GeneratorHistory.shared.sessionChanged(unlocked: phase == .unlocked, loggedOut: phase == .loggedOut)
             onPhaseChange?(phase)
         }
     }
+    /// The vault was open and then locked, rather than starting locked. A lock screen that takes
+    /// the vault's place in front of the user doesn't ask for Touch ID by itself.
+    private(set) var lockedAfterUse = false
+    /// The app is active with the vault's window up, so a lock now happens in front of the user. A
+    /// lock while it is closed or Keywarden is in the background shows the lock screen as new later.
+    /// Settings and the generator don't count: the vault isn't what the user is looking at.
+    private static var vaultInFront: Bool {
+        NSApp.isActive && NSApp.windows.contains { window in
+            let id = window.identifier?.rawValue ?? ""
+            return window.isVisible && !window.isMiniaturized && window.styleMask.contains(.titled)
+                && !(window is NSPanel) && !id.hasPrefix(WindowFront.settings) && !id.hasPrefix(WindowID.generator)
+        }
+    }
+    private var lockingOutOfSight = false
     var onPhaseChange: (@MainActor (Phase) -> Void)?
     /// Runs once the stored account identity and biometric preferences are known.
     var onReady: (@MainActor () -> Void)?
@@ -339,13 +355,17 @@ final class VaultModel {
         refreshInBackground()
     }
 
-    func lock() async {
+    /// - Parameter outOfSight: the vault's window is going away, so the lock screen is new when it
+    ///   next shows, even if the closing window still reports itself visible.
+    func lock(outOfSight: Bool = false) async {
         guard phase != .locked || isBusy else { return }
         generation = SDKClient.shared.invalidateSession()
         BiometricCoordinator.shared.cancel()
         let previous = phase
         redact()
+        lockingOutOfSight = outOfSight
         phase = previous == .loggedOut ? .loggedOut : .locked
+        lockingOutOfSight = false
         do { try await SDKClient.shared.lock(); generation = SDKClient.shared.generation() }
         catch { errorMessage = error.localizedDescription }
     }

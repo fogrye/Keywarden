@@ -63,6 +63,16 @@ final class AutoLockTests: XCTestCase {
         XCTAssertEqual(AppSettings(defaults: defaults, secure: store).vaultTimeout, .minutes(5))
     }
 
+    func testAutomaticTouchIDIsOnByDefaultAndPersists() throws {
+        let suite = "autotouch-test-\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let settings = AppSettings(defaults: defaults, secure: .memory())
+        XCTAssertTrue(settings.autoTouchID)
+        settings.autoTouchID = false
+        XCTAssertFalse(AppSettings(defaults: defaults, secure: .memory()).autoTouchID)
+    }
+
     func testEarlierMinutesSettingMigrates() throws {
         let suite = "autolock-test-\(UUID().uuidString)"
         let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))

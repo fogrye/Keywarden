@@ -154,6 +154,10 @@ final class AppSettings {
     var minimizeOnCopy: Bool {
         didSet { defaults.set(minimizeOnCopy, forKey: "minimizeOnCopy") }
     }
+    /// Ask for Touch ID as soon as the lock screen is in front, when it is set up.
+    var autoTouchID: Bool {
+        didSet { defaults.set(autoTouchID, forKey: "autoTouchID") }
+    }
     var showWebsiteIcons: Bool {
         didSet {
             defaults.set(showWebsiteIcons, forKey: "showWebsiteIcons")
@@ -211,6 +215,7 @@ final class AppSettings {
         clearClipboardSeconds = Self.clipboardChoices.contains { $0.seconds == snapshot.clearClipboardSeconds }
             ? snapshot.clearClipboardSeconds : 60
         minimizeOnCopy = Self.boolean(defaults, "minimizeOnCopy", fallback: false)
+        autoTouchID = Self.boolean(defaults, "autoTouchID", fallback: true)
         showWebsiteIcons = Self.boolean(defaults, "showWebsiteIcons", fallback: true)
         let background = Self.boolean(defaults, "keepRunningInBackground", fallback: true)
         keepRunningInBackground = background

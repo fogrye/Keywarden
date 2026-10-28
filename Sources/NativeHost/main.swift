@@ -35,6 +35,14 @@ private func executableURL() throws -> URL {
     return URL(fileURLWithPath: resolved).resolvingSymlinksInPath()
 }
 
+/// A per-user file that lets one host at a time start the app; -1 when it can't be opened, and
+/// then each host asks on its own as before.
+private func openLaunchLock() -> Int32 {
+    var buffer = [CChar](repeating: 0, count: Int(PATH_MAX))
+    guard confstr(_CS_DARWIN_USER_TEMP_DIR, &buffer, buffer.count) > 0, let end = buffer.firstIndex(of: 0),
+          let directory = String(bytes: buffer[..<end].map(UInt8.init(bitPattern:)), encoding: .utf8) else { return -1 }
+    return open(directory + "xyz.kuvshynov.Keywarden.launch.lock", O_RDWR | O_CREAT | O_NOFOLLOW | O_CLOEXEC, 0o600)
+}
 
 private func run() throws {
     let arguments = CommandLine.arguments
@@ -69,22 +77,34 @@ private func run() throws {
     let deadline = ProcessInfo.processInfo.systemUptime + 5
     var fd: Int32 = -1
     var launchRequested = false
+    // Browsers start several hosts at once. Only the one holding this lock asks for a launch, and it
+    // keeps the lock until it reaches the app: a second request would arrive at the starting app as
+    // a reopen, which shows the vault.
+    let launchLock = openLaunchLock()
     while ProcessInfo.processInfo.systemUptime < deadline {
         if let connected = try? NativeFrames.connect() {
             fd = connected
             break
         }
-        // An already running app may still be starting its listener. Never reopen its vault.
-        if !launchRequested && NSRunningApplication.runningApplications(withBundleIdentifier: PeerIdentity.appID).isEmpty {
-            let configuration = NSWorkspace.OpenConfiguration()
-            configuration.activates = false
-            configuration.addsToRecentItems = false
-            configuration.arguments = ["--background"]
-            NSWorkspace.shared.openApplication(at: application, configuration: configuration) { _, _ in }
+        if !launchRequested, launchLock < 0 || flock(launchLock, LOCK_EX | LOCK_NB) == 0 {
             launchRequested = true
+            // The host that held the lock before has reached the app by now.
+            if let connected = try? NativeFrames.connect() {
+                fd = connected
+                break
+            }
+            // An already running app may still be starting its listener. Never reopen its vault.
+            if NSRunningApplication.runningApplications(withBundleIdentifier: PeerIdentity.appID).isEmpty {
+                let configuration = NSWorkspace.OpenConfiguration()
+                configuration.activates = false
+                configuration.addsToRecentItems = false
+                configuration.arguments = ["--background"]
+                NSWorkspace.shared.openApplication(at: application, configuration: configuration) { _, _ in }
+            }
         }
         usleep(100_000)
     }
+    if launchLock >= 0 { close(launchLock) }
     guard fd >= 0 else { throw TransportFailure.unavailable }
     defer { close(fd) }
     try PeerIdentity.verifyPeer(fd, identifier: PeerIdentity.appID, team: team)
