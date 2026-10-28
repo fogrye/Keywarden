@@ -201,6 +201,55 @@ final class TouchIDPromptTests: XCTestCase {
         await model.disableBiometrics()
     }
 
+    /// The browser unlock choice outlives Touch ID being turned off and signing out. Setting Touch ID
+    /// up again, or signing back in and approving the prompt, brings browser unlock straight back.
+    @MainActor func testBrowserUnlockChoiceSurvivesSignOut() async throws {
+        let account = try VaultFlowTests.account()
+        let model = try await isolatedSession(account)
+        let status = try await SDKClient.shared.status()
+        let hash = try XCTUnwrap(status.accountHash)
+
+        model.confirmTouchID = { _ in false }
+        await model.enableBrowserBiometrics()
+        XCTAssertFalse(model.browserBiometricsEnabled)
+        XCTAssertFalse(BrowserUnlockPreference.isEnabled(hash), "A declined enrollment saves nothing")
+
+        model.confirmTouchID = { _ in true }
+        await model.enableBrowserBiometrics()
+        XCTAssertTrue(model.biometricEnabled)
+        XCTAssertTrue(model.browserBiometricsEnabled)
+
+        await model.disableBiometrics()
+        XCTAssertFalse(model.browserBiometricsEnabled)
+        XCTAssertTrue(BrowserUnlockPreference.isEnabled(hash))
+        await model.enableBiometrics()
+        XCTAssertTrue(model.browserBiometricsEnabled, "Touch ID set up again restores browser unlock at once")
+
+        func signBackIn() async {
+            await model.logout()
+            XCTAssertEqual(model.phase, .loggedOut)
+            XCTAssertTrue(BrowserUnlockPreference.isEnabled(hash), "Signing out keeps the choice")
+            model.email = account.email
+            model.server = account.server
+            model.password = account.password
+            await model.login()
+            XCTAssertEqual(model.phase, .unlocked, model.errorMessage ?? "")
+        }
+        model.confirmTouchID = { _ in false }
+        await signBackIn()
+        XCTAssertFalse(model.biometricEnabled)
+        XCTAssertFalse(model.browserBiometricsEnabled)
+
+        model.confirmTouchID = { _ in true }
+        await signBackIn()
+        XCTAssertTrue(model.biometricEnabled)
+        XCTAssertTrue(model.browserBiometricsEnabled)
+        XCTAssertTrue(BiometricCoordinator.shared.currentBrowserIdentity() != nil)
+
+        model.setBrowserBiometricsEnabled(false)
+        XCTAssertFalse(BrowserUnlockPreference.isEnabled(hash), "Only the browser toggle clears the choice")
+    }
+
     /// The automatic prompt follows the lock screen being brought to the front, never a lock that
     /// happens in front of the user. Isolated credentials answer it without a fingerprint.
     @MainActor func testAutomaticTouchIDAsksOnlyWhenBroughtToFront() async throws {
