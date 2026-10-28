@@ -111,7 +111,12 @@ final class VaultModel {
     private var detailTask: Task<Void, Never>?
 
     var biometricEnabled = false
+    /// Browser unlock is in effect: chosen in Settings and Touch ID is set up. The choice itself is
+    /// kept across sign-out and Touch ID being turned off; only the browser toggle clears it.
     var browserBiometricsEnabled = false
+    /// Confirms turning Touch ID on. Tests replace it so no real prompt appears.
+    @ObservationIgnored
+    var confirmTouchID: @Sendable (String) -> Bool = { BiometricCoordinator.shared.approvedInApp(reason: $0) }
     private(set) var pinEnabled = false
 
     init() { Task { await restore() } }
@@ -281,6 +286,10 @@ final class VaultModel {
             accept(try await SDKClient.shared.login(email: email, password: password,
                                                      server: address.isEmpty ? "https://bitwarden.com" : address))
         } catch { if phase == .loggedOut { fail(error) } }
+        // Signing out removes Touch ID; browser unlock chosen earlier asks for it again right away.
+        if phase == .unlocked, !biometricEnabled, accountHash.map(BrowserUnlockPreference.isEnabled) == true {
+            await enableBiometrics()
+        }
     }
 
     func unlock() async {
@@ -602,15 +611,14 @@ final class VaultModel {
         let expected = generation
         let reason = String(localized: "turn on Touch ID for \(email) (\(server))",
                             comment: "Touch ID prompt: “Keywarden is trying to …”")
-        let approved = await Task.detached {
-            BiometricCoordinator.shared.approvedInApp(reason: reason)
-        }.value
+        let confirm = confirmTouchID
+        let approved = await Task.detached { confirm(reason) }.value
         guard approved, generation == expected, phase == .unlocked else { return }
         do {
             try await SDKClient.shared.enrollBiometrics(generation: expected)
             guard generation == expected else { return }
-            biometricEnabled = PlatformCredentials.enrolled(accountHash)
             BiometricCoordinator.shared.configure(id: accountId, hash: accountHash, server: server, email: email)
+            refreshBiometricPreferences()
         } catch { errorMessage = error.localizedDescription }
     }
 
@@ -619,13 +627,16 @@ final class VaultModel {
         do {
             try PlatformCredentials.delete(PlatformCredentials.biometric, accountHash)
             biometricEnabled = false
-            setBrowserBiometricsEnabled(false)
+            browserBiometricsEnabled = false
+            BiometricCoordinator.shared.setBrowserEnabled(false)
         } catch { errorMessage = String(localized: "Could not remove Touch ID enrollment.") }
     }
 
-    /// Turns on browser unlock, enrolling Touch ID first when this account has none yet.
+    /// Turns on browser unlock, enrolling Touch ID first when this account has none yet. A cancelled
+    /// enrollment leaves the saved choice as it was.
     func enableBrowserBiometrics() async {
         if !biometricEnabled { await enableBiometrics() }
+        guard biometricEnabled else { return }
         setBrowserBiometricsEnabled(true)
     }
 
